@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>add a user with jQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+
+			$('button').click(function(){
+				$('table').append(function(){
+					var first = $('.text1').val();
+					var second =  $('.text2').val();
+					var third = $('.text3').val();
+					var fourth = $('.text4').val();
+					return ('<tr><td>'+first+'</td>'+'<td>'+second+'</td>'+'<td>'+third+'</td>'+'<td>'+fourth+'</td></tr>');
+					
+				});
+			});
+		});
+
+	</script>
+</head>
+<body>
+<table border="1">
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email Address</th>
+		<th>Contact #</th>
+	</tr>
+</table>
+
+<h1>Add User</h1>
+<hr>
+<form>
+First Name:
+<input type="text" name="firstname" value="First Name" class="text1">
+<br>
+Last Name:
+<input type="text" name="lastname" value="Last Name" class="text2">
+<br>
+Email Address:
+<input type="text" name="email" value="Email Address" class="text3">
+<br>
+Contact No.:
+<input type="text" name="phone" value="Phone #" class="text4">
+<br>
+</form>
+<button type="button">Add User</button>
+</body>
+</html>

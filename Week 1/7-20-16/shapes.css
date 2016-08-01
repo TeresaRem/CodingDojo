@@ -1,0 +1,49 @@
+*{
+	font-family: "Tahoma";
+	margin: 50px;
+	padding: 0px;
+}
+
+#blocks{
+	width: 10px;
+	height: 10px;
+	background-color: black;
+	border-left: 50px solid green;
+	border-right: 50px solid yellow;
+	border-top: 50px solid red;
+	border-bottom: 50px solid blue;
+}
+
+#square{
+	width: 100px;
+	height: 100px;
+	background: green;
+}
+
+#circle{
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	background: red;
+}
+
+#triangle{
+	width: 0px;
+	height: 0px;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-bottom: 100px solid darkorange;
+}
+
+#pacman {
+	width: 0px;
+	height: 0px;
+	border-right: 60px solid transparent;
+	border-top: 60px solid red;
+	border-left: 60px solid red;
+	border-bottom: 60px solid red;
+	border-top-left-radius: 60px;
+	border-top-right-radius: 60px;
+	border-bottom-left-radius: 60px;
+	border-bottom-right-radius: 60px;
+}

@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title></title>
+	<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+	<style type="text/css">
+		img {
+			display: block;
+			margin-bottom: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#myButton').data('numClicked', {num: 0})
+		$('img').click(function() {
+			console.log("we clicked an image, and data-alt-src is", $(this).attr('data-alt-src'));
+			var temp = $(this).attr('src');
+			$(this).attr('src', $(this).attr('data-alt-src'));
+			$(this).attr('data-alt-src', temp);
+		});
+		$('#myButton').click(function() {
+			console.log($("#myInput").val())
+			var data = $('#myButton').data('numClicked')
+			data.num += 1
+			$('#myButton').data('numClicked', data)
+			console.log($('#myButton').data('numClicked'))
+			$(this).after($("#myInput").val())
+		})
+	});
+	</script>
+</head>
+<body>
+	<input id="myInput" type="text">
+	<button id="myButton">Submit</button>
+	<img src='ninja0.png' data-alt-src='cat0.png' />
+	<img src='ninja1.png' data-alt-src='cat1.png' />
+	<img src='ninja2.png' data-alt-src='cat2.png' />
+	<img src='ninja3.png' data-alt-src='cat3.png' />
+	<img src='ninja4.png' data-alt-src='cat4.png' />
+</body>
+</html>

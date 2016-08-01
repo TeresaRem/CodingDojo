@@ -1,0 +1,50 @@
+*{
+	font-family: "Tahoma";
+	margin: 0px;
+	padding: 0px;
+	color: white;
+}
+
+#wrapper{
+	background-color: silver;
+	width: 898px;
+	height: 474px;
+}
+
+#blue{
+	display: inline-block;
+	background-color: blue;
+	vertical-align: top;
+	width: 80px;
+	height: 300px;
+}
+
+#red{
+	display: inline-block;
+	background-color: pink;
+	width: 400px;
+	height: 300px;
+}
+
+#gold{
+	display: inline-block;
+	background-color: gold;
+	width: 240px;
+	height: 300px;
+}
+
+#green{
+	display: block;
+	background-color: green;
+	width: 800px;
+	height: 100px;
+}
+
+li:first-child{
+	display:block;
+}
+
+li{
+	display: inline;
+	border: 1px solid black;
+}

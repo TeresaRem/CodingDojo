@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<title>Disappear</title>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// click event listener for all img tags
+			// $('.cat',this).click(function(){
+			// 	$('div .cat').hide();
+			// 	$('div .ninja').show();
+			// });
+			// $('.ninja',this).click(function(){
+			// 	$('div .ninja').hide();
+			// 	$('div .cat').show();
+			// });
+
+			$(".one img").click(function() {
+		    	$(".one img").toggle();
+			});
+			$(".two img").click(function() {
+		    	$(".two img").toggle();
+			});
+			$(".three img").click(function() {
+		    	$(".three img").toggle();
+			});
+			$(".four img").click(function() {
+		    	$(".four img").toggle();
+			});
+			$(".five img").click(function() {
+		    	$(".five img").toggle();
+			});
+
+		});
+	</script>
+	<style type="text/css">
+
+		.cat{
+			margin-bottom: 5px;
+			width: 181px; 
+			height: 51px;
+		}
+		
+		.ninja{
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="one">
+		<img src="img/cat0.png" class="cat">
+		<img src="img/ninja0.png" class="ninja">
+	</div>
+	<div class="two">
+		<img src="img/cat1.png" class="cat">
+		<img src="img/ninja1.png" class="ninja">
+
+	</div>
+	<div class="three">
+		<img src="img/cat2.png" class="cat">
+		<img src="img/ninja2.png" class="ninja">
+
+	</div>
+	<div class="four">
+		<img src="img/cat3.png" class="cat">
+		<img src="img/ninja3.png" class="ninja">
+
+	</div>
+	<div class="five">
+		<img src="img/cat4.png" class="cat">
+		<img src="img/ninja4.png" class="ninja">
+
+	</div>
+</body>
+</html>

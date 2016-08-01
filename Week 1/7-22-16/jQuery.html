@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	.red{
+		color: red;
+	}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			// data
+			$('#dessert').data('test','ice cream');
+			$('span:first').text($('div').data("test"));
+
+			// val
+			$('#sometext').keyup(function(){
+				var value = $(this).val();
+				$('#value').text(value);
+			}).keyup();
+
+			// HTML
+			$('#addhtml').click(function(){
+				$('#result_html').html('<b>THIS</b>');
+			});
+
+			// Add Class
+			$( '#addclass' ).click(function(){
+				$('#redp').addClass('red');
+
+			});
+
+			// Slide Toggle
+			$( "#slideToggle" ).click(function() {
+			  $( "#slidetoggle" ).slideToggle( "slow", function() {
+			  });
+			});
+
+			// Slide Up
+			$( "#slideUp" ).click(function() {
+			  $( "#slideup" ).slideUp( "slow", function() {
+			  });
+			});
+
+			// Slide Down
+			$( "#slideDown" ).click(function() {
+			  $( "#slidedown" ).slideDown( "slow", function() {
+			  });
+			});
+
+			// Fade In
+			$( "#FadeIn" ).click(function() {
+			  $( "#fadein" ).fadeIn( "slow", function() {
+			  });
+			});
+
+			// Fade Out
+			$( "#FadeOut" ).click(function() {
+			  $( "#fadeout" ).fadeOut( "slow", function() {
+			  });
+			});
+
+    		// Append
+    		$('#append').click(function(){
+    			$('.result').append('<p>append added a paragraph!</p>');
+    		});
+
+    		// Prepend
+    		$('#prepend').click(function(){
+    			$('.result2').prepend('<p>prepend added a paragraph!</p>');
+    		});
+
+    		// Before
+    		$('#before').click(function(){
+    			$('.result3').before('<p>before added a paragraph!</p>');
+    		});
+
+    		// After
+    		$('#after').click(function(){
+    			$('.result4').after('<p>after added a paragraph!</p>');
+    		});
+
+    		// Click
+    		$('#click').click(function(){
+    			$('#click').css('background-color','darkorange');
+    		});
+
+    		// Hide
+    		$('#hide').click(function(){
+    			$('#showme').hide();
+    		});
+
+    		// Show
+    		$('#show').click(function(){
+    			$('#showme').show();
+    		});
+
+    		// Hover
+    		$('h3').hover(function(){
+    			$('h3').text('Dojo');
+    		},function(){
+    			$('h3').text('Coding');
+    		});
+
+    		// Focus
+    		$('input').focus(function(){
+    			$(this).next("span").css("display","inline").fadeOut(1000);
+    		});
+
+			var title = $( "em" ).attr( "title" );
+				$( "#check" ).text( title );
+
+		});
+	</script>
+</head>
+<body>
+
+<h1>data</h1>
+<p>What dessert?</p>
+<div id="dessert"><span></span></div>
+<hr>
+
+<h1>val</h1>
+<input type="text" value="some text" id="sometext">
+<p id="value">The Value is: </p>
+<hr>
+
+<h1>attr</h1>
+<p>Is there emphasis?</p>
+<div id="check"><em title="YUP"></em></div>
+<hr>
+
+
+<h1>HTML</h1>
+<button id="addhtml">Click to add HTML</button>
+<div id="result_html"></div>
+<hr>
+
+<h1>AddClass</h1>
+<button id="addclass">AddClass</button>
+<p id="redp">Click the button to add class 'red' to this paragraph</p>
+<hr>
+
+<h1>SlideToggle</h1>
+<button id="slideToggle">SlideToggle</button>
+<button id="slideUp">SlideUp</button>
+<button id="slideDown">SlideDown</button>
+<p>Click the button to slidetoggle, slideup, or slidedown</p>
+
+<img id="slidetoggle" src="https://placeholdit.imgix.net/~text?&w=50&h=50" alt="">
+<img id="slideup" src="https://placeholdit.imgix.net/~text?&w=50&h=50" alt="">
+<img id="slidedown" src="https://placeholdit.imgix.net/~text?&w=50&h=50" alt="" style="display:none;">
+<hr>
+
+<h1>FadeIn + Fade Out</h1>
+<button id="FadeIn">FadeIn</button>
+<button id="FadeOut">FadeOut</button>
+<p>Click the buttons to fadeIn or fadeOut</p>
+
+<img id="fadein" src="https://placeholdit.imgix.net/~text?&w=50&h=50" alt="" style="display:none;">
+<img id="fadeout" src="https://placeholdit.imgix.net/~text?&w=50&h=50" alt="">
+<hr>
+
+<h1>Append + Prepend (puts data inside element, good for lists)</h1>
+<button id="append">Append</button>
+<button id="prepend">Prepend</button>
+<div class="result2"></div>
+<p>Click the button to append a new paragraph!</p>
+<p>Click the button to prepend a new paragraph!</p>
+<div class="result"></div>
+<hr>
+
+<h1>Before + After (puts data before/after elements)</h1>
+<button id="before">Before</button>
+<button id="after">After</button>
+<div class="result3"></div>
+<p>Click the button to add a new paragraph before!</p>
+<p>Click the button to add a new paragraph after!</p>
+<div class="result4"></div>
+<hr>
+
+<h1>Click</h1>
+<button id="click">Click</button>
+<p>Click the button to change the color of the button to orange!</p>
+<hr>
+
+<h1>Hide + Show</h1>
+<button id="hide">HIDE</button>
+<button id="show">SHOW</button>
+<p id="showme">Click the buttons to hide and show this paragraph!</p>
+<hr>
+
+<h1>Hover</h1>
+<h3>Coding</h3>
+<p id="showme">Hover for a secret!</p>
+<hr>
+
+<h1>Focus</h1>
+<input type="text"><span>focus!</span>
+<p>Click the textbox to focus!</p>
+<hr>
+
+</body>
+</html>

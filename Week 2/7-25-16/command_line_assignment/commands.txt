@@ -1,0 +1,28 @@
+ls
+Applications	Documents	Dropbox		Movies		Pictures
+Desktop		Downloads	Library		Music		Public
+cd .
+:~  cd Desktop
+:Desktop  mkdir test
+:Desktop  touch index.html
+:Desktop  touch styles.css
+:Desktop  touch commands.txt
+:Desktop  cp index.html index2.html
+:Desktop  mkdir destination
+:Desktop  mv Desktop/index.html Desktop/test
+mv: rename Desktop/index.html to Desktop/test: No such file or directory
+:Desktop  mv index.html test
+:Desktop  mv index2.html test
+:Desktop  mv styles.css test
+:Desktop  cd test
+:test  mv index2.html ../destination
+:test  rm styles.css
+:test  ls
+index.html
+:test  cd ..
+:Desktop  cd destination
+:destination  ls
+index2.html
+:destination  cd ..
+:Desktop  rm -rf destination
+:Desktop  

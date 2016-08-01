@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>plan-a-cruise</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript">
+		
+	$(document).ready(function(){
+
+		$('.submit').click(function(){
+
+			if ($('#name').val() == ""){
+				alert("your name can't be blank!");
+			}
+			else {
+			alert("Thanks "+$('#name').val()+"! Your Cruise leaves on "+$('#from').val()+" and returns on "+$('#to').val()+"!");
+			}
+			return false;
+
+		});
+		
+		$(".datepicker").datepicker();
+
+		// $(document).on(function(){
+
+		// });
+
+
+
+
+	});
+
+	</script>
+</head>
+<body>
+<h1>Welcome to the Codingdojo plan-a-Cruise!</h1>
+<form>
+	From:<input type="text" value="" class="datepicker" id="from">
+	<br> 
+	To:<input type="text" value="" class="datepicker" id="to">
+	<br>
+	Name:<input type="text" value="" id="name">
+	<br>
+	<input type="submit" class="submit" value="Check Dates!">
+</form>
+</body>
+</html>

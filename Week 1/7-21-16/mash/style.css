@@ -1,0 +1,64 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	font-family: 'Tahoma';
+}
+
+header nav #logo, header nav #links, header nav #social{
+	display: inline-block;
+}
+
+header ul li{
+	display: inline;
+}
+
+#main{
+	margin: 0 auto;
+	width: 970px;
+}
+
+.column{
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+
+.column h1{
+	text-align: center;
+}
+
+#new, #rising {
+	width: 25%;
+}
+
+#hot {
+	width: 48%;
+}
+
+.column article{
+	font-size: 10pt;
+	position: relative;
+}
+
+.column article img{
+	display: inline-block;
+}
+
+.column article .article_text{
+	display: inline-block;
+	vertical-align: top;
+	width: 167px;
+}
+
+.column article a{
+	text-decoration: none;
+	color: black;
+}
+
+.column article .meta{
+	position: absolute;
+	bottom: 0;
+}

@@ -1,0 +1,246 @@
+*{
+	font-family: 'Tahoma';
+	padding: 0;
+	margin: 0;
+}
+
+#container{
+	background-color: #171717;
+	padding: 0 5px;
+	width: 943px;
+	height: 1202px;
+}
+
+header{
+	background-color: #1a1a1a;
+	padding-top: 22px;
+}
+
+header a{
+	color: #a39d94;
+}
+
+header img, p{
+	display: inline-block;
+	vertical-align: top;
+}
+
+header p{
+	margin-left: 547px;
+	padding-top: 13px;
+	color: #cfcfcb;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+nav{
+	display: inline-block;
+	margin-top: 27px;
+	padding-left: 10px;
+	padding-right: 360px;
+	margin-right: -5px;
+	background-color: #454545;
+	color: #a39d94;
+}
+
+nav ul{
+	display: inline-block;
+}
+
+nav ul li{
+	display: inline-block;
+	margin: 8px 0;
+	padding: 5px 16px 7px 16px;
+	border-right: 1px solid #525252;
+	font-size: 9pt;
+	font-weight: bold;
+}
+
+nav ul li:first-child{
+	color: white;
+}
+
+nav ul li:last-child{
+	border: none;
+	padding-right: 0;
+}
+
+#right_border{
+	margin: 0px;
+	border-left: 1px solid #525252;
+	display: inline-block;
+	vertical-align: bottom;
+	background-color: #454545;
+	padding-right: 37px;
+	height: 42px;
+}
+
+#main_pic{
+	height: 360px; /*355px original size*/
+	max-width: 942px;
+	padding-bottom: 7px;
+	background-color: #4d4e50;
+}
+
+#info{
+	display: inline-block;
+	width: 99%;
+	height: 137px;
+	background-color: #1a1a1a;
+	margin-top: -5px;
+	padding-left: 10px;
+	padding-bottom: 20px;
+}
+
+#info img{
+	display: inline-block;
+	padding: 0px;
+}
+
+#info h2{
+	display: inline-block;
+	vertical-align: top;
+	color: #c97711;
+	font-weight: normal;
+	font-size: 12pt;
+}
+
+#info p{
+	color: silver;
+	font-size: 9pt;
+	margin-top: 4px;
+	line-height: 150%;
+}
+
+#cloud, #clock, #pin, #cycle{
+	padding-top: 27px;
+	display: inline-block;
+	background-color: #1a1a1a;
+	width: 24%;
+}
+
+#cloud_text, #pin_text, #cycle_text{
+	display: inline-block;
+	width: 66%;
+}
+
+#clock_text{
+	display: inline-block;
+	width: 69%;
+}
+
+#cycle{
+	width: 25%;
+}
+
+#buy{
+	padding: 30px;
+	background-color: black;
+	color: silver;
+}
+
+#buy h1{
+	font-size: 18pt;
+	font-weight: normal;
+}
+
+#buy p{
+	padding-top: 10px;
+	font-size: 9pt;
+	padding-bottom: 10px;
+	line-height: 150%;
+}
+
+#buy-text{
+	display: inline-block;
+	width: 70%;
+}
+
+button{
+	color: white;
+	display: inline-block;
+	background-color: #ff7700;
+	vertical-align: 1px;
+	border: none;
+	border-radius: 5px;
+	width: 115px;
+	height: 40px;
+	margin-left: 130px;
+	font-size: 14pt;
+}
+
+#portfolio_topbar{
+	background-color: #1a1a1a;
+	padding: 26px 0px 24px 20px;	
+}
+
+#portfolio_topbar h1{
+	display: inline-block;
+	color: white;	
+	font-size: 14pt;
+	font-weight: normal;
+	padding-right: 728px;
+}
+
+#portfolio_topbar p{
+	display: inline-block;
+	font-size: 10pt;
+}
+
+a{
+	text-decoration: none;
+	color: darkorange;
+
+}
+
+#viewall{
+	font-size: 9pt;
+}
+
+#portfolio{
+	background-color: #1a1a1a;
+	padding-bottom: 10px;
+}
+
+#portfolio #shortcode, #new_page, #access, #custom{
+	display: inline-block;
+	vertical-align: top;
+	width: 219px;
+	margin-right: 5px;
+}
+
+#shortcode{
+		margin-left: 20px;
+}
+
+#portfolio img{
+	border: 4px solid #363636;
+	width: 96%;
+	height: 100%;
+}
+
+#portfolio h3{
+	margin-top: 15px;
+	color: #c97711;
+	font-weight: normal;
+	font-size: 11pt;
+}
+
+#portfolio p{
+	margin-top: 5px;
+	color: white;
+	font-size: 9pt;
+	line-height: 150%;
+}
+
+#back{
+	padding-top: 20px;
+	display: block;
+	text-align: right;
+	padding-right: 20px;
+	padding-bottom: 3px;
+	text-decoration: none;
+	font-size: 8pt;
+	color: #656565;
+	background-color: #1a1a1a;
+}	

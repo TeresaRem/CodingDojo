@@ -1,0 +1,151 @@
+*{
+	font-family: "Tahoma";
+	margin: 0px;
+	padding: 0px;
+}
+
+#wrapper{
+	background-color: white;
+	width:1022px;
+	height: 700px;
+}
+
+header{
+	background-color: white;
+}
+	header img{
+		margin-left: 25px;
+	}
+	header p{
+		display: inline;
+		vertical-align: 18px;
+		font-size: 13pt;
+		font-weight: bolder;
+		padding-left: 310px;
+	}
+br{
+
+}
+#nav_bar{
+	padding-left: 35px;
+	background-color: silver;
+	height: 30px;
+	margin-bottom: 30px;
+}
+
+	#nav_bar ul{
+		padding-top: 2px;
+	}
+
+	#nav_bar li{
+		display: inline;
+		font-size: 8pt;
+		font-weight: bolder;
+		border-right: 1px solid black;
+		border-left: 1px solid black;
+		border-top: 1px solid black;
+		padding-top: 6px;
+		padding-left: 22px;
+		padding-right: 22px;
+		padding-bottom: 10px;
+		margin-right: -6px;
+	}
+
+#main_content{
+	background-color: black;
+	padding-top: 15px;
+	padding-left: 35px;
+	width: 987px;
+	height: 566px;
+}
+
+#main_img{
+	border: 5px solid white;
+}
+.label{
+	background-color: yellow;
+	padding-top: 5px;
+	padding-left: 8px;
+}
+
+#side_content{
+	background-color: grey;
+	margin-left: 10px;
+	width: 550px;
+	height: 265px;
+	display: inline-block;
+	vertical-align: top;
+}
+	#side_content p{
+		color: white;
+		margin-left: 15px;
+		font-size: 9pt;
+	}
+/*need 20 pixels for text wrap*/
+
+	#main_content h1{
+		display: inline;
+		vertical-align: top;
+		font-size: 9pt;
+	}
+
+	#main_content h2{
+		display: inline-block;
+		vertical-align: top;
+		margin-top: 10px;
+		margin-left: 15px;
+		margin-bottom: 10px;
+		font-size: 10pt;
+		color: white;
+	}
+#main_text{
+	margin:10px 20px 10px 0px;
+}
+
+#ad_bar{
+	background-color: black;
+	width: 987px;
+	height: 30px;
+	margin-bottom: 2px;
+}
+	#ad_bar p{
+		color: white;
+		display: inline;
+		vertical-align: -3px;
+		font-size: 8pt;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+#ad_button{
+	display: inline-block;
+	margin-left: 8px;
+	margin-right: 8px;
+	background-color: white;
+	width: 58px;
+	height: 15px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.subcontent{
+	display: inline-block;
+	vertical-align: top;
+	background-color: white;
+	border: 2px solid grey;
+	margin-right: 14px;
+	width: 222px;
+	height: 250px;
+}
+.subcontent_img{
+	border: none;
+}
+
+.sub_description{
+	width: 180px;
+	font-size: 8pt;
+	margin: 8px;
+}
+.read{
+	padding-left: 100px;
+}

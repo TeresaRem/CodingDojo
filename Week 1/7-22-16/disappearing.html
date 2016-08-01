@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<title>Disappear</title>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// click event listener for all img tags
+			$('img').click(function(){
+				$(this).hide();
+			});
+
+			// restore all images
+			$('button').click(function(){
+				$('img').show();
+			});
+
+		});
+	</script>
+	<style type="text/css">
+		.image{
+			width: 150px; 
+			height: 150px;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>
+	<br>
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>	
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>	
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>
+	<div class="image">
+		<img src="http://placehold.it/150x150">
+	</div>
+	<br>
+	<button>Restore</button>
+</body>
+</html>
