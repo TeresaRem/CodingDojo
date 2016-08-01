@@ -1,0 +1,300 @@
+Sigma
+Implement a function sigma(n) that, given a number n, returns the sum
+of all positive integers from 1 up to n (inclusive). For example sigma(3)=1+2+3;
+sigma(5)=1+2+3+4+5.
+
+function sigma(n){
+  var sum=0;
+    for(var i=0; i<n; i++){
+      sum+=i;
+      }
+    return sum;
+}
+console.log(sigma(5));
+
+<br>
+
+Factorial
+Write a function factorial(n) that, given a number n, returns the product (multiplication)
+of all positive integers from 1 up to n (inclusive). For example, factorial(3)=1*2*3;
+factorial (5)=1*2*3*4*5.
+
+function factorial(n){
+  var product=1;
+    for(var i=1; i<=n; i++){
+      product=product*i;
+      }
+    return product;
+}
+console.log(factorial(n));
+
+<br>
+
+Threes and Fives
+Add all the values from 100 to 4000000 (inclusive) that are evenly divided by 3 or
+5 but not both. Display this value in the console. Create one where start and end
+values are customizable (defaults 100 and 4000000).
+
+function threeAndFive(startVal, endVal){
+  var result=0;
+    if(startVal===undefined){
+    startVal=100;
+    }
+    if(endVal===undefined){
+    endVal=4000000;
+    }
+  for(var count=startVal; count<=endVal; count++){
+    if((count%3==0)||(count%5==0)){
+      if((count%3==0)&&(count%5==0)){
+        continue;
+        }
+      result+=count;
+    }
+  }
+  console.log("The 3 & 5 sum [%d-%d] is %d", startVal, endVal, result);
+}
+threeAndFive();
+
+<br>
+
+Generate Coin Change
+Implement a function generateCoinChange() that accepts a parameter for the number
+of cents, and computes how to represent that amount with the smallest number of coins.
+Console.log the result.
+
+function generateCoinChange(amount){
+console.log("%d cents is:", amount);
+var numDollars=0;
+var numQuarters=0;
+var numDimes=0;
+var numNickels=0;
+var numPennies=0;
+  while(amount>=100){
+  numDollars++;
+  amount-=100;
+  }
+  while(amount>=25){
+  numQuarters++;
+  amount-=25;
+  }
+  while(amount>=10){
+  numDollars++;
+  amount-=10;
+  }
+  while(amount>=5){
+  numDollars++;
+  amount-=5;
+  }
+  while(amount>=1){
+  numDollars++;
+  amount-=1;
+  }
+console.log("%d dollars", numDollars);
+console.log("%d quarters", numQuarters);
+console.log("%d dimes", numDimes);
+console.log("%d nickels", numNickels);
+console.log("%d pennies", numPennies);
+}
+
+<br>
+
+Statistics to Doubles
+Implement a 'die' that randomly returns an integer between 1 and 6 inclusive.
+Roll a pair of these dice, tracking the statistics until doubles are rolled.
+Display the number of rolls, min, max, and average.
+
+function roll(){
+  return Math.floor((Math.random*6)+1);
+}
+function doubles(){
+  rolls=[];
+  d1=roll();
+  d2=roll();
+  while(d1!=d2){
+    rolls.push(d1+d2);
+    d1=roll();
+    d2=roll();
+  }
+  rolls.push(d1*d2);
+  var num=rolls.length();
+  var min=13;
+  var max=0;
+  var sum=0;
+    for(var i=0; i<rolls.length; i++){
+    if (rolls[i]<min){
+      min=rolls[i];
+      }
+    if (rolls[i]>max){
+    max=rolls[i];
+    }
+    sum=sum+rolls[i];
+    }
+    avg=sum/num;
+    }
+  console.log(num+" "+min+ " "+max+" "+avg);
+//Ask Jay how to call this function in jsbin//
+
+  <br>
+
+Sum to One Digit
+Implement a function sumToOne() that, given a number, sums that number's digits
+repeatedly until the sum is only one digit. Return that final one digit result.
+
+  function sumToOne(num){
+    num=Math.absolute(num);
+    while(num>9){
+      str=num to string();
+        for(var i=0; i<str.length; i++){
+        num=+str[i];
+        }
+    }
+    return num;
+  }
+  //Ask Jay about the semicolon errors//
+
+Array: Push Front
+Given array and an additional value, insert this value at the beginning
+of the array. Do this without using any built-in array commands.
+
+  function pushFront(arr, val){
+    arr.push();
+    for(var i=arr.length-1; i!=0; i--){
+    temp=arr[i];
+    arr[i]=arr[i-1];
+    arr[i-1]=temp;
+    }
+    return arr;
+  }
+
+Array: Pop Front
+Given array, remove and return the value at the beginning of the array.
+Do this without using any built-in array methods except pop().
+
+  function popFront(arr){
+    var first=arr[0];
+    for(var i=0; i<arr.length-2; i++){
+    arr[i]=arr[i+1];
+    }
+  arr.pop();
+  return first;
+  }
+
+Array: Insert At
+Given array, index, and additional value, isnert the value into array
+at given index. Do this without using built-in array methods. You can
+think of pushFront(arr, val) as equivalent to insertAt(arr,, 0, val).
+
+  function insertAt (arr, index, val){
+    arr.push(0);
+    for(var i=arr.length-1; i>index; i--){
+    arr[i]=arr[i-1];
+    }
+  arr[index]=val;
+  }
+
+Array: Remove At
+Given array and an index into array, remove and return the array value
+at that index. Do this without using built-in array methods except pop().
+Think of popFront(arr) as equivalent to removeAt(arr,0).
+
+  function removeAt(arr, index){
+    for(var i=0; i<arr.length; i++){
+      if(i>=index){
+        arr[i]=arr[i+1];
+      }
+      arr.pop();
+    }
+  }
+
+Array: Min to Front
+Given an array of comparable values, move the lowest element to array's front, shifting backwards any
+elements previously ahead of it. Do not otherwise change the array's order. Given [4,2,1,3,5],
+change it to [1,4,2,3,5] and return it. As always, do this without using built-in functions.
+
+  function mintToFront(arr){
+    var min=0;
+    var i;
+    for (i=0; i<arr.length-1; i++){
+      if(arr[i]<arr[min]){
+      min=i
+      }
+    }
+    i=min;
+    while(arr[0]!=arr[min]){
+      arr[i-1]=temp;
+      arr[i-1]=arr[i];
+      arr[i]=temp;
+      i--;
+    }
+  }
+
+Array: Reverse
+Given a numerical array, reverse the order of values, in-place. The reversed array should
+have the same length, with existing elements moved to other indices so that order of elements
+is reversed. Working 'in-place' menas that you cannot use a second array- move values within
+the array that you are given. As always, do not use built-in array functions such as splice().
+
+function reverse (arr){
+  var temp=0;
+  for(var i=0; i<=(arr.length/2)-1; i++){
+  temp=arr[i];
+  arr[i]=arr[arr.length-(i+1)];
+  arr[arr.length-(i+1)];=temp;
+  }
+}
+
+Array: Remove Negatives
+Implement removeNegatives() that accepts an array, removes negative values, and returns the
+same array (not a copy), preserving non-negatives' order. As always, do not use built-in
+array functions. Don't use nested loops.
+
+function removeNegatives(arr){
+  var negs=0;
+  for(var i in arr){
+    if (arr[i]<0){
+      negs++;
+    }
+    else{
+    arr[i-negs]=arr[i];
+    }
+  }
+  while(negs>0){
+  arr.pop();
+  negs--;
+  }
+  return arr;
+}
+
+Array: Second-to-Last
+Return the second-to-last element of an array. Given [42,true,"Liam",7], return
+"Liam". If array is too short, return null.
+
+function secondToLast(arr){
+  if (arr.length==1){
+  return null;
+  }
+  else{
+  return arr[arr.length-2];
+  }
+}
+
+Array: Second-Largest
+Return the second-largest element of an array. Given [42,1,4,Math.PI,7], return 7.
+If the array is too short, return null.
+
+function secondLargest(arr){
+  if (arr.length==1){
+  return null;
+  }
+  else{
+    var max=0;
+    var secondlargest;
+    for( var i in arr){
+      if(max<arr[i]){
+      secondlargest=max;
+      max=arr[i];
+      }
+    }
+  }
+  return secondLargest;
+}
