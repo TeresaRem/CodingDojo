@@ -287,14 +287,20 @@ function secondLargest(arr){
   return null;
   }
   else{
-    var max=0;
-    var secondlargest;
+    var max=arr[0];
+    var max2; var idx;
     for( var i in arr){
-      if(max<arr[i]){
-      secondlargest=max;
-      max=arr[i];
+      if(max < arr[i]){
+      max = arr[i];
+      idx = i;
+      }
+    }
+    arr[idx] = 0;
+    for (var j in arr){
+      if(max2 < arr[j]){
+        max2 = arr[i]
       }
     }
   }
-  return secondLargest;
+  return max2;
 }
