@@ -5,13 +5,11 @@
 
 <script type="text/javascript">
 
-// largest number to the end, moving up one index at a time
-
 function bubbleSort(arr){
 	var temp; 
 	console.log("starting array is:");
 	console.log(arr);
-	for(var i=arr.length-1; i>0; i--){ // i decreases
+	for(var i=arr.length-1; i>0; i--){	// i decreases
 		for (var j=0;j<i;j++){ 			// j increases
 			if (arr[j] > arr[j+1]){ 	// swap if left > right
 				temp = arr[j+1];
