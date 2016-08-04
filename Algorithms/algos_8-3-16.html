@@ -5,7 +5,27 @@
 
 <script type="text/javascript">
 
+// largest number to the end, moving up one index at a time
+
 function bubbleSort(arr){
+	var temp; 
+	console.log("starting array is:");
+	console.log(arr);
+	for(var i=arr.length-1; i>0; i--){ // i decreases
+		for (var j=0;j<i;j++){ 			// j increases
+			if (arr[j] > arr[j+1]){ 	// swap if left > right
+				temp = arr[j+1];
+				arr[j+1]=arr[j];
+				arr[j]=temp;
+				console.log("swapped "+arr[j]+" and "+arr[j+1]);
+				console.log(arr);
+			}
+		}
+	}
+	return arr;
+}
+
+function notBubbleSort(arr){
 	var temp;
 	for (var i = 0; i < arr.length-1;i++){
 		for (var j = i+1; j < arr.length;j++){
@@ -13,6 +33,7 @@ function bubbleSort(arr){
 				temp = arr[i];
 				arr[i]=arr[j];
 				arr[j]=temp;
+				console.log(arr);
 			}
 		}
 	}
@@ -40,7 +61,8 @@ function whatHappensToday(){
 	console.log(disaster);
 	return disaster;
 }
-	// bubbleSort([1,3,5,7,9,8,6,5]);
+	bubbleSort([6,5,3,1,8,7,2,4]);
+	// notBubbleSort([6,5,3,1,8,7,2,4]);
 	// removeRange([1,3,5,7,9,8,6,5],1,3);
 	// whatHappensToday();
 
