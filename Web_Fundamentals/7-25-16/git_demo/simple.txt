@@ -1,0 +1,6 @@
+1. fork on github at https://github.com/jjun14/git_demo
+2. clone onto local drive
+3. edit file
+4. add and commit to local copy
+5. push to github
+6. submit pull request via button
