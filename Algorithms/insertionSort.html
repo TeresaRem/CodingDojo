@@ -4,11 +4,13 @@
 	<title></title>
 <script type="text/javascript">
 
+// insertion sort is efficient in practice than most other simple quadratic (i.e., O(n2)) algorithms such as selection sort or bubble sort
+
 function insertionSort(arr){
 	var temp; var start = 1;
-	for (var i = 0; i < arr.length; i++){		// i increases
-		for (var j = start; j > 0; j--){			// j decreases
-			if (arr[j] < arr[j-1]){
+	for (var i = 0; i < arr.length; i++){	// i increases
+		for (var j = start; j > 0; j--){		// j decreases
+			if (arr[j] < arr[j-1]){						
 				temp = arr[j];
 				arr[j] = arr[j-1];
 				arr[j-1] = temp;
