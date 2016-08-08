@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+<script type="text/javascript">
+	
+function bracesValid(str){
+	var braces = [];
+	for (var i = 0; i<str.length;i++){
+		if (str[i] == '{' || str[i] == '[' || str[i] == '('){
+			braces.push(str[i]);
+		}
+		if (str[i] == '}'){
+			if (braces[braces.length-1]== '{'){
+				braces.pop();
+			}
+			else {console.log(false);return false;}
+		}
+		if (str[i] == ']'){
+			if (braces[braces.length-1]== '['){
+				braces.pop();
+			}
+			else {console.log(false);return false;}
+		}
+		if (str[i] == ')'){
+			if (braces[braces.length-1]== '('){
+				braces.pop();
+			}
+			else {console.log(false);return false;}
+		}
+	}
+	if (braces.length == 0){
+		console.log(true);
+		return true;
+	}
+	console.log(false);
+	return false;
+}
+
+bracesValid("W(a{t}s[o(n{ c}o)m]e )h[e{r}e]!");
+bracesValid("D(i{a}l t]o)n{e");
+bracesValid("W(a{t}s[o(n{ c}o)m]e )h[e{r}e]!)");
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

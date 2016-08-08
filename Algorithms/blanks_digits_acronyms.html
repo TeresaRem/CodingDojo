@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+<script type="text/javascript">
+	
+function removeBlanks(str){
+	output = "";
+	for (var i = 0; i < str.length; i++){
+		if (str[i] != " "){
+			output += str[i];
+		}
+	}
+	console.log(output);
+	return output;
+}
+
+removeBlanks("Pl ayTha tF u nky Mu  s  i c  ");
+
+function getDigits(str){
+	output = "";
+	for (var i = 0; i < str.length; i++){
+		if (!isNaN(parseInt(str[i]))){ // NaN is considered a number
+			output += str[i];
+		}
+	}
+	console.log(output);
+	return output;
+}
+
+getDigits("02s1a3y5w7h9t?!028");
+
+function acronyms(str){
+	output = "";
+	if (str[0] != ' ') {
+		output+=str[0].toUpperCase(); 
+	}
+	for (var i = 1; i < str.length; i++){
+		if (str[i-1] == " " && str[i] != " "){
+			output += str[i].toUpperCase();
+		}
+	}
+	console.log(output);
+	return output;
+}
+
+acronyms("live from new york, it's saturday night!");
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
