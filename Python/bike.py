@@ -10,30 +10,21 @@ class Bike(object):
 	def ride(self):
 		print "Riding"
 		self.miles += 10
+		return self
 	def reverse(self):
 		print "Reversing"
 		if self.miles < 5:
 			print "you are at start"
-			return
+			return self
 		self.miles -= 5
+		return self
 
 bike1 = Bike(200,200)
 bike2 = Bike(150,150)
 bike3 = Bike(100,100)
 
-bike1.ride()
-bike1.ride()
-bike1.ride()
-bike1.reverse()
-bike1.displayInfo()
+bike1.ride().ride().ride().reverse().displayInfo()
 
-bike2.ride()
-bike2.ride()
-bike2.reverse()
-bike2.reverse()
-bike2.displayInfo()
+bike2.ride().ride().reverse().reverse().displayInfo()
 
-bike3.reverse()
-bike3.reverse()
-bike3.reverse()
-bike3.displayInfo()
+bike3.reverse().reverse().reverse().displayInfo()
