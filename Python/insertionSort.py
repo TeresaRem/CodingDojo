@@ -16,14 +16,14 @@ def insertionSort(arr):
 		# print arr
 	b = datetime.datetime.now()
 	time = b - a
-	print time.total_seconds()
+	print "{} seconds".format(time.total_seconds())
 	return arr
 
 # insertionSort([6,5,3,1,8,7,2,4]);
 
 def randomArr(): # create random array
 	arr = []
-	for i in range(100):
+	for i in range(1000):
 		arr.append(random.randint(0,10000))
 	return arr
 
