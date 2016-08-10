@@ -1,4 +1,4 @@
 ## Web Fundamentals
 
 
-This content is sorted by date.
+This directory contains content completed in the first two weeks of Coding Dojo.
