@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Great Number Game</title>
+  <style type="text/css">
+
+    .answer{
+      color: white;
+      font-size: 14pt;
+      width: 150px;
+      height: 150px;
+      background-color: red;
+      text-align: center;
+    }
+
+    #correct{
+      background-color: green;
+      display: {{ session['correct'] }};
+    }
+
+    #high{
+      display: {{ session['high'] }};
+    }
+
+    #low{
+      display: {{ session['low'] }};
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Great Number Game!</h1>
+  <p>I am thinking of a number between 1 and 100</p>
+  <p>Take a guess!</p>
+  <div class="answer" id="high">
+    <br>
+    Too High!</div>
+  <div class="answer" id="low">
+    <br>
+    Too Low!</div>
+  <div class="answer" id="correct">
+    <br>
+    {{ session['answer'] }} was the number!
+    <form class="" action="/restart" method="post">
+      <input type ='submit' value ='Play Again!'>
+    </form>  
+  </div>
+  <form class="" action="/guess" method="post">
+    <input type ='text' name ='guess'>
+    <input type ='submit' value ='submit'>
+  </form>
+
+</body>
+</html>
