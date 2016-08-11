@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dojo Survey Index</title>
+	<link rel="stylesheet" type="text/css" href="../static/style.css">
+	<!-- {{ url_for('static',filename='style.css') }} -->
+</head>
+<body>
+<div id='wrapper'>
+	<form action="/">
+		Name: {{ name }}
+		<br>
+		Dojo Location:  {{ location }}
+		<br>
+		Favorite Language: {{ language }}!!
+		<br>
+		Comment: {{ comment }}
+		<br>
+		<input type="submit" value="Go Back" class="button">
+	</form>
+</div>
+</body>
+</html>
