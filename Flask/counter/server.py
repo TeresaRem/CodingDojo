@@ -5,18 +5,23 @@ app.secret_key = 'secretness'
 def counter():
 	session['count'] += 1 
 
-def button():
-	session['count'] += 2
-
 @app.route('/')
 def index():
-	counter()
+	if "count" not in session:
+		session['count'] = 1
+	else:
+		counter()
 	return render_template('index.html')
 
 @app.route('/users')
 def create_user():
-	button()
+	counter()
 	print "press"
+	return redirect('/')
+
+@app.route('/reset')
+def reset():
+	session.clear()
 	return redirect('/')
 
 app.run(debug=True)

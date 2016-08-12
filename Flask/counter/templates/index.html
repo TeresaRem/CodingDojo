@@ -7,14 +7,14 @@
 	<h1>Counter</h1>
 	{{ session['count'] }} times.
 	<br>
-
+	<form action='/users'>
+		<input type="submit" name="button" value="+2">
+	</form> 
+	<form action='/reset'>
+		<input type="submit" name="button" value="Reset">
+	</form> 	
 </body>
 </html>
 
-<!-- <button type="button" onClick="window.location.reload();" action="/users">+2</button> 
 
-	<form>
-		<input type="submit" name="button" value="+2" action='/users'>
-	</form> 
 
-	-->
