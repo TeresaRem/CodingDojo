@@ -27,6 +27,8 @@
       display: {{ session['low'] }};
     }
 
+
+
   </style>
 </head>
 <body>
@@ -42,7 +44,7 @@
   <div class="answer" id="correct">
     <br>
     {{ session['answer'] }} was the number!
-    <form class="" action="/restart" method="post">
+    <form class="" action="/restart" method="post" >
       <input type ='submit' value ='Play Again!'>
     </form>  
   </div>

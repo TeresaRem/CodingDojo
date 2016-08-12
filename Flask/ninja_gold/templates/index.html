@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Great Number Game</title>
+  <style type="text/css">
+
+    .place{
+      display: inline-block;
+      padding: 10px;
+      font-size: 12pt;
+      height: 120px;
+      width: 150px;
+      background-color: silver;
+      text-align: center;
+      vertical-align: top;
+    }
+
+    textarea{
+      width: 690px;
+      height: 120px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="gold">Your Gold: {{ session['gold'] }}</div>
+  <br>
+  <div class="place" id="farm">
+    <p>Farm</p>
+    <p>(earns 10-20 gold)</p>
+    <form class="" action="/process_money" method="post">
+      <input type="hidden" name="building" value="farm">
+      <input type ='submit' value ='Find Gold!'>
+    </form>
+  </div>
+  <div class="place" id="cave">
+    <p>Cave</p>
+    <p>(earns 5-10 gold)</p>
+    <form class="" action="/process_money" method="post">
+      <input type="hidden" name="building" value="cave">
+      <input type ='submit' value ='Find Gold!'>
+    </form>
+  </div>
+  <div class="place" id="house">
+    <p>House</p>
+    <p>(earns 2-5 gold)</p>
+    <form class="" action="/process_money" method="post">
+      <input type="hidden" name="building" value="house">
+      <input type ='submit' value ='Find Gold!'>
+    </form>   
+  </div>
+  <div class="place" id="casino">
+    <p>Casino</p>
+    <p>(earns/takes 0-50 gold)</p>
+    <form class="" action="/process_money" method="post">
+      <input type="hidden" name="building" value="casino">
+      <input type ='submit' value ='Find Gold!'>
+    </form>   
+  </div>    
+  <br>
+  <div>
+    Activities:
+    <br>
+    <textarea rows='8' col='200' id="activities"></textarea>
+  </div>
+  <div id="reset">
+  <form class="" action="/reset" method="post">
+      <input type ='submit' value ='Reset!'>
+    </form>  
+  </div>
+  
+</body>
+</html>
