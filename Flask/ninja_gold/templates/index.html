@@ -5,22 +5,40 @@
   <title>Great Number Game</title>
   <style type="text/css">
 
-    .place{
-      display: inline-block;
-      padding: 10px;
-      font-size: 12pt;
-      height: 120px;
-      width: 150px;
-      background-color: silver;
-      text-align: center;
-      vertical-align: top;
-    }
+  .place{
+    display: inline-block;
+    padding: 10px;
+    font-size: 12pt;
+    height: 120px;
+    width: 150px;
+    background-color: silver;
+    text-align: center;
+    vertical-align: top;
+  }
 
-    textarea{
-      width: 690px;
-      height: 120px;
-    }
+  #activities{
+    width: 690px;
+    height: 120px;
+    overflow-y: scroll;
+  }
 
+  #win{
+    color: green;
+  }
+
+  #lose{
+    color: red;
+  }
+
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+  }
   </style>
 </head>
 <body>
@@ -48,7 +66,7 @@
     <form class="" action="/process_money" method="post">
       <input type="hidden" name="building" value="house">
       <input type ='submit' value ='Find Gold!'>
-    </form>   
+    </form>
   </div>
   <div class="place" id="casino">
     <p>Casino</p>
@@ -56,18 +74,26 @@
     <form class="" action="/process_money" method="post">
       <input type="hidden" name="building" value="casino">
       <input type ='submit' value ='Find Gold!'>
-    </form>   
-  </div>    
+    </form>
+  </div>
   <br>
   <div>
     Activities:
     <br>
-    <textarea rows='8' col='200' id="activities"></textarea>
+    <div id="activities">
+    {% for i in session['messages'] %}
+      {% if "lost" in i %}
+        <p id="lose">{{ i }}</p>
+      {% else %}
+        <p id="win">{{ i }}</p>
+      {% endif %}
+    {% endfor %}
+    </div>
   </div>
   <div id="reset">
   <form class="" action="/reset" method="post">
       <input type ='submit' value ='Reset!'>
-    </form>  
+    </form>
   </div>
   
 </body>
