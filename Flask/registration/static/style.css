@@ -1,0 +1,28 @@
+#wrapper{
+	display: block;
+	background-color: silver;
+	margin: 15px; 
+	padding: 15px;
+	width: 500px;
+}
+
+*{
+	display: inline-block;
+}
+
+.button{
+	margin-top: 10px;
+	margin-left: 250px; 
+}
+
+title{
+	display: block;
+}
+
+head{
+	display: none;
+}
+
+form > *{
+	margin: 10px;
+}
