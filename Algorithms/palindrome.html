@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+<script type="text/javascript">
+	
+function isPalindrome(str){
+	var string="";
+	for (var i=0;i<str.length;i++){
+		if (str[i].match(/[a-z]/)){
+			string+=str[i].toLowerCase();
+		}
+	}
+	for (var i=0; i < str.length/2;i++){
+		if (string[i] == string[string.length-1-i]){
+			continue;
+		}
+		else {console.log(false); return false;}
+	}
+	console.log(true);
+	return true;
+}
+
+function longestPalindrome(str){
+	// does not work, rebuild
+	var longest=str[0];
+	for (var i=1; i < str.length-1; i++){
+		var next; var prev; var cap;
+		if (str[i-1] === str[i+1]){
+			next=i+1;
+			prev=i-1;
+		}
+		else if (str[i] === str[i+1]){
+			next = i+1;
+			prev=i;
+		}
+		else{continue;}
+		while(str[prev].toLowerCase() === str[next].toLowerCase()){
+			prev--;
+			next++;
+			if(str[next] === undefined && str[prev] === undefined){break;}
+			cap = str.substring(prev,next+1).trim();
+			if (cap.length > longest.length){
+				longest=cap;
+			}
+		}
+	}
+	console.log(longest)
+	return longest;
+}
+
+isPalindrome("rac eca r");
+isPalindrome("no");
+longestPalindrome("racecar");
+longestPalindrome("no wayaw x")
+
+
+</script>
+
+</head>
+<body>
+
+</body>
+</html>
