@@ -79,16 +79,16 @@ def wall():
 
 	# query all messages 
 	message_query = '''SELECT messages.user_id, messages.id, first_name, last_name, messages.created_at, messages.message 
-									FROM users
-									JOIN messages ON users.id = messages.user_id
-									ORDER BY messages.created_at DESC;'''
+		FROM users
+		JOIN messages ON users.id = messages.user_id
+		ORDER BY messages.created_at DESC;'''
 	messages = mysql.query_db(message_query)
 
 	# query all comments
 	comment_query = '''SELECT first_name, last_name, comments.user_id, comments.id, comments.created_at, comments.comment, message_id
-										 FROM users
-										 JOIN comments ON users.id = comments.user_id
-										 JOIN messages ON messages.id = comments.message_id;'''
+		FROM users
+		JOIN comments ON users.id = comments.user_id
+		JOIN messages ON messages.id = comments.message_id;'''
 	comments = mysql.query_db(comment_query)
 
 	return render_template('wall.html', first_name=first_name, messages=messages,comments=comments)
