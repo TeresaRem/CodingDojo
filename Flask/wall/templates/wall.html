@@ -22,9 +22,16 @@
 		font-size: 16pt;
 	}
 
-	form{
+	#logout{
 		vertical-align: 5px;
 		margin-left: 50px;
+		display: inline-block;
+		text-align: right;
+	}
+
+	input.submit_post{
+		vertical-align: 5px;
+		margin-left: 515px;
 		display: inline-block;
 		text-align: right;
 	}
@@ -37,8 +44,34 @@
 
 	}
 
+	div.comments{
+		margin-left: 90px;
+	}
+
 	h3.name{
 
+	}
+
+	form.comment{
+	}
+
+	input.submit_comment{
+		margin-left: 260px;
+	}
+
+	.submit_comment, .submit_post, .delete_post, .delete_comment{
+		background-color: blue;
+		font-size: 10pt;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		margin-bottom: 10px;
+	}
+
+	.flash{
+		border: 2px solid black;
+		color: red;
+		padding: 5px;
 	}
 
 	</style>
@@ -46,29 +79,55 @@
 <body>
 <header>
 	<h1>CodingDojo Wall</h1>
-	<h2>Welcome  first_name </h2>
-	<!-- make this form with hidden input and a href? -->
-	<form action="/logout">
-		<input type="submit" name="logout" value="log off">
-	</form>
+	<h2>Welcome {{first_name}}</h2>
+	<a href="/logout" id="logout">log off</a>
 </header>
-
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <p class="flash">{{message}}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <div id="new_post">
 	<h3>Post a Message:</h3>
-	<form action="/">
+	<form action="/message" method="post">
 		<textarea rows="5" cols="100" name="text"></textarea>
 		<br>
-		<input type="submit" value="Post a message">
+		<input type="submit" value="Post a message" class="submit_post">
 	</form>
 </div>
-<!-- fix this to make sense
+<br>
 <div id="messages">
- for 
-    <h3 class="name">first_name   last_name  - created_at </h3>
-    <p> message text /p>
- endfor 
+{% for message in messages %} 
+  <h3 class="name">{{message['first_name']}} {{message['last_name']}} - {{message['created_at'].strftime('%B %d, %Y - %-I:%M:%S %p')}}</h3>
+  <p>{{message['message']}}</p>
+  {% if message['user_id'] == session['id'] %}
+	  <form action="/delete_message/{{message['id']}}" method="post">
+	  	<input type="submit" value="Delete" class="delete_post">
+	  </form>
+	{% endif %}
+  <div class="comments">
+  {% for comment in comments %}
+  {% if comment['message_id'] == message['id'] %}
+	  <h3 class="name">{{comment['first_name']}} {{comment['last_name']}} - {{comment['created_at'].strftime('%B %d, %Y - %-I:%M:%S %p')}}</h3>
+	  <p>{{comment['comment']}}</p>
+	  {% if comment['user_id'] == session['id'] %}
+		  <form action="/delete_comment/{{comment['id']}}" method="post">
+		  	<input type="submit" value="Delete" class="delete_comment">
+		  </form>
+		{% endif %}
+	{% endif %}
+  {% endfor %}
+	  <form action="/comment" method="post" class="comment">
+			<textarea rows="5" cols="58" name="text"></textarea>
+			<br>
+			<input type="hidden" name="message" value="{{message['id']}}">
+			<input type="submit" value="Post a comment" class="submit_comment">
+		</form>
+	</div>
+{% endfor %} 
 </div>
- -->
 
 </body>
 </html>
