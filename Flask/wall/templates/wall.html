@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to the Wall!</title>
+	<style type="text/css">
+
+	header{
+		border-bottom: 5px solid black;
+	}
+
+	h1{
+		display: inline-block;
+
+	}
+	h2{
+		vertical-align: 5px;
+		margin-left: 100px;
+		display: inline-block;
+	}
+
+	h3{
+		font-size: 16pt;
+	}
+
+	form{
+		vertical-align: 5px;
+		margin-left: 50px;
+		display: inline-block;
+		text-align: right;
+	}
+
+	textarea{
+		border: 3px solid black;
+	}
+
+	div#messages{
+
+	}
+
+	h3.name{
+
+	}
+
+	</style>
+</head>
+<body>
+<header>
+	<h1>CodingDojo Wall</h1>
+	<h2>Welcome  first_name </h2>
+	<!-- make this form with hidden input and a href? -->
+	<form action="/logout">
+		<input type="submit" name="logout" value="log off">
+	</form>
+</header>
+
+<div id="new_post">
+	<h3>Post a Message:</h3>
+	<form action="/">
+		<textarea rows="5" cols="100" name="text"></textarea>
+		<br>
+		<input type="submit" value="Post a message">
+	</form>
+</div>
+<!-- fix this to make sense
+<div id="messages">
+ for 
+    <h3 class="name">first_name   last_name  - created_at </h3>
+    <p> message text /p>
+ endfor 
+</div>
+ -->
+
+</body>
+</html>
