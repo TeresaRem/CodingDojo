@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>the zoo</title>
+  </head>
+  <body>
+    <a href="/add"><button type="button">Add</button></a>
+    <table>
+      <thead>
+        <th>species</th>
+        <th>location</th>
+        <th>actions</th>
+      </thead>
+      <tbody>
+        {% for animal in animals %}
+        <tr>
+          <td>
+            {{animal.species}}
+          </td>
+          <td>
+            {{animal.location}}
+          </td>
+          <td>
+            <a href="/show/{{animal.id}}"><button type="button">view</button></a>
+            <a href="/edit/{{animal.id}}"><button type="button">edit</button></a>
+            <a href="/delete/{{animal.id}}"><button type="button">delete</button></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
