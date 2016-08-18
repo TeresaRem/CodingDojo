@@ -1,7 +1,7 @@
 ## Algorithms
 
 
-These are daily algorithm challenges completed during Coding Dojo. They are done in javascript (within html files).
+These are daily algorithm challenges completed during Coding Dojo. They are done in javascript.
 
 
 ## To Do
