@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <style type="text/css">
+
+    	p{
+    		border:1px solid black;
+    	}
+    </style>
+  </head>
+  <body>
+    <div>
+    	<p>The Current time and date:</p>
+    </div>
+    <div>
+    	<p>{{time.strftime('%b %-d, %Y')}}
+    	<br>{{time.strftime('%-H:%M %p')}}</p>
+    </div>
+  </body>
+</html>
