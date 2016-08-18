@@ -7,6 +7,7 @@
     Create a controller using this template
 """
 from system.core.controller import *
+import string, random
 
 class Welcome(Controller):
     def __init__(self, action):
@@ -36,5 +37,16 @@ class Welcome(Controller):
         
         # return self.load_view('index.html', messages=messages, user=user)
         """
+        if not session['count']:
+            session['count'] = 1
         return self.load_view('index.html')
+
+    def process(self):
+        session['word'] = ""
+        for i in range(0,14):
+            session['word'] += random.choice(string.letters)
+        session['count'] += 1
+        return redirect('/')
+
+
 
