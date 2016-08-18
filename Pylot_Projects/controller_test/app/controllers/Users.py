@@ -42,9 +42,14 @@ class Users(Controller):
         return self.load_view('users/new.html')
 
     def show(self, id):
-        return "showing user #" +id
+        user = [{'id':1,"name":"michael",'hobby':'basketball'}]
+        return self.load_view('users/show.html',user=user[0])
 
-    def test(self, color, id):
+    def hello(self, color, id):
         print "color is {} and id is {}".format(color,id)
         return self.load_view('users/hello.html', color=color, id=id)
+
+    def test(self):
+        print "stuff"
+        return self.load_view('users/test.html')
 

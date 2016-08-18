@@ -1,0 +1,17 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <h1>users/test.html</h1>
+    <p>Sum: {{10+11}}</p>
+    {% for num in range(0,10) %}
+    	{% if num % 2 == 1%}
+    		<p>{{num}}</p>
+    	{% else %}
+    		<p>Even number!</p>
+    	{% endif %}
+    {% endfor %}
+  </body>
+</html>
