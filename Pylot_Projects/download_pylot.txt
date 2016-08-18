@@ -1,0 +1,9 @@
+git clone https://github.com/ketul-patel/pylot
+cd pylot
+rm -rf .git
+cd ../../
+git add .
+git commit -m "added new pylot project"
+git push origin master
+
+git clone https://github.com/ketul-patel/pylot && cd pylot && rm -rf .git && cd ../../ && git add . && git commit -m "added new pylot project" && git push origin master
