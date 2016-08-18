@@ -6,20 +6,23 @@
 
     Create a controller using this template
 """
-
 from system.core.controller import *
 
 class Welcome(Controller):
     def __init__(self, action):
         super(Welcome, self).__init__(action)
-    def index(self):
-        return self.load_view('index.html')
-    def process(self):
-        session['name'] = request.form['name']
-        return redirect('/welcome/success')
-    def success(self):
-        return self.load_view('success.html',name=session['name'])
+        """
+            This is an example of loading a model.
+            Every controller has access to the load_model method.
+        """
+        self.load_model('WelcomeModel')
+        self.db = self._app.db
 
+        """
+        
+        This is an example of a controller method that will load a view for the client 
+
+        """
    
     def index(self):
         """
