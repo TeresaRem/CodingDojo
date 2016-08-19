@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Survey Form</title>
+	<style type="text/css">
+		*{
+			margin: 10px;
+		}
+		div{
+			border: 3px solid black;
+		}
+	</style>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+	{% if messages %}
+		{% for message in messages %}
+			<p>{{ message }}</p>
+		{% endfor %}
+	{% endif %}
+{% endwith %}
+
+<div>
+	<p><em>Submitted Information</em></p>
+	<p>Name: {{session['name']}}</p>
+	<p>Dojo Location: {{session['location']}}</p>
+	<p>Favorite Language: {{session['language']}}</p>
+	<p>Comment: {{session['comment']}}</p>
+	<a href="/"><button>Go Back</button></a>
+</div>
+
+</body>
+</html>

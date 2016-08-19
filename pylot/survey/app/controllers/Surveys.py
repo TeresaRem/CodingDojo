@@ -8,9 +8,9 @@
 """
 from system.core.controller import *
 
-class Welcome(Controller):
+class Surveys(Controller):
     def __init__(self, action):
-        super(Welcome, self).__init__(action)
+        super(Surveys, self).__init__(action)
         """
             This is an example of loading a model.
             Every controller has access to the load_model method.
@@ -37,4 +37,18 @@ class Welcome(Controller):
         # return self.load_view('index.html', messages=messages, user=user)
         """
         return self.load_view('index.html')
+
+    def process(self):
+        if not session['count']:
+            session['count'] = 1
+        data = request.form
+        session['name'] = request.form['name']
+        session['location'] = request.form['location']
+        session['language'] = request.form['language']
+        session['comment'] = request.form['comment']
+        session['count'] += 1
+        return redirect('/result')
+    def result(self):
+        flash("Thanks for submitting this form! You have submitted this form {} times now.".format(session['count']))
+        return self.load_view('result.html')
 
