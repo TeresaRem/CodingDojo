@@ -36,5 +36,8 @@ class Welcome(Controller):
         
         # return self.load_view('index.html', messages=messages, user=user)
         """
+        query = "SELECT * FROM courses WHERE id = :course_id"
+        data = { 'course_id': 0}
+        print self.db.query_db(query, data)
         return self.load_view('index.html')
 

@@ -41,8 +41,6 @@ class Welcome(Controller):
             session['gold'] = 0
         if not 'messages' in session:
             session['messages'] = []
-        print session['gold']
-        print session['messages']
         return self.load_view('index.html')
 
     def gold(self):
