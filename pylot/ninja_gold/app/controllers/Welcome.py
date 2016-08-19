@@ -7,6 +7,7 @@
     Create a controller using this template
 """
 from system.core.controller import *
+import random
 
 class Welcome(Controller):
     def __init__(self, action):
@@ -36,5 +37,37 @@ class Welcome(Controller):
         
         # return self.load_view('index.html', messages=messages, user=user)
         """
+        if not 'gold' in session:
+            session['gold'] = 0
+        if not 'messages' in session:
+            session['messages'] = []
+        print session['gold']
+        print session['messages']
         return self.load_view('index.html')
+
+    def gold(self):
+        if request.form['building'] == 'farm':
+            gold = random.randint(10,20)
+            session['gold'] += gold
+            session['messages'].insert(0,"you earned {} gold!".format(gold))
+        elif request.form['building'] == 'cave':
+            gold = random.randint(5,10)
+            session['gold'] += gold
+            session['messages'].insert(0,"you earned {} gold!".format(gold))
+        elif request.form['building'] == 'house':
+            gold = random.randint(2,5)
+            session['gold'] += gold
+            session['messages'].insert(0,"you earned {} gold!".format(gold))
+        else:
+            gold = random.randint(-50,50)
+            session['gold'] += gold
+            if gold > 0:
+                session['messages'].insert(0,"you earned {} gold!".format(gold))
+            else:
+                session['messages'].insert(0,"you lost {} gold! :(".format(abs(gold)))
+        return redirect('/')
+
+    def clear(self):
+        session.clear()
+        return redirect('/')
 

@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <style type="text/css">
+
+    *{
+    	font-size: 10pt;
+    	margin: 5px;
+    }
+
+  	form{
+  		border: 1px solid black;
+  		width: 160px;
+  		display: inline-block;
+  		vertical-align: top;
+  	}
+
+  	label{
+  		padding: 10px;
+  	}
+
+  	input{
+  		margin-left: 45px;
+  	}
+
+  	div#activities{
+  		border: 1px solid black;
+  		width: 700px;
+  	}
+
+  	#clear{
+  		font-size: 12pt;
+  		padding: 100px;
+  	}
+    </style>
+  </head>
+  <body>
+    Your Gold: {{session['gold']}}
+    <br>
+    <a href="/clear"><button>session clear</button></a>
+    <br>
+    <form action="/process_money" method="post">
+    	<label>Farm</label>
+    	<br>
+    	<p>(earns 10-20 gold)</p>
+    	<br>
+    	<br>
+    	<input type="hidden" name="building" value="farm"/>
+    	<input type="submit" value="Find Gold!">
+    </form>
+    <form action="/process_money" method="post">
+    	<label>Cave</label>
+    	<br>
+    	<p>(earns 5-10 gold)</p>
+    	<br>
+    	<br>
+    	<input type="hidden" name="building" value="cave"/>
+    	<input type="submit" value="Find Gold!">
+    </form>
+    <form action="/process_money" method="post">
+    	<label>House</label>
+    	<br>
+    	<p>(earns 2-5 gold)</p>
+    	<br>
+    	<br>
+    	<input type="hidden" name="building" value="house"/>
+    	<input type="submit" value="Find Gold!">
+    </form>
+    <form action="/process_money" method="post">
+    	<label>Casino</label>
+    	<br>
+    	<p>(earns/takes 0-50 gold)</p>
+    	<br>
+    	<input type="hidden" name="building" value="casino"/>
+    	<input type="submit" value="Find Gold!">
+    </form>
+
+	<div id="activities">
+		<p>Activities:</p>
+    {% for i in session['messages'] %}
+      {% if "lost" in i %}
+        <p id="lose">{{ i }}</p>
+      {% else %}
+        <p id="win">{{ i }}</p>
+      {% endif %}
+    {% endfor %}
+	</div>
+  </body>
+</html>
