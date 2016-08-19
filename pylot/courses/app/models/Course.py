@@ -4,7 +4,7 @@ class Course(Model):
         super(Course, self).__init__()
 
     def get_all_courses(self):
-        return self.db.query_db("SELECT * FROM courses")
+        return self.db.query_db("SELECT * FROM courses ORDER BY created_at DESC")
 
     def get_course_by_id(self, course_id):
         # pass data to the query like so
@@ -13,6 +13,9 @@ class Course(Model):
         return self.db.query_db(query, data)
 
     def add_course(self, course):
+      # validation
+      if len(course['title']) < 15:
+        return False
       # Build the query first and then the data that goes in the query
       query = "INSERT INTO courses (title, description, created_at) VALUES (:title, :description, NOW())"
       data = { 'title': course['title'], 'description': course['description'] }
