@@ -8,12 +8,12 @@ from system.core.router import routes
 routes['default_controller'] = 'Products'
 
 routes['/products/new'] = 'Products#new'
-routes['/products/create'] = 'Products#create'
+routes['POST']['/products/create'] = 'Products#create'
 
 routes['/products/show/<id>'] = 'Products#show'
 
 routes['/products/edit/<id>'] = 'Products#edit'
-routes['/products/update/<id>'] = 'Products#update'
+routes['POST']['/products/update/<id>'] = 'Products#update'
 
 routes['/products/destroy/<id>'] = 'Products#destroy'
 

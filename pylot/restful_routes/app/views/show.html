@@ -3,17 +3,11 @@
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
   </head>
   <body>
-    <h1>Product #{{id}}</h1>
-    <p>Name: product.name</p>
-    <p>Description: product.description</p>
-    <p>Price: product.price</p>
-    <a href="/products/edit/1">Edit</a> |
+    <h1>Product #{{product[0]}}</h1>
+    <p>Name: {{product[1]}}</p>
+    <p>Description: {{product[2]}}</p>
+    <p>Price: ${{product[3]}}</p>
+    <a href="/products/edit/{{product[0]}}">Edit</a> |
     <a href="/">Go Back</a>
   </body>
 </html>
-
-<!-- 
-To Do:
-add model for page (query db)
-change edit button to take product.id
--->

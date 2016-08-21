@@ -18,17 +18,17 @@
     		<th>Actions</th>
     	</thead>
     	<tbody>
-    	<!-- for product in products -->
+    	{% for product in products%}
     		<tr>
-    			<td>product.name</td>
-    			<td>product.description</td>
-    			<td>$ product.price</td>
-    			<td><a href="/products/show/1">show</a> | 
-    			<a href="/products/edit/1">edit</a> | 
-    			<a href="/products/destroy/1">remove</a>
+    			<td>{{product.name}}</td>
+    			<td>{{product.description}}</td>
+    			<td>${{product.price}}</td>
+    			<td><a href="/products/show/{{product.id}}">show</a> | 
+    			<a href="/products/edit/{{product.id}}">edit</a> | 
+    			<a href="/products/destroy/{{product.id}}">remove</a>
     			</td>
     		</tr>
-    	<!-- endfor -->
+    	{% endfor %}
     	</tbody>
     </table>
     <br>

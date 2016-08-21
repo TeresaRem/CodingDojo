@@ -28,24 +28,41 @@ class Products(Controller):
         
         # return self.load_view('index.html', messages=messages, user=user)
         """
-        return self.load_view('index.html')
+        products=self.models['Product'].get_products()
+        return self.load_view('index.html', products=products)
 
     def new(self):
         return self.load_view('new.html')
 
     def edit(self, id):
-        return self.load_view('edit.html',id=id)
+        product=self.models['Product'].get_product(id)
+        return self.load_view('edit.html', product=product)
 
     def show(self, id):
-        return self.load_view('show.html',id=id)
+        product=self.models['Product'].get_product(id)
+        return self.load_view('show.html', product=product)
 
 # POST ROUTES
 
     def create(self):
+        data = {
+            'name' : request.form['name'],
+            'description' : request.form['description'],
+            'price' : request.form['price']
+        }
+        self.models['Product'].add_product(data)
         return redirect('/')
 
-    def destroy(self):
+    def destroy(self, id):
+        self.models['Product'].destroy_product(id)
         return redirect('/')
 
-    def update(self):
+    def update(self, id):
+        data = {
+            'id' : id,
+            'name' : request.form['name'],
+            'description' : request.form['description'],
+            'price' : request.form['price']
+        }
+        product=self.models['Product'].update_product(data)
         return redirect('/')
