@@ -19,15 +19,22 @@ class Product(Model):
         return self.db.get_one(query, data)
 
     def add_product(self, data):
-        sql = "INSERT into products (name, description, price) values(:name, :description, :price)"
-        self.db.query_db(sql, data)
-        return True
+        if data['price'].isdecimal():
+            sql = "INSERT into products (name, description, price) values(:name, :description, :price)"
+            self.db.query_db(sql, data)
+            return True
+        else:
+            return False
     
     def update_product(self, data):
-        query = '''UPDATE products 
-                    SET name=:name, description=:description, price=:price 
-                    WHERE id = :id'''
-        return self.db.query_db(query, data)
+        if data['price'].isdecimal():
+            query = '''UPDATE products 
+                        SET name=:name, description=:description, price=:price 
+                        WHERE id = :id'''
+            self.db.query_db(query, data)
+            return True
+        else:
+            return False
 
     def destroy_product(self, id):
         query = "DELETE FROM products WHERE id = :id"

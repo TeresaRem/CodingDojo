@@ -1,4 +1,5 @@
 from system.core.controller import *
+from flask import Flask, flash
 
 class Products(Controller):
     def __init__(self, action):
@@ -50,8 +51,12 @@ class Products(Controller):
             'description' : request.form['description'],
             'price' : request.form['price']
         }
-        self.models['Product'].add_product(data)
-        return redirect('/')
+        valid = self.models['Product'].add_product(data)
+        if valid:
+            return redirect('/')
+        else:
+            flash("Price is not valid. Please enter a decimal number.")
+            return redirect('/products/new')
 
     def destroy(self, id):
         self.models['Product'].destroy_product(id)
@@ -64,5 +69,9 @@ class Products(Controller):
             'description' : request.form['description'],
             'price' : request.form['price']
         }
-        product=self.models['Product'].update_product(data)
-        return redirect('/')
+        valid=self.models['Product'].update_product(data)
+        if valid:
+            return redirect('/')
+        else:
+            flash("Price is not valid. Please enter a decimal number.")
+            return redirect('/products/edit/{}'.format(id))

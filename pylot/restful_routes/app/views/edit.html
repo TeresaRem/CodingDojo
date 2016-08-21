@@ -5,6 +5,14 @@
   <body>
   <body>
     <h1>Edit Product {{product[0]}}</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <br>
     <br>
     <form action="/products/update/{{product[0]}}" method="post">
     	<label>Name</label><br>

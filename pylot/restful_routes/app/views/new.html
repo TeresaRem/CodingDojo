@@ -3,7 +3,14 @@
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
   </head>
   <body>
-    <h1>Add a new product</h1>
+      <h1>Add a new product</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
     <br>
     <form action="/products/create" method="post">
     	<label>Name</label><br>
@@ -20,6 +27,5 @@
 
 <!-- 
 To Do:
-flash messages for validation
-
+add validation for existing product
  -->
