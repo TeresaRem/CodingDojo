@@ -3,8 +3,23 @@
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
   </head>
   <body>
-    new page
+    <h1>Add a new product</h1>
     <br>
-    <a href="/"><button>Go Back</button></a>
+    <form action="/products/create" method="post">
+    	<label>Name</label><br>
+    	<input type="text" name="name"><br>
+			<label>Description</label><br>
+    	<input type="text" name="description"><br>
+    	<label>Price</label><br>
+    	<input type="text" name="price"><br><br>
+    	<input type="submit" value="Create">
+    </form>
+    <a href="/">Go Back</a>
   </body>
 </html>
+
+<!-- 
+To Do:
+flash messages for validation
+
+ -->

@@ -3,10 +3,17 @@
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
   </head>
   <body>
-    show page
-    <br>
-    hard coded id is {{id}}
-    <br>
-    <a href="/"><button>Go Back</button></a>
+    <h1>Product #{{id}}</h1>
+    <p>Name: product.name</p>
+    <p>Description: product.description</p>
+    <p>Price: product.price</p>
+    <a href="/products/edit/1">Edit</a> |
+    <a href="/">Go Back</a>
   </body>
 </html>
+
+<!-- 
+To Do:
+add model for page (query db)
+change edit button to take product.id
+-->

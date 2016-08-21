@@ -1,12 +1,47 @@
 <html>
   <head>
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <style type="text/css">
+    	table, th, tbody, td{
+    		border: 1px solid black;
+    	}
+    </style>
   </head>
   <body>
-    index page
+    <h1>Products</h1>
     <br>
-    <a href="/products/new"><button>new</button></a>
-    <a href="/products/show/1"><button>show</button></a>
-    <a href="/products/edit/1"><button>edit</button></a>
+    <table>
+    	<thead>
+    		<th>Name</th>
+    		<th>Description</th>
+    		<th>Price</th>
+    		<th>Actions</th>
+    	</thead>
+    	<tbody>
+    	<!-- for product in products -->
+    		<tr>
+    			<td>product.name</td>
+    			<td>product.description</td>
+    			<td>$ product.price</td>
+    			<td><a href="/products/show/1">show</a> | 
+    			<a href="/products/edit/1">edit</a> | 
+    			<a href="/products/destroy/1">remove</a>
+    			</td>
+    		</tr>
+    	<!-- endfor -->
+    	</tbody>
+    </table>
+    <br>
+    <br>
+    <a href="/products/new">Add a new product</a>
+
   </body>
 </html>
+
+<!-- 
+To Do:
+change hardcoded stuff
+add query
+
+ -->
+

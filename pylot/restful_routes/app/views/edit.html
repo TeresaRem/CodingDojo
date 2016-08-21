@@ -3,10 +3,26 @@
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
   </head>
   <body>
-    edit page
+  <body>
+    <h1>Edit Product {{id}}</h1>
     <br>
-    hard coded id is {{id}}
-    <br>
-    <a href="/"><button>Go Back</button></a>
+    <form action="/products/create" method="post">
+    	<label>Name</label><br>
+    	<input type="text" name="name" value="product.name"><br>
+			<label>Description</label><br>
+    	<input type="text" name="description" value="product.description"><br>
+    	<label>Price</label><br>
+    	<input type="text" name="price" value="product.price"><br><br>
+    	<input type="submit" value="Update">
+    </form>
+    <a href="/products/show/{{id}}">Show</a> | 
+    <a href="/">Go Back</a>
   </body>
 </html>
+
+<!-- 
+To Do:
+add form values from query (model)
+flash messages for validation
+
+ -->
