@@ -8,14 +8,15 @@
 """
 from system.core.controller import *
 
-class Welcome(Controller):
+class Users(Controller):
     def __init__(self, action):
-        super(Welcome, self).__init__(action)
+        super(Users, self).__init__(action)
         """
             This is an example of loading a model.
             Every controller has access to the load_model method.
         """
-        self.load_model('WelcomeModel')
+        self.load_model('User')
+        self.load_model('Message')
         self.db = self._app.db
 
         """
