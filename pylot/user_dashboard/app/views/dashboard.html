@@ -21,14 +21,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Test App</a>
+				<a class="navbar-brand" href="/">Test App</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Dashboard</a></li>
-					<li><a href="#">Profile</a></li>
+					<li><a href="/users/edit">Profile</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Log out</a></li>
@@ -51,13 +51,15 @@
 						<th>user_level</th>
 					</thead>
 					<tbody>
-						<!-- jinja for loop start -->
-						<td>user.id</td>
-						<td>user.name</td>
-						<td>user.email</td>
-						<td>user.created_at</td>
-						<td>user.user_level</td>
-						<!-- jinja for loop end -->
+					{% for user in users%}
+						<tr>
+							<td>{{user.id}}</td>
+							<td><a href="/users/show/{{user.id}}">{{user.first_name}} {{user.last_name}}</a></td>
+							<td>{{user.email}}</td>
+							<td>{{user.created_at.strftime('%b %-d, %Y')}}</td>
+							<td>{{user.user_level}}</td>
+						</tr>
+					{% endfor %}
 					</tbody>
 				</table>
 			</div>

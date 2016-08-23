@@ -27,11 +27,11 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Profile</a></li>
+					<li><a href="/dashboard">Dashboard</a></li>
+					<li><a href="/users/edit">Profile</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Log out</a></li>
+					<li><a href="/logout">Log out</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -39,7 +39,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="form-group col-sm-12">
-				<h1>first_name last_name</h1>
+				<h1>{{user['first_name']}} {{user['last_name']}}</h1>
 			</div>
 		</div>
 		<div class="row">
@@ -54,19 +54,19 @@
 				<br>
 			</div>
 			<div class="form-group col-sm-6">
-				<span>user.created_at</span>
+				<span>{{user['created_at']}}</span>
 				<br>
-				<span>user.id</span>
+				<span>{{user['id']}}</span>
 				<br>
-				<span>user.email</span>
+				<span>{{user['email']}}</span>
 				<br>
-				<span>user.description</span>
+				<span>{{user['description']}}</span>
 				<br>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group col-sm-12">
-				<h3>Leave a message for first_name</h3>
+				<h3>Leave a message for {{user['first_name']}}</h3>
 				<form action="/" method="post">
 					<textarea class="form-control" rows="3"></textarea><br>
 					<input type="submit" value="Post" class="btn btn-primary pull-right">

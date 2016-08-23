@@ -21,13 +21,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Test App</a>
+				<a class="navbar-brand" href="/">Test App</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
+					<li><a href="/">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Sign in</a></li>
@@ -39,7 +39,7 @@
 		<div class="form-group col-sm-6">
 			<h1>Login</h1>
 			<br>
-			<form action="/" method="post">
+			<form action="/process_login" method="post">
 				<label>Email Address:</label><br>
 				<input type="email" name="email" class="form-control"><br>
 				<label>Password:</label><br>
@@ -47,7 +47,7 @@
 				<input type="submit" value="Login" class="btn btn-primary pull-right">
 				<br><br>
 			</form>
-			<a href="/">Don't have an account? Register.</a>
+			<a href="/register">Don't have an account? Register.</a>
 		</div>
 	</div>
 </body>
