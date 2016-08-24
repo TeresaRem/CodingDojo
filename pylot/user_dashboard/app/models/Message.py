@@ -1,17 +1,21 @@
-""" 
-    Sample Model File
-
-    A Model should be in charge of communicating with the Database. 
-    Define specific model method that query the database for information.
-    Then call upon these model method in your controller.
-
-    Create a model using this template.
-"""
 from system.core.model import Model
 
 class Message(Model):
     def __init__(self):
         super(Message, self).__init__()
+
+    def get_messages(self,id):
+        query = '''SELECT user_id,author_id,first_name,last_name,messages.created_at,message 
+                    FROM messages JOIN users ON users.id = messages.user_id 
+                    WHERE user_id=:id'''
+        data = {'id': id}
+        return self.db.query_db(query, data)
+
+    def add_message(self,data):
+        sql = "INSERT INTO messages (message, created_at, user_id, author_id) values(:message, NOW(), :id, :author_id)"
+        self.db.query_db(sql, data)
+        return True
+
     """
     Below is an example of a model method that queries the database for all users in a fictitious application
     

@@ -28,7 +28,11 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/dashboard">Dashboard</a></li>
+					{% if session['id'] == user.id: %}
 					<li class="active"><a href="#">Profile</a></li>
+					{% else: %}
+					<li><a href="/users/show/{{session['id']}}">Profile</a></li>
+					{% endif %}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/logout">Log out</a></li>
@@ -39,6 +43,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="form-group col-sm-12">
+				{% if session['id'] == user.id or session['user_level'] == "admin" :%}
+					<a href="/users/edit/{{user.id}}" class="pull-right">Edit Profile</a>
+				{% endif %}
 				<h1>{{user['first_name']}} {{user['last_name']}}</h1>
 			</div>
 		</div>
@@ -67,31 +74,33 @@
 		<div class="row">
 			<div class="form-group col-sm-12">
 				<h3>Leave a message for {{user['first_name']}}</h3>
-				<form action="/" method="post">
-					<textarea class="form-control" rows="3"></textarea><br>
+				<form action="/new_message" method="post">
+					<textarea class="form-control" rows="3" name="message"></textarea><br>
+					<input type="hidden" name="author_id" value="{{session['id']}}">
+					<input type="hidden" name="id" value="user.id">
 					<input type="submit" value="Post" class="btn btn-primary pull-right">
 				</form>
 			</div>
 		</div>
+		{# messages #}
+		{% for message in messages%}
 		<div class="row">
-			<div class="col-sm-12">
-				<span class="h3">first_name last_name wrote</span>
-				<span class="pull-right">created_at</span>
-				<br>
-				<div class="col-sm-12">
-					<p>this is a message</p>
-				</div>
+			<div class="col-sm-12 panel">
+				<span class="pull-right">{{message.created_at.strftime('%b %-d, %Y - %-H:%M')}}</span>
+				<h3>{{message.first_name}} {{message.last_name}} wrote</h3>
+				<p>{{message.message}}</p>
 			</div>
-		</div>	
+		</div>
 		<div class="row">
 			<div class="form-group col-sm-11 col-sm-offset-1">
 				<h3>Write a comment</h3>
 				<form action="/" method="post">
 					<textarea class="form-control" rows="3"></textarea><br>
-					<input type="submit" value="Post" class="btn btn-primary pull-right">
+					<input type="submit" value="Comment" class="btn btn-primary pull-right">
 				</form>
 			</div>
 		</div>
+		{% endfor %}
 	</div>
 </body>
 </html>

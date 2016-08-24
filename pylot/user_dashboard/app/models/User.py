@@ -29,17 +29,22 @@ class User(Model):
 
     def create_user(self,data):
         # make first user an admin
+        sql_first = "SELECT * from users LIMIT 1"
+        first_user = self.db.query_db(sql_first)
+        if first_user == []:
+            data['user_level'] = 'admin'
+        else:
+            data['user_level'] = 'normal'
+        # all other users
         password = data['password']
         hashed_pw = self.bcrypt.generate_password_hash(password)
         data['password'] = hashed_pw
-        data['user_level'] = 'normal'
         sql = '''INSERT INTO users (first_name, last_name, email, password, user_level, created_at)
                  VALUES (:first_name, :last_name, :email, :password, :user_level, NOW())'''
         self.db.query_db(sql, data)
         return True
 
     def update_user(self,data):
-        print "line 42 data:",data
         if data['update'] == 'email':
             if data['user_level']=='normal' or data['user_level']=='admin':
                 query = '''UPDATE users SET email=:email, first_name=:first_name, last_name=:last_name, user_level=:user_level 

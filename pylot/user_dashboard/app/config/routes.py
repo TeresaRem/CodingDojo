@@ -17,5 +17,14 @@ routes['/logout'] = 'Users#logout'
 routes['POST']['/process_login'] = 'Users#proccess_login'
 routes['POST']['/process_register'] = 'Users#process_register'
 routes['POST']['/users/new_user'] = 'Users#new_user'
-routes['POST']['/users/edit_user'] = 'Users#edit_user'
-routes['POST']['/users/edit_user_admin'] = 'Users#edit_user_admin'
+routes['POST']['/new_message'] = 'Users#new_message'
+
+
+# obsolete
+# routes['POST']['/users/edit_user'] = 'Users#edit_user'
+# routes['POST']['/users/edit_user_admin'] = 'Users#edit_user_admin'
+
+# seperate edit user to be 3 methods
+routes['POST']['/users/edit_information'] = 'Users#edit_information'
+routes['POST']['/users/edit_password'] = 'Users#edit_password'
+routes['POST']['/users/edit_description'] = 'Users#edit_description'

@@ -28,7 +28,11 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="/dashboard">Dashboard</a></li>
+					{% if session['id'] == user.id: %}
 					<li class="active"><a href="#">Profile</a></li>
+					{% else: %}
+					<li><a href="/users/show/{{session['id']}}">Profile</a></li>
+					{% endif %}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Log out</a></li>
@@ -48,7 +52,7 @@
 			<div class="form-group col-sm-6">
 				<h3>Edit Information</h3>
 				<br>
-				<form action="/users/edit_user" method="post">
+				<form action="/users/edit_information" method="post">
 					<label>Email Address:</label><br>
 					<input type="email" name="email" value="{{user['email']}}" class="form-control"><br>
 					<label>First Name:</label><br>
@@ -78,7 +82,7 @@
 			<div class="form-group col-sm-6">
 				<h3>Change Password</h3>
 				<br>
-				<form action="/users/edit_user" method="post">
+				<form action="/users/edit_password" method="post">
 					<label>Password:</label><br>
 					<input type="password" name="password" class="form-control"><br>
 					<label>Password Confirmation:</label><br>
@@ -89,15 +93,17 @@
 				</form>
 			</div>
 		</div>
+		{% if session['id']== user.id: %}
 		<div class="row">
 			<h3>Edit Description</h3>
-			<form action="/users/edit_user" method="post">
+			<form action="/users/edit_description" method="post">
 				<textarea class="form-control" rows="5" name="description">{{user['description']}}</textarea><br>
 				<input type="hidden" name="update" value="description">
 				<input type="hidden" name="id" value="{{user.id}}">
 				<input type="submit" value="Save" class="btn btn-primary pull-right">
 			</form>
 		</div>
+		{% endif %}
 	</div>
 </body>
 </html>

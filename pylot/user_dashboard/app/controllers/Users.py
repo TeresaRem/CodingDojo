@@ -1,29 +1,13 @@
-"""
-Sample Controller File
 
-A Controller should be in charge of responding to a request.
-Load models to interact with the database and load views to render them to the client.
-
-Create a controller using this template
-"""
 from system.core.controller import *
+from flask import flash
 
 class Users(Controller):
     def __init__(self, action):
         super(Users, self).__init__(action)
-        """
-        This is an example of loading a model.
-        Every controller has access to the load_model method.
-        """
         self.load_model('User')
         self.load_model('Message')
         self.db = self._app.db
-
-        """
-        
-        This is an example of a controller method that will load a view for the client 
-
-        """
 
     def index(self):
         session['id'] = 5
@@ -42,7 +26,8 @@ class Users(Controller):
 
     def show(self,id):
         user = self.models['User'].get_user(id)
-        return self.load_view('show.html',user=user[0])
+        messages = self.models['Message'].get_messages(id)
+        return self.load_view('show.html',user=user[0],messages=messages)
 
     def admin(self):
         # add id
@@ -79,38 +64,40 @@ class Users(Controller):
         else:
             return redirect('/register')
 
-    def edit_user(self):
-        data = {'id':session['id'],
-                'update': request.form['update']
-                }
-        if request.form['update'] == 'email':
-            data['email'] = request.form['email']
-            data['first_name'] = request.form['first_name']
-            data['last_name'] = request.form['last_name']
-        elif request.form['update'] == 'password':
-            data['password'] = request.form['password']
-        elif request.form['update'] == 'description':
-            data['description'] = request.form['description']
-        # breaks here
-        user = self.models['User'].update_user(data)
-        return redirect('/dashboard')
 
-    def edit_user_admin(self):
-        data = {'id':request.form['id'],
-                'update': request.form['update']
-                }
-        if request.form['update'] == 'email':
-            data['email'] = request.form['email']
-            data['first_name'] = request.form['first_name']
-            data['last_name'] = request.form['last_name']
-            data['user_level'] = request.form['user_level']
-        elif request.form['update'] == 'password':
-            data['password'] = request.form['password']
-        elif request.form['update'] == 'description':
-            data['description'] = request.form['description']
-        # breaks here
-        user = self.models['User'].update_user(data)
-        return redirect('/dashboard')
+    ''' obsoleted routes ''' 
+    # def edit_user(self):
+    #     data = {'id':session['id'],
+    #             'update': request.form['update']
+    #             }
+    #     if request.form['update'] == 'email':
+    #         data['email'] = request.form['email']
+    #         data['first_name'] = request.form['first_name']
+    #         data['last_name'] = request.form['last_name']
+    #     elif request.form['update'] == 'password':
+    #         data['password'] = request.form['password']
+    #     elif request.form['update'] == 'description':
+    #         data['description'] = request.form['description']
+    #     # breaks here
+    #     user = self.models['User'].update_user(data)
+    #     return redirect('/dashboard')
+
+    # def edit_user_admin(self):
+    #     data = {'id':request.form['id'],
+    #             'update': request.form['update']
+    #             }
+    #     if request.form['update'] == 'email':
+    #         data['email'] = request.form['email']
+    #         data['first_name'] = request.form['first_name']
+    #         data['last_name'] = request.form['last_name']
+    #         data['user_level'] = request.form['user_level']
+    #     elif request.form['update'] == 'password':
+    #         data['password'] = request.form['password']
+    #     elif request.form['update'] == 'description':
+    #         data['description'] = request.form['description']
+    #     # breaks here
+    #     user = self.models['User'].update_user(data)
+    #     return redirect('/dashboard')
 
     def new_user(self):
         data = {
@@ -132,4 +119,24 @@ class Users(Controller):
     def destroy(self,id):
         data = {"id":id}
         user = self.models['User'].destroy_user(id)
+        # add flash
         return redirect('/dashboard')
+
+    def edit_information(self):
+        # add flash
+        user = self.models['User'].update_user(request.form)
+        return redirect('users/show/{}'.format(request.form['id']))
+
+    def edit_password(self):
+        # add flash
+        user = self.models['User'].update_user(request.form)
+        return redirect('users/show/{}'.format(request.form['id']))
+
+    def edit_description(self):
+        # add flash
+        user = self.models['User'].update_user(request.form)
+        return redirect('users/show/{}'.format(request.form['id']))
+
+    def new_message(self):
+        message = self.models['Message'].add_message(request.form)
+        return redirect('users/show/{}'.format(request.form['id']))

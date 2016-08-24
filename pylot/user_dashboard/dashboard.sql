@@ -5,6 +5,9 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Schema dashboard
 -- -----------------------------------------------------
 
@@ -25,10 +28,10 @@ CREATE TABLE IF NOT EXISTS `dashboard`.`users` (
   `password` VARCHAR(255) NULL DEFAULT NULL,
   `user_level` VARCHAR(45) NULL DEFAULT NULL,
   `created_at` DATETIME NULL DEFAULT NULL,
-  `description` VARCHAR(255) NULL,
+  `description` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 13
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -40,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `dashboard`.`messages` (
   `message` VARCHAR(255) NULL DEFAULT NULL,
   `created_at` DATETIME NULL DEFAULT NULL,
   `user_id` INT(11) NOT NULL,
+  `author_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_messages_users_idx` (`user_id` ASC),
   CONSTRAINT `fk_messages_users`
@@ -60,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `dashboard`.`comments` (
   `created_at` DATETIME NULL DEFAULT NULL,
   `user_id` INT(11) NOT NULL,
   `message_id` INT(11) NOT NULL,
+  `author_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comments_users1_idx` (`user_id` ASC),
   INDEX `fk_comments_messages1_idx` (`message_id` ASC),
