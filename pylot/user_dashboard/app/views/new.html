@@ -27,8 +27,8 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Dashboard</a></li>
-					<li><a href="#">Profile</a></li>
+					<li><a href="/dashboard/admin">Dashboard</a></li>
+					<li><a href="/users/show/{{session['id']}}">Profile</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Log out</a></li>
@@ -41,7 +41,7 @@
 			<div class="form-group col-sm-6">
 				<h1>Add a new user</h1>
 				<br>
-				<form action="/" method="post">
+				<form action="/users/new_user" method="post">
 					<label>Email Address:</label><br>
 					<input type="email" name="email" class="form-control"><br>
 					<label>First Name:</label><br>
@@ -52,7 +52,7 @@
 					<input type="password" name="password" class="form-control"><br>
 					<label>Password Confirmation:</label><br>
 					<input type="password" name="confirm" class="form-control"><br><br>
-					<input type="submit" value="Register" class="btn btn-primary pull-right">
+					<input type="submit" value="Create" class="btn btn-primary pull-right">
 				</form>
 			</div>
 			<div class="col-sm-6">

@@ -27,6 +27,7 @@ class Users(Controller):
 
     def index(self):
         session['id'] = 5
+        session['user_level'] = 'admin'
         return self.load_view('index.html')
 
     def login(self):
@@ -43,18 +44,17 @@ class Users(Controller):
         user = self.models['User'].get_user(id)
         return self.load_view('show.html',user=user[0])
 
-    def edit(self):
-        user = self.models['User'].get_user(session['id'])
-        return self.load_view('edit.html',user=user[0])
-
-    def admin(self,id):
-        return self.load_view('dashboard_admin.html',id=id)
+    def admin(self):
+        # add id
+        users = self.models['User'].get_users()
+        return self.load_view('dashboard.html',users=users,admin=True)
 
     def new(self):
         return self.load_view('new.html')
 
-    def admin_edit(self,id):
-        return self.load_view('edit_admin.html',id=id)
+    def edit(self,id):
+        user = self.models['User'].get_user(id)
+        return self.load_view('edit.html',user=user[0])
 
     def logout(self):
         session.clear()
@@ -87,7 +87,6 @@ class Users(Controller):
             data['email'] = request.form['email']
             data['first_name'] = request.form['first_name']
             data['last_name'] = request.form['last_name']
-            print "line 88, build data",data
         elif request.form['update'] == 'password':
             data['password'] = request.form['password']
         elif request.form['update'] == 'description':
@@ -96,5 +95,41 @@ class Users(Controller):
         user = self.models['User'].update_user(data)
         return redirect('/dashboard')
 
+    def edit_user_admin(self):
+        data = {'id':request.form['id'],
+                'update': request.form['update']
+                }
+        if request.form['update'] == 'email':
+            data['email'] = request.form['email']
+            data['first_name'] = request.form['first_name']
+            data['last_name'] = request.form['last_name']
+            data['user_level'] = request.form['user_level']
+        elif request.form['update'] == 'password':
+            data['password'] = request.form['password']
+        elif request.form['update'] == 'description':
+            data['description'] = request.form['description']
+        # breaks here
+        user = self.models['User'].update_user(data)
+        return redirect('/dashboard')
 
+    def new_user(self):
+        data = {
+            'email': request.form['email'],
+            'first_name': request.form['first_name'],
+            'last_name': request.form['last_name'],
+            'password': request.form['password']
+        }
+        valid = self.models['User'].create_user(data)
+        if valid == True:
+            return redirect('/dashboard')
+        else:
+            return redirect('/users/new')
 
+    def delete(self,id):
+        user = self.models['User'].get_user(id)
+        return self.load_view('delete.html',user=user[0])
+
+    def destroy(self,id):
+        data = {"id":id}
+        user = self.models['User'].destroy_user(id)
+        return redirect('/dashboard')

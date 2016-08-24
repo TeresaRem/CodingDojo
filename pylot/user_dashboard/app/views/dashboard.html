@@ -28,19 +28,26 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Dashboard</a></li>
-					<li><a href="/users/edit">Profile</a></li>
+					<li><a href="/users/show/{{session['id']}}">Profile</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Log out</a></li>
+					<li><a href="/logout">Log out</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
 		<div class="row">
+		{% if session['user_level'] != 'admin': %}
 			<span class="h3 pull-left">All Users</span><br>
 			<br>
 			<br>
+		{% else: %}
+			<span class="h3 pull-left">Manage Users</span><br>
+			<a href="/users/new"><button class="btn btn-primary pull-right">Add new</button></a>
+			<br>
+			<br>
+		{% endif %}
 			<div class="col-sm-12">
 				<table class="table">
 					<thead>
@@ -49,6 +56,10 @@
 						<th>email</th>
 						<th>created_at</th>
 						<th>user_level</th>
+						<!-- check if user is admin -->
+						{% if session['user_level']== 'admin': %}
+						<th>actions</th>
+						{% endif %}
 					</thead>
 					<tbody>
 					{% for user in users%}
@@ -58,6 +69,10 @@
 							<td>{{user.email}}</td>
 							<td>{{user.created_at.strftime('%b %-d, %Y')}}</td>
 							<td>{{user.user_level}}</td>
+							<!-- check if user is admin -->
+							{% if session['user_level']== 'admin': %}
+								<td><a href="/users/edit/{{user.id}}">edit</a> | <a href="/users/delete/{{user.id}}">remove</a></td>
+							{% endif %}
 						</tr>
 					{% endfor %}
 					</tbody>

@@ -28,6 +28,7 @@ class User(Model):
         return self.db.query_db(query, data)
 
     def create_user(self,data):
+        # make first user an admin
         password = data['password']
         hashed_pw = self.bcrypt.generate_password_hash(password)
         data['password'] = hashed_pw
@@ -40,9 +41,12 @@ class User(Model):
     def update_user(self,data):
         print "line 42 data:",data
         if data['update'] == 'email':
-            # update email, first name, last name
-            query = '''UPDATE users SET email=:email, first_name=:first_name, last_name=:last_name 
-                    WHERE id=:id'''
+            if data['user_level']=='normal' or data['user_level']=='admin':
+                query = '''UPDATE users SET email=:email, first_name=:first_name, last_name=:last_name, user_level=:user_level 
+                        WHERE id=:id'''
+            else:
+                query = '''UPDATE users SET email=:email, first_name=:first_name, last_name=:last_name 
+                        WHERE id=:id'''
         elif data['update'] == 'password':
             # update password
             password = data['password']
@@ -58,3 +62,10 @@ class User(Model):
         query = "SELECT * from messages where users_id = :user_id"
         data = {'user_id':1}
         return self.db.query_db(query, data)
+
+    def destroy_user(self, id):
+        query = "DELETE FROM users where id = :id LIMIT 1"
+        data = {"id" : id }
+        self.db.query_db(query,data)
+        return True
+

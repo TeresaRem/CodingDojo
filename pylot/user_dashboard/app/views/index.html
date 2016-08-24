@@ -27,7 +27,11 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
+					{% if session['id']: %}
+						<li><a href="/dashboard">Home</a></li>
+					{% else: %}
+						<li><a href="/login">Home</a></li>
+					{% endif %}
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/login">Sign in</a></li>
@@ -39,7 +43,11 @@
 		<div class="jumbotron">
 			<h2>Welcome to the Test</h2>
 			<p>We're going to build a cool application using a MVC framework! This application was built using Bootstrap and Pylot.</p>
-			<a href="/login"><button class="btn btn-primary">Start</button></a>
+			{% if session['id']: %}
+				<a href="/dashboard"><button class="btn btn-primary">Start</button></a>
+			{% else: %}
+				<a href="/login"><button class="btn btn-primary">Start</button></a>
+			{% endif %}
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
