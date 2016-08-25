@@ -1,6 +1,6 @@
 
 from system.core.controller import *
-from flask import flash
+from flask import Flask,flash
 
 class Users(Controller):
     def __init__(self, action):
@@ -10,8 +10,6 @@ class Users(Controller):
         self.db = self._app.db
 
     def index(self):
-        session['id'] = 5
-        session['user_level'] = 'admin'
         return self.load_view('index.html')
 
     def login(self):
@@ -30,11 +28,6 @@ class Users(Controller):
         comments = self.models['Message'].get_comments(id)
         return self.load_view('show.html',user=user[0],messages=messages,comments=comments)
 
-    def admin(self):
-        # add id
-        users = self.models['User'].get_users()
-        return self.load_view('dashboard.html',users=users,admin=True)
-
     def new(self):
         return self.load_view('new.html')
 
@@ -47,6 +40,14 @@ class Users(Controller):
         return redirect('/')
 
     def proccess_login(self):
+        data = request.form
+        user = self.models['User'].login_user(data)
+        if not user:
+            flash("Your login information is incorrect. Please try again.")
+            return redirect('/login')
+        session['id'] = user[0]['id']
+        session['user_level'] = user[0]['user_level']
+        flash("You have successfully signed in!")
         return redirect('/dashboard')
 
     def process_register(self):
@@ -54,15 +55,18 @@ class Users(Controller):
             'email': request.form['email'],
             'first_name': request.form['first_name'],
             'last_name': request.form['last_name'],
-            'password': request.form['password']
+            'password': request.form['password'],
+            'confirm' : request.form['confirm']
         }
-        valid = self.models['User'].create_user(data)
-        if valid == True:
-            # fix how to set session['id']
-            # user = self.models['User'].get_user(data)
-            # session['id'] = user[0]
+        create_status = self.models['User'].create_user(data)
+        if create_status['status'] == True:
+            session['id'] = create_status['user']['id']
+            session['user_level'] = create_status['user']['user_level']
+            flash('You have successfully registered!')
             return redirect('/dashboard')
         else:
+            for message in create_status['errors']:
+                flash(message, 'regis_errors')
             return redirect('/register')
 
 
@@ -100,6 +104,11 @@ class Users(Controller):
     #     user = self.models['User'].update_user(data)
     #     return redirect('/dashboard')
 
+    # def admin(self):
+    # # add id
+    # users = self.models['User'].get_users()
+    # return self.load_view('dashboard.html',users=users,admin=True)
+
     def new_user(self):
         data = {
             'email': request.form['email'],
@@ -120,39 +129,43 @@ class Users(Controller):
     def destroy(self,id):
         data = {"id":id}
         user = self.models['User'].destroy_user(id)
-        # add flash
+        flash('User deleted!')
         return redirect('/dashboard')
 
     def edit_information(self):
-        # add flash
+        # add validation
         user = self.models['User'].update_user(request.form)
+        flash('Information updated!')
         return redirect('users/show/{}'.format(request.form['id']))
 
     def edit_password(self):
-        # add flash
+        # add validation
         user = self.models['User'].update_user(request.form)
+        flash('Password updated!')
         return redirect('users/show/{}'.format(request.form['id']))
 
     def edit_description(self):
-        # add flash
         user = self.models['User'].update_user(request.form)
+        flash('Description updated!')
         return redirect('users/show/{}'.format(request.form['id']))
 
     def new_message(self):
         message = self.models['Message'].add_message(request.form)
+        flash('Message posted!')
         return redirect('users/show/{}'.format(request.form['wall_id']))
 
     def new_comment(self):
         comment = self.models['Message'].add_comment(request.form)
+        flash('Comment posted!')
         return redirect('users/show/{}'.format(request.form['wall_id']))
 
     def delete_message(self,message_id):
         message = self.models['Message'].destroy_message(message_id)
-        # add flash
+        flash('Message deleted!')
         return redirect('users/show/{}'.format(request.form['wall_id']))
 
     def delete_comment(self,comment_id):
         comment = self.models['Message'].destroy_comment(comment_id)
-        # add flash
+        flash('Comment deleted!')
         return redirect('users/show/{}'.format(request.form['wall_id']))
 

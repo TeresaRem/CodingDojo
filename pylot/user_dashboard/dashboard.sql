@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `dashboard`.`users` (
   `description` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `dashboard`.`messages` (
   `message` VARCHAR(255) NULL DEFAULT NULL,
   `created_at` DATETIME NULL DEFAULT NULL,
   `user_id` INT(11) NOT NULL,
-  `author_id` INT NULL,
+  `wall_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_messages_users_idx` (`user_id` ASC),
   CONSTRAINT `fk_messages_users`
@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `dashboard`.`messages` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 21
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -64,21 +65,22 @@ CREATE TABLE IF NOT EXISTS `dashboard`.`comments` (
   `created_at` DATETIME NULL DEFAULT NULL,
   `user_id` INT(11) NOT NULL,
   `message_id` INT(11) NOT NULL,
-  `author_id` INT NULL,
+  `wall_id` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comments_users1_idx` (`user_id` ASC),
   INDEX `fk_comments_messages1_idx` (`message_id` ASC),
-  CONSTRAINT `fk_comments_users1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `dashboard`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_comments_messages1`
     FOREIGN KEY (`message_id`)
     REFERENCES `dashboard`.`messages` (`id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comments_users1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `dashboard`.`users` (`id`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 18
 DEFAULT CHARACTER SET = utf8;
 
 

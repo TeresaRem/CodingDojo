@@ -37,6 +37,13 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-success">{{message}}</div>
+			{% endfor %}
+		{% endif %}
+		{% endwith %}
 		<div class="row">
 		{% if session['user_level'] != 'admin': %}
 			<span class="h3 pull-left">All Users</span><br>

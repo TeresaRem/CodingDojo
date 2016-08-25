@@ -42,10 +42,18 @@
 	</nav>
 	<div class="container">
 		<div class="row">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-success">{{message}}</div>
+				{% endfor %}
+			{% endif %}
+			{% endwith %}
+		<div class="row">
 			<div class="form-group col-sm-12">
 				{% if session['id'] == user.id or session['user_level'] == "admin" :%}
-					<a href="/users/edit/{{user.id}}" class="pull-right">Edit Profile</a>
-				{% endif %}
+					<a href="/users/edit/{{user.id}}" class="pull-right"><button class="btn btn-xs btn-primary pull-right">Edit Profile</button></a>
+				{% endif %}	
 				<h1>{{user['first_name']}} {{user['last_name']}}</h1>
 			</div>
 		</div>

@@ -6,7 +6,6 @@ routes['/login'] = 'Users#login'
 routes['/register'] = 'Users#register'
 routes['/dashboard'] = 'Users#dashboard'
 routes['/users/show/<id>'] = 'Users#show'
-routes['/dashboard/admin'] = 'Users#admin'
 routes['/users/new'] = 'Users#new'
 routes['/users/edit/<id>'] = 'Users#edit'
 routes['/users/delete/<id>'] = 'Users#delete'
@@ -27,6 +26,7 @@ routes['POST']['/comment/destroy/<comment_id>'] = 'Users#delete_comment'
 # obsolete
 # routes['POST']['/users/edit_user'] = 'Users#edit_user'
 # routes['POST']['/users/edit_user_admin'] = 'Users#edit_user_admin'
+# routes['/dashboard/admin'] = 'Users#admin'
 
 # seperate edit user to be 3 methods
 routes['POST']['/users/edit_information'] = 'Users#edit_information'

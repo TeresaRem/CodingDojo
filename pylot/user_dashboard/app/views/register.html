@@ -37,6 +37,13 @@
 	</nav>
 	<div class="container">
 		<div class="form-group col-sm-6">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-danger">{{message}}</div>
+			{% endfor %}
+		{% endif %}
+		{% endwith %}
 			<h1>Register</h1>
 			<br>
 			<form action="/process_register" method="post">
