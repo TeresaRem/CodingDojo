@@ -33,7 +33,7 @@ class Message(Model):
         return True
 
     def destroy_message(self,message_id):
-        query_comments = "DELETE FROM comments where message_id = :id LIMIT 1"
+        query_comments = "DELETE FROM comments where message_id = :id"
         data = {"id" : message_id }
         self.db.query_db(query_comments,data)
         query_message = "DELETE FROM messages where id = :id LIMIT 1"

@@ -87,14 +87,17 @@
 		<div class="row">
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					{% if session['id'] == message.user_id %}
-					<a href="/message/destroy/{{message.id}}" class="text-danger pull-right">&nbsp;-&nbsp;Delete Message</a>
-					{% endif %}
 					<span class="pull-right">{{message.created_at.strftime('%b %-d, %Y - %-I:%M %p')}}</span>
 					<h3 class="panel-title">{{message.first_name}} {{message.last_name}} wrote</h3>
 				</div>
 				<div class="panel-body">
 					<p>{{message.message}}</p>
+					{% if session['id'] == message.user_id %}
+					<form action="/message/destroy/{{message.id}}" method="post" class="form-inline">
+						<input type="hidden" name="wall_id" value="{{user.id}}">
+						<input type="submit" value="Delete Message" class="btn btn-xs btn-danger pull-right">
+					</form>
+					{% endif %}
 				</div>
 			</div>
 		</div>
@@ -103,14 +106,17 @@
 		<div class="row">
 			<div class="col-sm-offset-1 panel panel-success">
 				<div class="panel-heading">
-					{% if session['id'] == comment.user_id %}
-					<a href="/comment/destroy/{{comment.id}}" class="text-danger pull-right">&nbsp;-&nbsp;Delete Comment</a>
-					{% endif %}
-					<span class="pull-right">{{comment.created_at.strftime('%b %-d, %Y - %-I:%M %p')}}</span>
-					<h3 class="panel-title">{{comment.first_name}} {{comment.last_name}} wrote</h3>
+					<span class="h3 panel-title">{{comment.first_name}} {{comment.last_name}} wrote</span><span class="pull-right">{{comment.created_at.strftime('%b %-d, %Y - %-I:%M %p')}}</span>
 				</div>
 				<div class="panel-body">
 					<p>{{comment.comment}}</p>
+					{% if session['id'] == comment.user_id %}
+					<form action="/comment/destroy/{{comment.id}}" method="post" class="form-inline">
+						<input type="hidden" name="wall_id" value="{{user.id}}">
+						<input type="submit" value="Delete Comment" class="btn btn-xs btn-danger pull-right">
+					</form>
+					<!-- <a href="/comment/destroy/{#comment.id#}" class="text-danger pull-right">&nbsp;-&nbsp;Delete Comment</a> -->
+					{% endif %}
 				</div>
 			</div>
 		</div>
@@ -120,7 +126,7 @@
 			<div class="form-group col-sm-offset-1">
 				<h3>Write a comment</h3>
 				<form action="/new_comment" method="post">
-					<textarea class="form-control" rows="3" name="comment"></textarea><br>
+					<textarea class="form-control" rows="2" name="comment"></textarea><br>
 					<input type="hidden" name="message_id" value="{{message.id}}">
 					<input type="hidden" name="id" value="{{session['id']}}">
 					<input type="hidden" name="wall_id" value="{{user.id}}">

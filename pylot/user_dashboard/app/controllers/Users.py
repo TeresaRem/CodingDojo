@@ -149,12 +149,10 @@ class Users(Controller):
     def delete_message(self,message_id):
         message = self.models['Message'].destroy_message(message_id)
         # add flash
-        # fix, return to user's wall
-        return redirect('/dashboard')
+        return redirect('users/show/{}'.format(request.form['wall_id']))
 
     def delete_comment(self,comment_id):
         comment = self.models['Message'].destroy_comment(comment_id)
         # add flash
-        # fix, return to user's wall
-        return redirect('/dashboard')
-        
+        return redirect('users/show/{}'.format(request.form['wall_id']))
+

@@ -41,13 +41,21 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
-		{% if session['user_level'] != 'admin': %}
-			<h1>Edit Profile</h1>
-			<br>
-		{% else %}
-			<h1>Edit User #{{user.id}}</h1>
-			<br>
-		{% endif %}
+		<div class="row">
+			<div class="col-sm-6">
+			{% if session['user_level'] != 'admin': %}
+				<h1>Edit Profile</h1>
+				<br>
+			{% else %}
+				<h1>Edit User #{{user.id}}</h1>
+				<br>
+			{% endif %}
+			</div>
+		<div class="col-sm-6">
+				<br>
+				<a href="/dashboard"><button class="btn btn-primary pull-right">Return to Dashboard</button></a>
+		</div>
+		</div>
 		<div class="row">
 			<div class="form-group col-sm-6">
 				<h3>Edit Information</h3>

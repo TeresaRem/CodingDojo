@@ -12,8 +12,6 @@ routes['/users/edit/<id>'] = 'Users#edit'
 routes['/users/delete/<id>'] = 'Users#delete'
 routes['/users/destroy/<id>'] = 'Users#destroy'
 routes['/logout'] = 'Users#logout'
-routes['/message/destroy/<message_id>'] = 'Users#delete_message'
-routes['/comment/destroy/<comment_id>'] = 'Users#delete_comment'
 
 
 # POST routes
@@ -22,6 +20,8 @@ routes['POST']['/process_register'] = 'Users#process_register'
 routes['POST']['/users/new_user'] = 'Users#new_user'
 routes['POST']['/new_message'] = 'Users#new_message'
 routes['POST']['/new_comment'] = 'Users#new_comment'
+routes['POST']['/message/destroy/<message_id>'] = 'Users#delete_message'
+routes['POST']['/comment/destroy/<comment_id>'] = 'Users#delete_comment'
 
 
 # obsolete
