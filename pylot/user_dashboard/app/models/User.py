@@ -27,8 +27,14 @@ class User(Model):
         # Whether we did not find the email, or if the password did not match, either way return False
         return False
 
-    def create_user(self,data):
-        data = data
+    def create_user(self,form):
+        data = {
+            'email': form['email'],
+            'first_name': form['first_name'],
+            'last_name': form['last_name'],
+            'password': form['password'],
+            'confirm' : form['confirm']
+        }
         # make first user an admin
         sql_first = "SELECT * from users LIMIT 1"
         first_user = self.db.query_db(sql_first)

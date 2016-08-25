@@ -17,18 +17,13 @@ routes['/logout'] = 'Users#logout'
 routes['POST']['/process_login'] = 'Users#proccess_login'
 routes['POST']['/process_register'] = 'Users#process_register'
 routes['POST']['/users/new_user'] = 'Users#new_user'
-routes['POST']['/new_message'] = 'Users#new_message'
-routes['POST']['/new_comment'] = 'Users#new_comment'
-routes['POST']['/message/destroy/<message_id>'] = 'Users#delete_message'
-routes['POST']['/comment/destroy/<comment_id>'] = 'Users#delete_comment'
-
-
-# obsolete
-# routes['POST']['/users/edit_user'] = 'Users#edit_user'
-# routes['POST']['/users/edit_user_admin'] = 'Users#edit_user_admin'
-# routes['/dashboard/admin'] = 'Users#admin'
-
-# seperate edit user to be 3 methods
 routes['POST']['/users/edit_information'] = 'Users#edit_information'
 routes['POST']['/users/edit_password'] = 'Users#edit_password'
 routes['POST']['/users/edit_description'] = 'Users#edit_description'
+
+# Messages controller routes
+routes['POST']['/new_message'] = 'Messages#new_message'
+routes['POST']['/new_comment'] = 'Messages#new_comment'
+routes['POST']['/message/destroy/<message_id>'] = 'Messages#delete_message'
+routes['POST']['/comment/destroy/<comment_id>'] = 'Messages#delete_comment'
+

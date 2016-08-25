@@ -9,6 +9,8 @@ class Users(Controller):
         self.load_model('Message')
         self.db = self._app.db
 
+    """ GET ROUTES """
+
     def index(self):
         return self.load_view('index.html')
 
@@ -39,6 +41,18 @@ class Users(Controller):
         session.clear()
         return redirect('/')
 
+    def delete(self,id):
+        user = self.models['User'].get_user(id)
+        return self.load_view('delete.html',user=user[0])
+
+    def destroy(self,id):
+        data = {"id":id}
+        user = self.models['User'].destroy_user(id)
+        flash('User deleted!')
+        return redirect('/dashboard')
+
+    """ POST ROUTES """
+
     def proccess_login(self):
         data = request.form
         user = self.models['User'].login_user(data)
@@ -51,14 +65,7 @@ class Users(Controller):
         return redirect('/dashboard')
 
     def process_register(self):
-        data = {
-            'email': request.form['email'],
-            'first_name': request.form['first_name'],
-            'last_name': request.form['last_name'],
-            'password': request.form['password'],
-            'confirm' : request.form['confirm']
-        }
-        create_status = self.models['User'].create_user(data)
+        create_status = self.models['User'].create_user(request.form)
         if create_status['status'] == True:
             session['id'] = create_status['user']['id']
             session['user_level'] = create_status['user']['user_level']
@@ -69,68 +76,12 @@ class Users(Controller):
                 flash(message, 'regis_errors')
             return redirect('/register')
 
-
-    ''' obsoleted routes ''' 
-    # def edit_user(self):
-    #     data = {'id':session['id'],
-    #             'update': request.form['update']
-    #             }
-    #     if request.form['update'] == 'email':
-    #         data['email'] = request.form['email']
-    #         data['first_name'] = request.form['first_name']
-    #         data['last_name'] = request.form['last_name']
-    #     elif request.form['update'] == 'password':
-    #         data['password'] = request.form['password']
-    #     elif request.form['update'] == 'description':
-    #         data['description'] = request.form['description']
-    #     # breaks here
-    #     user = self.models['User'].update_user(data)
-    #     return redirect('/dashboard')
-
-    # def edit_user_admin(self):
-    #     data = {'id':request.form['id'],
-    #             'update': request.form['update']
-    #             }
-    #     if request.form['update'] == 'email':
-    #         data['email'] = request.form['email']
-    #         data['first_name'] = request.form['first_name']
-    #         data['last_name'] = request.form['last_name']
-    #         data['user_level'] = request.form['user_level']
-    #     elif request.form['update'] == 'password':
-    #         data['password'] = request.form['password']
-    #     elif request.form['update'] == 'description':
-    #         data['description'] = request.form['description']
-    #     # breaks here
-    #     user = self.models['User'].update_user(data)
-    #     return redirect('/dashboard')
-
-    # def admin(self):
-    # # add id
-    # users = self.models['User'].get_users()
-    # return self.load_view('dashboard.html',users=users,admin=True)
-
     def new_user(self):
-        data = {
-            'email': request.form['email'],
-            'first_name': request.form['first_name'],
-            'last_name': request.form['last_name'],
-            'password': request.form['password']
-        }
-        valid = self.models['User'].create_user(data)
+        valid = self.models['User'].create_user(request.form)
         if valid == True:
             return redirect('/dashboard')
         else:
             return redirect('/users/new')
-
-    def delete(self,id):
-        user = self.models['User'].get_user(id)
-        return self.load_view('delete.html',user=user[0])
-
-    def destroy(self,id):
-        data = {"id":id}
-        user = self.models['User'].destroy_user(id)
-        flash('User deleted!')
-        return redirect('/dashboard')
 
     def edit_information(self):
         # add validation
