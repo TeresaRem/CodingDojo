@@ -76,8 +76,8 @@
 				<h3>Leave a message for {{user['first_name']}}</h3>
 				<form action="/new_message" method="post">
 					<textarea class="form-control" rows="3" name="message"></textarea><br>
-					<input type="hidden" name="author_id" value="{{session['id']}}">
-					<input type="hidden" name="id" value="user.id">
+					<input type="hidden" name="id" value="{{session['id']}}">
+					<input type="hidden" name="wall_id" value="{{user.id}}">
 					<input type="submit" value="Post" class="btn btn-primary pull-right">
 				</form>
 			</div>
@@ -85,19 +85,48 @@
 		{# messages #}
 		{% for message in messages%}
 		<div class="row">
-			<div class="col-sm-12 panel">
-				<span class="pull-right">{{message.created_at.strftime('%b %-d, %Y - %-H:%M')}}</span>
-				<h3>{{message.first_name}} {{message.last_name}} wrote</h3>
-				<p>{{message.message}}</p>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					{% if session['id'] == message.user_id %}
+					<a href="/message/destroy/{{message.id}}" class="text-danger pull-right">&nbsp;-&nbsp;Delete Message</a>
+					{% endif %}
+					<span class="pull-right">{{message.created_at.strftime('%b %-d, %Y - %-I:%M %p')}}</span>
+					<h3 class="panel-title">{{message.first_name}} {{message.last_name}} wrote</h3>
+				</div>
+				<div class="panel-body">
+					<p>{{message.message}}</p>
+				</div>
 			</div>
 		</div>
+		{% for comment in comments %}
+		{% if message.id == comment.message_id: %}
 		<div class="row">
-			<div class="form-group col-sm-11 col-sm-offset-1">
+			<div class="col-sm-offset-1 panel panel-success">
+				<div class="panel-heading">
+					{% if session['id'] == comment.user_id %}
+					<a href="/comment/destroy/{{comment.id}}" class="text-danger pull-right">&nbsp;-&nbsp;Delete Comment</a>
+					{% endif %}
+					<span class="pull-right">{{comment.created_at.strftime('%b %-d, %Y - %-I:%M %p')}}</span>
+					<h3 class="panel-title">{{comment.first_name}} {{comment.last_name}} wrote</h3>
+				</div>
+				<div class="panel-body">
+					<p>{{comment.comment}}</p>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+		<div class="row">
+			<div class="form-group col-sm-offset-1">
 				<h3>Write a comment</h3>
-				<form action="/" method="post">
-					<textarea class="form-control" rows="3"></textarea><br>
+				<form action="/new_comment" method="post">
+					<textarea class="form-control" rows="3" name="comment"></textarea><br>
+					<input type="hidden" name="message_id" value="{{message.id}}">
+					<input type="hidden" name="id" value="{{session['id']}}">
+					<input type="hidden" name="wall_id" value="{{user.id}}">
 					<input type="submit" value="Comment" class="btn btn-primary pull-right">
 				</form>
+				<br>
 			</div>
 		</div>
 		{% endfor %}

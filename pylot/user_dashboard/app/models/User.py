@@ -73,4 +73,3 @@ class User(Model):
         data = {"id" : id }
         self.db.query_db(query,data)
         return True
-

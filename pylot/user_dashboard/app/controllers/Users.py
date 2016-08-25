@@ -27,7 +27,8 @@ class Users(Controller):
     def show(self,id):
         user = self.models['User'].get_user(id)
         messages = self.models['Message'].get_messages(id)
-        return self.load_view('show.html',user=user[0],messages=messages)
+        comments = self.models['Message'].get_comments(id)
+        return self.load_view('show.html',user=user[0],messages=messages,comments=comments)
 
     def admin(self):
         # add id
@@ -139,4 +140,21 @@ class Users(Controller):
 
     def new_message(self):
         message = self.models['Message'].add_message(request.form)
-        return redirect('users/show/{}'.format(request.form['id']))
+        return redirect('users/show/{}'.format(request.form['wall_id']))
+
+    def new_comment(self):
+        comment = self.models['Message'].add_comment(request.form)
+        return redirect('users/show/{}'.format(request.form['wall_id']))
+
+    def delete_message(self,message_id):
+        message = self.models['Message'].destroy_message(message_id)
+        # add flash
+        # fix, return to user's wall
+        return redirect('/dashboard')
+
+    def delete_comment(self,comment_id):
+        comment = self.models['Message'].destroy_comment(comment_id)
+        # add flash
+        # fix, return to user's wall
+        return redirect('/dashboard')
+        
