@@ -1,0 +1,129 @@
+EC2
+ubuntu 64-bit
+
+security groups
+HTTP
+HTTPS
+
+create key pair name
+download + store on local computer
+
+launch instance
+view instances
+grab public ID
+
+cd /Users/jenzeller/Documents/
+chmod 400 blackbelt.pem
+ssh -i blackbelt.pem ubuntu@54.162.53.203
+
+sudo apt-get update
+sudo apt-get install python-pip python-dev nginx git build-essential libffi-dev
+sudo apt-get install libmysqlclient-dev
+sudo apt-get install uwsgi
+
+// BLACKBELT START HERE
+
+cd /Users/jenzeller/Documents/
+chmod 400 blackbelt.pem
+ssh -i blackbelt.pem ubuntu@54.162.53.203
+
+// DO THE ABOVE STEPS
+
+cd
+git clone <git repo>
+
+sudo pip install virtualenv
+python setup.py
+pyton setup.py
+
+sudo apt-get install mysql-server
+sudo su
+mysql -u root -p
+
+CREATE DATABASE blackbelt;
+exit;
+
+mysql -u root -p blackbelt < blackbelt.sql
+
+mysql -u root -p
+show databases;
+use blackbelt;
+show tables;
+exit;
+
+// stop being root user
+exit
+
+cd /project_name
+sudo nano app/config/database.py
+DB_PORT to 3306
+// match your database name: blackbelt
+
+(venv) $ python manage.py runserver
+(venv) $ python wsgi.py
+deactivate
+
+sudo nano ~/blackbelt/blackbelt.ini
+
+~/blackbelt/blackbelt.ini
+
+[uwsgi]
+module = wsgi
+master = true
+processes = 5
+socket = blackbelt.sock
+chmod-socket = 660
+vacuum = true
+plugin = python
+die-on-term = true
+logto = errlog
+
+sudo nano /etc/init/blackbelt.conf
+
+/etc/init/blackbelt.conf
+
+description "uWSGI server instance configured to serve blackbelt"
+start on runlevel [2345]
+stop on runlevel [!2345]
+setuid root
+setgid www-data
+env PATH=/home/ubuntu/blackbelt/pylotVenv/bin
+chdir /home/ubuntu/blackbelt
+exec uwsgi --ini blackbelt.ini
+
+sudo start blackbelt
+init-checkconf -d /etc/init/blackbelt.conf
+// it should say blackbelt start/running process 26824
+
+sudo nano /etc/nginx/sites-available/blackbelt
+
+server {
+    listen 80;
+    server_name 54.162.53.203;
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/home/ubuntu/blackbelt/blackbelt.sock;
+    }
+}
+
+sudo ln -s /etc/nginx/sites-available/blackbelt /etc/nginx/sites-enabled
+
+sudo nginx -t
+// test for errors
+// syntax is ok
+// test is successful
+
+sudo rm /etc/nginx/sites-enabled/default
+sudo service nginx restart
+
+// after fix
+sudo restart blackbelt
+sudo service nginx restart
+// check for sock file in project folder
+
+sudo nano errlog
+// check for errors
+
+
+
+
