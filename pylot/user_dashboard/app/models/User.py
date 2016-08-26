@@ -118,6 +118,5 @@ class User(Model):
         messages = "DELETE FROM messages where user_id = :id"
         self.db.query_db(messages,data)
         users = "DELETE FROM users where id = :id LIMIT 1"
-
         self.db.query_db(users,data)
         return True
