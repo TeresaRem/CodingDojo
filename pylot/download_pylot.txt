@@ -10,4 +10,4 @@ git push origin master
 
 cd && cd Desktop/CodingDojo/pylot/ && git clone -b development https://github.com/Ketul-Patel/Pylot.git && cd pylot && rm -rf .git && cd ../../ && git add . && git commit -m "added new pylot project" && git push origin master
 
-cd && cd Documents/ && git clone -b development https://github.com/Ketul-Patel/Pylot.git 
+cd && cd Desktop && git clone -b development https://github.com/Ketul-Patel/Pylot.git 
