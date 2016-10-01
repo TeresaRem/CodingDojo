@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HY4-fS-K6p">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Elliot View Controller-->
+        <scene sceneID="fwF-64-vKK">
+            <objects>
+                <tableViewController id="CsO-Nu-Fhn" customClass="ElliotViewController" customModule="ElliotsBike" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" id="sMu-86-xcS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="scraperBike" rowHeight="120" id="O6s-w7-qle" customClass="ScraperBikeCell" customModule="ElliotsBike" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O6s-w7-qle" id="SzJ-4v-Ukl">
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Xf-pa-3pV">
+                                            <rect key="frame" x="8" y="10" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="am3-xJ-daZ"/>
+                                                <constraint firstAttribute="height" constant="100" id="jgY-Da-FGX"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQw-1D-P7y">
+                                            <rect key="frame" x="116" y="49" width="84" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="RQw-1D-P7y" firstAttribute="centerY" secondItem="SzJ-4v-Ukl" secondAttribute="centerY" id="7FL-YQ-WGv"/>
+                                        <constraint firstItem="0Xf-pa-3pV" firstAttribute="centerY" secondItem="SzJ-4v-Ukl" secondAttribute="centerY" id="YPN-wl-cBY"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="0Xf-pa-3pV" secondAttribute="leading" id="gUJ-MS-kX3"/>
+                                        <constraint firstItem="RQw-1D-P7y" firstAttribute="leading" secondItem="0Xf-pa-3pV" secondAttribute="trailing" constant="8" id="v4z-xK-cfv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="RQw-1D-P7y" id="uIP-gN-iLK"/>
+                                    <outlet property="scraperBikeImage" destination="0Xf-pa-3pV" id="MCq-jl-TXc"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="CsO-Nu-Fhn" id="vSI-U5-n6g"/>
+                            <outlet property="delegate" destination="CsO-Nu-Fhn" id="HE6-tz-v7M"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Rna-Ux-Y6o">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Q0I-es-a6O">
+                            <connections>
+                                <segue destination="Iqh-Hq-UT3" kind="presentation" identifier="addEntry" id="EpZ-NY-Owf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="KvZ-X8-pP4" kind="presentation" identifier="entryDetails" id="mdl-Oc-7ec"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCM-0v-HkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038.5" y="470.5"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="85m-yu-nqZ">
+            <objects>
+                <viewController id="DWA-vC-qLZ" customClass="DetailsViewController" customModule="ElliotsBike" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dj1-Ik-2EH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Bdf-mT-jkN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Owv-pj-20Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jej-fB-Lyv">
+                                <rect key="frame" x="20" y="166" width="335" height="335"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="335" id="0uK-ky-xzV"/>
+                                    <constraint firstAttribute="width" constant="335" id="Sws-4B-lmB"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozp-uK-WJz">
+                                <rect key="frame" x="161" y="629" width="53" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <segue destination="Iqh-Hq-UT3" kind="presentation" identifier="editEntry" id="mA6-mi-EoI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtG-U8-AZt">
+                                <rect key="frame" x="165" y="135" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jej-fB-Lyv" firstAttribute="top" secondItem="mtG-U8-AZt" secondAttribute="bottom" constant="10" id="AJM-8g-Fdx"/>
+                            <constraint firstItem="Bdf-mT-jkN" firstAttribute="top" secondItem="ozp-uK-WJz" secondAttribute="bottom" constant="8" id="Ayu-al-fNH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ozp-uK-WJz" secondAttribute="trailing" constant="145" id="FKO-YA-iA0"/>
+                            <constraint firstItem="ozp-uK-WJz" firstAttribute="centerX" secondItem="Owv-pj-20Y" secondAttribute="centerX" id="YlD-m9-ZlW"/>
+                            <constraint firstItem="mtG-U8-AZt" firstAttribute="centerX" secondItem="Owv-pj-20Y" secondAttribute="centerX" id="kOV-Gg-X8b"/>
+                            <constraint firstItem="jej-fB-Lyv" firstAttribute="centerY" secondItem="Owv-pj-20Y" secondAttribute="centerY" id="lpc-e6-qtr"/>
+                            <constraint firstItem="jej-fB-Lyv" firstAttribute="centerX" secondItem="Owv-pj-20Y" secondAttribute="centerX" id="xVV-fb-ikR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YsF-d6-NDl">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="S1N-1t-ier">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="DWA-vC-qLZ" id="uTh-ZQ-pLf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scraperBikeImage" destination="jej-fB-Lyv" id="oI7-pU-wUO"/>
+                        <outlet property="scraperBikeLabel" destination="mtG-U8-AZt" id="W1f-5B-iaa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jq7-zU-WUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2161.5" y="618.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fTq-JX-otG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HY4-fS-K6p" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="voV-y0-kMh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CsO-Nu-Fhn" kind="relationship" relationship="rootViewController" id="N1O-p2-ZvK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X3g-aH-tQB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227" y="471"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="ctG-TG-xtd">
+            <objects>
+                <viewController id="Kuy-XG-5VZ" customClass="EditViewController" customModule="ElliotsBike" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4Sf-Fa-Yz3"/>
+                        <viewControllerLayoutGuide type="bottom" id="lSH-dx-zum"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c7d-UU-pBu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xzs-tp-MWY">
+                                <rect key="frame" x="20" y="166" width="335" height="335"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="335" id="E7r-fK-3m5"/>
+                                    <constraint firstAttribute="width" constant="335" id="OSd-p5-Yby"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="elliot's scraper bikes" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eJx-Ws-AIy">
+                                <rect key="frame" x="16" y="128" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJQ-Cb-8Zj">
+                                <rect key="frame" x="70" y="509" width="235" height="30"/>
+                                <state key="normal" title="Which one is Elliot's Scraper Bike?"/>
+                                <connections>
+                                    <action selector="imageSelectPressed:" destination="Kuy-XG-5VZ" eventType="touchUpInside" id="l7l-aA-79z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="eJx-Ws-AIy" secondAttribute="leading" id="8Yz-b1-yLy"/>
+                            <constraint firstItem="xzs-tp-MWY" firstAttribute="centerY" secondItem="c7d-UU-pBu" secondAttribute="centerY" id="HTF-TA-bA6"/>
+                            <constraint firstItem="xzs-tp-MWY" firstAttribute="centerX" secondItem="c7d-UU-pBu" secondAttribute="centerX" id="NEf-4D-uwU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eJx-Ws-AIy" secondAttribute="trailing" id="OfA-ih-21q"/>
+                            <constraint firstItem="yJQ-Cb-8Zj" firstAttribute="centerX" secondItem="c7d-UU-pBu" secondAttribute="centerX" id="l6Y-vZ-rJM"/>
+                            <constraint firstItem="yJQ-Cb-8Zj" firstAttribute="top" secondItem="xzs-tp-MWY" secondAttribute="bottom" constant="8" id="uyc-6s-sEn"/>
+                            <constraint firstItem="xzs-tp-MWY" firstAttribute="top" secondItem="eJx-Ws-AIy" secondAttribute="bottom" constant="8" id="xoi-Xc-d5F"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HuP-rI-OQp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="HS0-Eu-QBn">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="Kuy-XG-5VZ" id="MlV-oD-6wj"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Aaj-Ie-OcF">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="Kuy-XG-5VZ" id="pH9-pW-CzI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="scraperBikeImage" destination="xzs-tp-MWY" id="Ok7-uS-eCw"/>
+                        <outlet property="scraperBikeName" destination="eJx-Ws-AIy" id="AYs-Rc-2Rm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l3y-WI-PVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3279.5" y="470.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Fsi-wc-jfY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KvZ-X8-pP4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iky-ts-QY7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DWA-vC-qLZ" kind="relationship" relationship="rootViewController" id="N8d-f6-lZh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k6A-f2-DSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1555.5" y="470.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nKc-qd-Ph7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Iqh-Hq-UT3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cns-3h-Pyy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Kuy-XG-5VZ" kind="relationship" relationship="rootViewController" id="XUr-af-zh0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJo-YD-TTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2692.5" y="470.5"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mA6-mi-EoI"/>
+    </inferredMetricsTieBreakers>
+</document>

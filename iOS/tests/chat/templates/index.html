@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Programming Notes</title>
+	<style type="text/css">
+
+	header{
+		border-bottom: 5px solid black;
+	}
+
+	h1{
+		display: inline-block;
+
+	}
+	h2{
+		vertical-align: 5px;
+		margin-left: 100px;
+		display: inline-block;
+	}
+
+	h3{
+		font-size: 16pt;
+	}
+
+	#logout{
+		vertical-align: 5px;
+		margin-left: 50px;
+		display: inline-block;
+		text-align: right;
+	}
+
+	input.submit_post{
+		vertical-align: 5px;
+		margin-left: 585px;
+		display: inline-block;
+		text-align: right;
+	}
+
+	textarea{
+		border: 3px solid black;
+	}
+
+	div#messages{
+
+	}
+
+	div.comments{
+		margin-left: 90px;
+	}
+
+	h3.name{
+
+	}
+
+	form.comment{
+	}
+
+	input.submit_comment{
+		margin-left: 260px;
+	}
+
+	.submit_comment, .submit_post, .delete_post, .delete_comment{
+		background-color: blue;
+		font-size: 10pt;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		margin-bottom: 10px;
+	}
+
+	.flash{
+		border: 2px solid black;
+		color: red;
+		padding: 5px;
+	}
+
+	#notes{
+		border-top: 5px solid black;
+	}
+
+	</style>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io.connect('http://' + document.domain + ':' + location.port);
+    socket.on('connect', function() {
+        socket.emit('my event', {data: 'I\'m connected!'});
+    });
+</script>
+
+</head>
+<body>
+<header>
+	<h1>Programming Notes</h1>
+	<h2><a href="#">new note</a></h2>
+</header>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <p class="flash">{{message}}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<div id="new_post">
+	<br>
+	<input type="text" name="note-name" placeholder="Note Name"></input><br><br>
+	<form action="/message" method="post">
+		<textarea rows="5" cols="100" name="text"></textarea>
+		<br>
+		<input type="submit" value="Save" class="submit_post">
+	</form>
+</div>
+<br>
+
+<div id="notes">
+	<h1>List of Notes</h1>
+	<ul>
+		<li><a href="#">one</a> (MM/DD/YY)</li>
+		<li><a href="#">two</a> (MM/DD/YY)</li>
+		<li><a href="#">three</a> (MM/DD/YY)</li>
+	</ul>
+</div>
+</div>
+
+</body>
+</html>

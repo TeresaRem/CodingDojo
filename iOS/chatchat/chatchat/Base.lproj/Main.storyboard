@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="chatchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uhe-y6-3LT">
+                                <rect key="frame" x="20" y="28" width="560" height="150"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="2cO-cb-lQ8"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwZ-Kt-PJz">
+                                <rect key="frame" x="544" y="186" width="36" height="30"/>
+                                <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LOi-j6-2yp"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RBe-hA-NZK">
+                                <rect key="frame" x="20" y="186" width="502" height="100"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4HO-OO-0Nr"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1wu-mq-VaH">
+                                <rect key="frame" x="170" y="294" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="2W8-fa-NRo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-JV-3k7">
+                                <rect key="frame" x="20" y="298" width="142" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oph-oN-LIM">
+                                <rect key="frame" x="358" y="294" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <action selector="updateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JUV-jh-RPW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wwZ-Kt-PJz" firstAttribute="leading" secondItem="RBe-hA-NZK" secondAttribute="trailing" constant="22" id="0q3-6d-4YL"/>
+                            <constraint firstItem="uhe-y6-3LT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Dj-mo-cd0"/>
+                            <constraint firstItem="RBe-hA-NZK" firstAttribute="top" secondItem="uhe-y6-3LT" secondAttribute="bottom" constant="8" id="4c2-VX-Ew8"/>
+                            <constraint firstItem="1wu-mq-VaH" firstAttribute="top" secondItem="RBe-hA-NZK" secondAttribute="bottom" constant="8" id="Amq-R5-tTU"/>
+                            <constraint firstItem="MMC-JV-3k7" firstAttribute="top" secondItem="RBe-hA-NZK" secondAttribute="bottom" constant="12" id="BUu-8h-Kb9"/>
+                            <constraint firstItem="uhe-y6-3LT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Fxd-Dv-vUa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uhe-y6-3LT" secondAttribute="trailing" id="PN8-Kg-B6k"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="MMC-JV-3k7" secondAttribute="leading" id="Qof-yW-nE9"/>
+                            <constraint firstItem="Oph-oN-LIM" firstAttribute="leading" secondItem="1wu-mq-VaH" secondAttribute="trailing" constant="8" id="Yot-GK-Jjn"/>
+                            <constraint firstItem="wwZ-Kt-PJz" firstAttribute="top" secondItem="uhe-y6-3LT" secondAttribute="bottom" constant="8" id="f8M-5i-so3"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="RBe-hA-NZK" secondAttribute="leading" id="fg8-xg-kKb"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="uhe-y6-3LT" secondAttribute="leading" id="lCv-YD-PVs"/>
+                            <constraint firstItem="Oph-oN-LIM" firstAttribute="top" secondItem="RBe-hA-NZK" secondAttribute="bottom" constant="8" id="mS5-4P-sJU"/>
+                            <constraint firstItem="1wu-mq-VaH" firstAttribute="leading" secondItem="MMC-JV-3k7" secondAttribute="trailing" constant="8" id="pfm-f0-oT8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wwZ-Kt-PJz" secondAttribute="trailing" id="uh8-xc-jXl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chatView" destination="uhe-y6-3LT" id="vnx-Qz-4sD"/>
+                        <outlet property="sendButton" destination="wwZ-Kt-PJz" id="STT-mt-cvg"/>
+                        <outlet property="sendField" destination="RBe-hA-NZK" id="mee-uq-Va7"/>
+                        <outlet property="usernameField" destination="1wu-mq-VaH" id="X8F-p0-wyF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="315"/>
+        </scene>
+    </scenes>
+</document>

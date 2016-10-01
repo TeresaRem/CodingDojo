@@ -1,0 +1,43 @@
+       
+        // store routes as an array of locations... or create a class to store more info?
+//        let point1:[CLLocationCoordinate2D] = [CLLocationCoordinate2D(latitude: 37.375076, longitude: -121.910817),CLLocationCoordinate2D(latitude: 37.375894,longitude: -121.911577),CLLocationCoordinate2D(latitude: 37.377245,longitude: -121.912950)]
+//        var route1:[MKPointAnnotation] = []
+//        for i in 0...(point1.count-1){
+//            let pointAnnotation = MKPointAnnotation()
+//            
+//            pointAnnotation.title = "Route 1"
+//            pointAnnotation.coordinate = point1[i]
+//            pointAnnotation.subtitle = "Point \(i+1)"
+//            
+//            route1.append(pointAnnotation)
+//        }
+//        myMapView.addAnnotations(route1)
+//        
+//        let point2:[CLLocationCoordinate2D]=[CLLocationCoordinate2D(latitude: 37.377245,longitude: -121.912950),CLLocationCoordinate2D(latitude: 37.388239,longitude: -121.876021)]
+//        var route2:[MKPointAnnotation] = []
+//        for i in 0...(point2.count-1){
+//            let pointAnnotation = MKPointAnnotation()
+//            
+//            pointAnnotation.title = "Route 2"
+//            pointAnnotation.coordinate = point2[i]
+//            pointAnnotation.subtitle = "Point \(i+1)"
+//            
+//            route2.append(pointAnnotation)
+//        }
+//        myMapView.addAnnotations(route2)
+//        
+//        let point3:[CLLocationCoordinate2D]=[CLLocationCoordinate2D(latitude: 37.377245,longitude: -121.912950),CLLocationCoordinate2D(latitude: 37.371448,longitude: -121.919835)]
+//        var route3:[MKPointAnnotation] = []
+//        for i in 0...(point3.count-1){
+//            let pointAnnotation = MKPointAnnotation()
+//            
+//            pointAnnotation.title = "Route 3"
+//            pointAnnotation.coordinate = point3[i]
+//            pointAnnotation.subtitle = "Point \(i+1)"
+//            
+//            route3.append(pointAnnotation)
+//        }
+//        myMapView.addAnnotations(route3)
+        
+
+  

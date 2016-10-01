@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; background-color: black; color: white; }
+      #chat-form { background: #000; padding: 3px; position: relative; bottom:0; width: 100%; }
+      #chat-form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      #chat-form button { width: 9%; background: white; border: none; padding: 14px; vertical-align: top; margin-left: 10px}
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+      #chat{position: relative; width: 600px; height: 300px; border: 1px solid black; overflow: auto}
+      #sendit { width:600px}
+      #user-form button { width: 9%; background: white; border: none; padding: 2px; vertical-align: top; margin-left: 10px}
+      #code {background-color: #696969}
+    </style>
+  </head>
+  <body>
+  <div id="chat">
+    <ul id="messages"></ul>
+  </div>
+  <div id="sendit">
+    <form id="chat-form">
+      <textarea id="m" autocomplete="off" rows="3" cols="80"></textarea><button>Send</button>
+    </form>
+    </div>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+      $('#chat-form').submit(function(){
+        socket.emit('chat message', $('#m').val().replace(/\n/g,"<br>"));
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg){
+        console.log(msg)
+        if (!msg.includes(":")){
+          if (msg.includes("connected") || msg.includes("Total")){
+            $('#messages').append(msg+"<br>");
+          } else{
+            $('#messages').append("<div id='code'>"+msg+"</div>");
+          }
+        } else{
+          $('#messages').append(msg);
+        }
+        // $('#messages').append($('<li>').text(msg));
+        $("#chat").scrollTop($("#chat").prop('scrollHeight'))
+      });
+      socket.on('total users', function(usercount){
+        $('#messages').append(usercount+"<br>");
+        $("#chat").scrollTop($("#chat").prop('scrollHeight'))
+      });
+
+    </script>
+    </div>
+    <br>
+    <div>
+      <form id="user-form">
+      <label>Enter a Username: </label><input id="user-text" autocomplete="off" type="text" /><button>Update</button>
+    </form>
+    </div>
+    <script type="text/javascript">
+      $('#user-form').submit(function(){
+        // pass socket emit another variable that contains the CURRENT username
+        socket.emit('username', $('#user-text').val());
+        $('#user-text').val('');
+        return false;
+      });
+    </script>
+  </body>
+</html>

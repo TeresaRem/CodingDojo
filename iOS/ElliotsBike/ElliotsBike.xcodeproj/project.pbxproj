@@ -1,0 +1,568 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		946DFD631D95A81800788BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DFD621D95A81800788BA7 /* AppDelegate.swift */; };
+		946DFD651D95A81800788BA7 /* ElliotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DFD641D95A81800788BA7 /* ElliotViewController.swift */; };
+		946DFD681D95A81800788BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946DFD661D95A81800788BA7 /* Main.storyboard */; };
+		946DFD6B1D95A81800788BA7 /* ElliotsBike.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 946DFD691D95A81800788BA7 /* ElliotsBike.xcdatamodeld */; };
+		946DFD6D1D95A81800788BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 946DFD6C1D95A81800788BA7 /* Assets.xcassets */; };
+		946DFD701D95A81800788BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 946DFD6E1D95A81800788BA7 /* LaunchScreen.storyboard */; };
+		946DFD7B1D95A81800788BA7 /* ElliotsBikeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DFD7A1D95A81800788BA7 /* ElliotsBikeTests.swift */; };
+		946DFD861D95A81800788BA7 /* ElliotsBikeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DFD851D95A81800788BA7 /* ElliotsBikeUITests.swift */; };
+		946DFD951D95A95F00788BA7 /* Bike+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DFD931D95A95F00788BA7 /* Bike+CoreDataProperties.swift */; };
+		946DFD961D95A95F00788BA7 /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946DFD941D95A95F00788BA7 /* Bike.swift */; };
+		94C228E71D95B06C00198188 /* ScraperBikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C228E61D95B06C00198188 /* ScraperBikeCell.swift */; };
+		94E49E631D95B7C000F9D069 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E49E621D95B7C000F9D069 /* DetailsViewController.swift */; };
+		94E49E651D95BAE300F9D069 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E49E641D95BAE200F9D069 /* EditViewController.swift */; };
+		94E49E671D95D28500F9D069 /* CancelButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E49E661D95D28500F9D069 /* CancelButtonDelegate.swift */; };
+		94E49E691D95DDAC00F9D069 /* DoneButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E49E681D95DDAC00F9D069 /* DoneButtonDelegate.swift */; };
+		94E49E6B1D95EF4500F9D069 /* EditViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E49E6A1D95EF4500F9D069 /* EditViewControllerDelegate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		946DFD771D95A81800788BA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 946DFD571D95A81800788BA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 946DFD5E1D95A81800788BA7;
+			remoteInfo = ElliotsBike;
+		};
+		946DFD821D95A81800788BA7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 946DFD571D95A81800788BA7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 946DFD5E1D95A81800788BA7;
+			remoteInfo = ElliotsBike;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		946DFD5F1D95A81800788BA7 /* ElliotsBike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElliotsBike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		946DFD621D95A81800788BA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		946DFD641D95A81800788BA7 /* ElliotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElliotViewController.swift; sourceTree = "<group>"; };
+		946DFD671D95A81800788BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		946DFD6A1D95A81800788BA7 /* ElliotsBike.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElliotsBike.xcdatamodel; sourceTree = "<group>"; };
+		946DFD6C1D95A81800788BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		946DFD6F1D95A81800788BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		946DFD711D95A81800788BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946DFD761D95A81800788BA7 /* ElliotsBikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElliotsBikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		946DFD7A1D95A81800788BA7 /* ElliotsBikeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElliotsBikeTests.swift; sourceTree = "<group>"; };
+		946DFD7C1D95A81800788BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946DFD811D95A81800788BA7 /* ElliotsBikeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElliotsBikeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		946DFD851D95A81800788BA7 /* ElliotsBikeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElliotsBikeUITests.swift; sourceTree = "<group>"; };
+		946DFD871D95A81800788BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		946DFD931D95A95F00788BA7 /* Bike+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bike+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		946DFD941D95A95F00788BA7 /* Bike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
+		94C228E61D95B06C00198188 /* ScraperBikeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScraperBikeCell.swift; sourceTree = "<group>"; };
+		94E49E621D95B7C000F9D069 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		94E49E641D95BAE200F9D069 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		94E49E661D95D28500F9D069 /* CancelButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButtonDelegate.swift; sourceTree = "<group>"; };
+		94E49E681D95DDAC00F9D069 /* DoneButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneButtonDelegate.swift; sourceTree = "<group>"; };
+		94E49E6A1D95EF4500F9D069 /* EditViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewControllerDelegate.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		946DFD5C1D95A81800788BA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946DFD731D95A81800788BA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946DFD7E1D95A81800788BA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		946DFD561D95A81800788BA7 = {
+			isa = PBXGroup;
+			children = (
+				946DFD931D95A95F00788BA7 /* Bike+CoreDataProperties.swift */,
+				946DFD941D95A95F00788BA7 /* Bike.swift */,
+				946DFD611D95A81800788BA7 /* ElliotsBike */,
+				946DFD791D95A81800788BA7 /* ElliotsBikeTests */,
+				946DFD841D95A81800788BA7 /* ElliotsBikeUITests */,
+				946DFD601D95A81800788BA7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		946DFD601D95A81800788BA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				946DFD5F1D95A81800788BA7 /* ElliotsBike.app */,
+				946DFD761D95A81800788BA7 /* ElliotsBikeTests.xctest */,
+				946DFD811D95A81800788BA7 /* ElliotsBikeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		946DFD611D95A81800788BA7 /* ElliotsBike */ = {
+			isa = PBXGroup;
+			children = (
+				946DFD621D95A81800788BA7 /* AppDelegate.swift */,
+				946DFD641D95A81800788BA7 /* ElliotViewController.swift */,
+				946DFD661D95A81800788BA7 /* Main.storyboard */,
+				946DFD6C1D95A81800788BA7 /* Assets.xcassets */,
+				946DFD6E1D95A81800788BA7 /* LaunchScreen.storyboard */,
+				946DFD711D95A81800788BA7 /* Info.plist */,
+				946DFD691D95A81800788BA7 /* ElliotsBike.xcdatamodeld */,
+				94C228E61D95B06C00198188 /* ScraperBikeCell.swift */,
+				94E49E621D95B7C000F9D069 /* DetailsViewController.swift */,
+				94E49E641D95BAE200F9D069 /* EditViewController.swift */,
+				94E49E661D95D28500F9D069 /* CancelButtonDelegate.swift */,
+				94E49E681D95DDAC00F9D069 /* DoneButtonDelegate.swift */,
+				94E49E6A1D95EF4500F9D069 /* EditViewControllerDelegate.swift */,
+			);
+			path = ElliotsBike;
+			sourceTree = "<group>";
+		};
+		946DFD791D95A81800788BA7 /* ElliotsBikeTests */ = {
+			isa = PBXGroup;
+			children = (
+				946DFD7A1D95A81800788BA7 /* ElliotsBikeTests.swift */,
+				946DFD7C1D95A81800788BA7 /* Info.plist */,
+			);
+			path = ElliotsBikeTests;
+			sourceTree = "<group>";
+		};
+		946DFD841D95A81800788BA7 /* ElliotsBikeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				946DFD851D95A81800788BA7 /* ElliotsBikeUITests.swift */,
+				946DFD871D95A81800788BA7 /* Info.plist */,
+			);
+			path = ElliotsBikeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		946DFD5E1D95A81800788BA7 /* ElliotsBike */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946DFD8A1D95A81800788BA7 /* Build configuration list for PBXNativeTarget "ElliotsBike" */;
+			buildPhases = (
+				946DFD5B1D95A81800788BA7 /* Sources */,
+				946DFD5C1D95A81800788BA7 /* Frameworks */,
+				946DFD5D1D95A81800788BA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ElliotsBike;
+			productName = ElliotsBike;
+			productReference = 946DFD5F1D95A81800788BA7 /* ElliotsBike.app */;
+			productType = "com.apple.product-type.application";
+		};
+		946DFD751D95A81800788BA7 /* ElliotsBikeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946DFD8D1D95A81800788BA7 /* Build configuration list for PBXNativeTarget "ElliotsBikeTests" */;
+			buildPhases = (
+				946DFD721D95A81800788BA7 /* Sources */,
+				946DFD731D95A81800788BA7 /* Frameworks */,
+				946DFD741D95A81800788BA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				946DFD781D95A81800788BA7 /* PBXTargetDependency */,
+			);
+			name = ElliotsBikeTests;
+			productName = ElliotsBikeTests;
+			productReference = 946DFD761D95A81800788BA7 /* ElliotsBikeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		946DFD801D95A81800788BA7 /* ElliotsBikeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 946DFD901D95A81800788BA7 /* Build configuration list for PBXNativeTarget "ElliotsBikeUITests" */;
+			buildPhases = (
+				946DFD7D1D95A81800788BA7 /* Sources */,
+				946DFD7E1D95A81800788BA7 /* Frameworks */,
+				946DFD7F1D95A81800788BA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				946DFD831D95A81800788BA7 /* PBXTargetDependency */,
+			);
+			name = ElliotsBikeUITests;
+			productName = ElliotsBikeUITests;
+			productReference = 946DFD811D95A81800788BA7 /* ElliotsBikeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		946DFD571D95A81800788BA7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Alex;
+				TargetAttributes = {
+					946DFD5E1D95A81800788BA7 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = X3W4N77G35;
+					};
+					946DFD751D95A81800788BA7 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = TTT5AMJSE2;
+						TestTargetID = 946DFD5E1D95A81800788BA7;
+					};
+					946DFD801D95A81800788BA7 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = TTT5AMJSE2;
+						TestTargetID = 946DFD5E1D95A81800788BA7;
+					};
+				};
+			};
+			buildConfigurationList = 946DFD5A1D95A81800788BA7 /* Build configuration list for PBXProject "ElliotsBike" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 946DFD561D95A81800788BA7;
+			productRefGroup = 946DFD601D95A81800788BA7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				946DFD5E1D95A81800788BA7 /* ElliotsBike */,
+				946DFD751D95A81800788BA7 /* ElliotsBikeTests */,
+				946DFD801D95A81800788BA7 /* ElliotsBikeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		946DFD5D1D95A81800788BA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946DFD701D95A81800788BA7 /* LaunchScreen.storyboard in Resources */,
+				946DFD6D1D95A81800788BA7 /* Assets.xcassets in Resources */,
+				946DFD681D95A81800788BA7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946DFD741D95A81800788BA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946DFD7F1D95A81800788BA7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		946DFD5B1D95A81800788BA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94E49E691D95DDAC00F9D069 /* DoneButtonDelegate.swift in Sources */,
+				94E49E651D95BAE300F9D069 /* EditViewController.swift in Sources */,
+				946DFD6B1D95A81800788BA7 /* ElliotsBike.xcdatamodeld in Sources */,
+				946DFD651D95A81800788BA7 /* ElliotViewController.swift in Sources */,
+				946DFD961D95A95F00788BA7 /* Bike.swift in Sources */,
+				946DFD951D95A95F00788BA7 /* Bike+CoreDataProperties.swift in Sources */,
+				94E49E631D95B7C000F9D069 /* DetailsViewController.swift in Sources */,
+				946DFD631D95A81800788BA7 /* AppDelegate.swift in Sources */,
+				94C228E71D95B06C00198188 /* ScraperBikeCell.swift in Sources */,
+				94E49E6B1D95EF4500F9D069 /* EditViewControllerDelegate.swift in Sources */,
+				94E49E671D95D28500F9D069 /* CancelButtonDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946DFD721D95A81800788BA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946DFD7B1D95A81800788BA7 /* ElliotsBikeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		946DFD7D1D95A81800788BA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946DFD861D95A81800788BA7 /* ElliotsBikeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		946DFD781D95A81800788BA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 946DFD5E1D95A81800788BA7 /* ElliotsBike */;
+			targetProxy = 946DFD771D95A81800788BA7 /* PBXContainerItemProxy */;
+		};
+		946DFD831D95A81800788BA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 946DFD5E1D95A81800788BA7 /* ElliotsBike */;
+			targetProxy = 946DFD821D95A81800788BA7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		946DFD661D95A81800788BA7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				946DFD671D95A81800788BA7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		946DFD6E1D95A81800788BA7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				946DFD6F1D95A81800788BA7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		946DFD881D95A81800788BA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		946DFD891D95A81800788BA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		946DFD8B1D95A81800788BA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ElliotsBike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AlexAlex.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		946DFD8C1D95A81800788BA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ElliotsBike/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AlexAlex.test;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		946DFD8E1D95A81800788BA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ElliotsBikeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Alex.ElliotsBikeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElliotsBike.app/ElliotsBike";
+			};
+			name = Debug;
+		};
+		946DFD8F1D95A81800788BA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ElliotsBikeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Alex.ElliotsBikeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ElliotsBike.app/ElliotsBike";
+			};
+			name = Release;
+		};
+		946DFD911D95A81800788BA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ElliotsBikeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Alex.ElliotsBikeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ElliotsBike;
+			};
+			name = Debug;
+		};
+		946DFD921D95A81800788BA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ElliotsBikeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Alex.ElliotsBikeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ElliotsBike;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		946DFD5A1D95A81800788BA7 /* Build configuration list for PBXProject "ElliotsBike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946DFD881D95A81800788BA7 /* Debug */,
+				946DFD891D95A81800788BA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946DFD8A1D95A81800788BA7 /* Build configuration list for PBXNativeTarget "ElliotsBike" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946DFD8B1D95A81800788BA7 /* Debug */,
+				946DFD8C1D95A81800788BA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946DFD8D1D95A81800788BA7 /* Build configuration list for PBXNativeTarget "ElliotsBikeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946DFD8E1D95A81800788BA7 /* Debug */,
+				946DFD8F1D95A81800788BA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		946DFD901D95A81800788BA7 /* Build configuration list for PBXNativeTarget "ElliotsBikeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946DFD911D95A81800788BA7 /* Debug */,
+				946DFD921D95A81800788BA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		946DFD691D95A81800788BA7 /* ElliotsBike.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				946DFD6A1D95A81800788BA7 /* ElliotsBike.xcdatamodel */,
+			);
+			currentVersion = 946DFD6A1D95A81800788BA7 /* ElliotsBike.xcdatamodel */;
+			path = ElliotsBike.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 946DFD571D95A81800788BA7 /* Project object */;
+}

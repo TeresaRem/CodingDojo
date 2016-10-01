@@ -1,0 +1,12 @@
+Remember that all UI related tasks and only UI related tasks belong in the main queue. typically your requests will look like:
+
+ let url = NSURL(string: "http://www.some-api-url.com")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {
+            data, response, error in
+            // Do something here with the data from the response
+            dispatch_async(dispatch_get_main_queue(), {
+                // Do something here to update the UI
+            })
+        })
+        task.resume()
