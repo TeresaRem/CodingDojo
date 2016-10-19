@@ -1,0 +1,35 @@
+// https://api.github.com/users/alex-wap
+
+
+{
+  "login": "alex-wap",
+  "id": 20413046,
+  "avatar_url": "https://avatars.githubusercontent.com/u/20413046?v=3",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/alex-wap",
+  "html_url": "https://github.com/alex-wap",
+  "followers_url": "https://api.github.com/users/alex-wap/followers",
+  "following_url": "https://api.github.com/users/alex-wap/following{/other_user}",
+  "gists_url": "https://api.github.com/users/alex-wap/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/alex-wap/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/alex-wap/subscriptions",
+  "organizations_url": "https://api.github.com/users/alex-wap/orgs",
+  "repos_url": "https://api.github.com/users/alex-wap/repos",
+  "events_url": "https://api.github.com/users/alex-wap/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/alex-wap/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": null,
+  "company": null,
+  "blog": null,
+  "location": null,
+  "email": null,
+  "hireable": null,
+  "bio": null,
+  "public_repos": 13,
+  "public_gists": 0,
+  "followers": 1,
+  "following": 0,
+  "created_at": "2016-07-12T05:32:35Z",
+  "updated_at": "2016-09-09T05:25:14Z"
+}

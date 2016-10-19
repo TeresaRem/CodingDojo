@@ -1,0 +1,86 @@
+notes
+
+
+//
+//      GET ROUTES
+//
+
+app.get('/', function(req, res) {
+    Panda.find({}, function(err, pandas) {
+    if(err) {
+      console.log('something went wrong');
+      console.log(err);
+      res.render("index",{title: 'you have errors!', errors: err});
+    } else { 
+      console.log('successfully got all pandas!');
+      res.render("index",{pandas: pandas});
+    }
+  })
+})
+
+app.get('/pandas/:id', function(req, res) {
+  var id = req.params.id
+  Panda.find({_id:id}, function(err, pandas) {
+    if(err) {
+      console.log('something went wrong');
+    } else { 
+      console.log('successfully got the panda!');
+      res.render("panda",{pandas: pandas});
+    }
+  })
+})
+
+app.get('/pandas/:id/edit', function(req, res) {
+  var id = req.params.id
+  Panda.find({_id:id}, function(err, pandas) {
+    if(err) {
+      console.log('something went wrong');
+    } else { 
+      console.log('successfully got the panda!');
+      res.render("editpanda",{pandas: pandas[0]});
+    }
+  })
+})
+
+//
+//      POST ROUTES
+//
+
+app.post('/pandas', function(req, res) {
+  console.log("POST DATA", req.body);
+  var panda = new Panda({name: req.body.name, age: req.body.age});
+  panda.save(function(err) {
+    if(err) {
+      console.log('something went wrong');
+    } else {
+      console.log('successfully added a panda!');
+      res.redirect('/');
+    }
+  })
+})
+
+app.post('/pandas/:id', function(req, res) {
+  var id = req.params.id
+  Panda.find({_id:id}, function(err, pandas) {
+    if(err) {
+      console.log('something went wrong');
+    } else { 
+      // update
+      Panda.update({_id:id},{name: req.body.name, age: req.body.age}, function(err){
+        console.log('something went wrong');
+        res.redirect("/");
+      });
+    }
+  });
+})
+
+app.post('/pandas/:id/destroy', function(req, res) {
+  var id = req.params.id
+  Panda.remove({_id:id}, function(err) {
+    if(err) {
+      console.log('something went wrong');
+    } else{
+      res.redirect("/");
+    }
+  });
+})

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Have the scope of the whole module extend from html tag to /html -->
+<html lang="en" ng-app = 'app'>
+<head>
+<style type="text/css">
+  ul{border:1px solid black; width: 100px;list-style: none;}
+</style>
+  <meta charset="UTF-8">
+  <title>Favorite Foods!</title>
+  <script src = 'bower_components/angular/angular.js'>
+  </script>
+  <script>
+  // create an angular module named app
+  var app = angular.module('app', []);
+  // create an angular controller named divController
+  app.controller('divController', ['$scope', function($scope){
+    //printController will show the current $scope
+    $scope.printController = function(){
+      console.log($scope);
+    }
+    $scope.foods = ["Pizza", "BBQ", "Fries", "Salad", "Steak"]; // array of foods
+    $scope.addFood = function (){
+      $scope.foods.push($scope.myFood);
+    }
+    $scope.myFood = "";
+  }]);
+</script>
+</head>
+<body>
+  <div ng-controller = "divController" id = "divController">
+  <form>
+    <label>Favorite Food </label><input type="text" ng-model = 'myFood'> <input type="submit" value="Add Food" ng-click='addFood()'>
+    <p>Currently Typing: <span ng-if="myFood">{{myFood}}</span></p>
+  <input type="text" placeholder="filter..." ng-model='searchText'>
+  <ul>
+    <li ng-repeat='food in foods | filter:searchText'>{{food}}</li>
+  </ul>
+  </div>
+</body>
+</html>

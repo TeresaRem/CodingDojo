@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title></title>
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+<script>
+    //  inject the ngRoute dependency in the module.
+    var myApp = angular.module('myApp', ['ngRoute']);
+    //  use the config method to set up routing:
+    myApp.config(function ($routeProvider) {
+      $routeProvider
+        .when('/',{
+            templateUrl: 'partials/players.html',
+        })
+        .when('/teams',{
+            templateUrl: 'partials/teams.html'
+        })
+        .when('/assocations',{
+            templateUrl: 'partials/assocations.html'
+        })
+        .otherwise({
+          redirectTo: '/'
+        });
+    });
+
+  myApp.factory('PlayerFactory', ['$http', function($http) {
+    var factory = {};
+    var players = [{name:"Alex",team:""},{name:"Elliot",team:"V-Neck"},{name:"Phil",team:""}];
+    factory.index = function(callback){
+      //callback is the function that is passed to the productIndex by the controller, in this caseP: setProducts.
+      callback(players);
+    }
+    factory.create = function(player, callback){
+        players.push(player);
+        callback(players);
+    }
+    factory.delete = function(player, callback){
+      players.splice(players.indexOf(player),1);
+      callback(players);
+    }
+    factory.assign = function(pt,tp, callback){
+      console.log(pt);
+      console.log(tp);
+      console.log(players.indexOf(pt));
+      players[players.indexOf(pt)].team = tp.name;
+      callback(players);
+    }
+    factory.clear = function(player, callback){
+      player.team = "";
+      callback(players);
+    }
+    return factory;
+  }]);
+
+    myApp.factory('TeamFactory', ['$http', function($http) {
+    var factory = {};
+    var teams = [{name:"Bike"},{name:"Scraper"},{name:"V-Neck"}];
+    factory.index = function(callback){
+      //callback is the function that is passed to the productIndex by the controller, in this caseP: setProducts.
+      callback(teams);
+    }
+    factory.create = function(team, callback){
+        teams.push(team);
+        callback(teams);
+    }
+    factory.delete = function(team, callback){
+      teams.splice(teams.indexOf(team),1);
+      callback(teams);
+    }
+    return factory;
+  }]);
+
+    //  build the controllers
+    myApp.controller('PlayersController', ['$scope','PlayerFactory', function ($scope, PlayerFactory) {
+      function setPlayers(data){
+          $scope.players = data;
+          $scope.player = [];
+      }
+
+      $scope.index = function(){
+        PlayerFactory.index(setPlayers);
+      }
+      $scope.index();
+      $scope.create = function(){
+        PlayerFactory.create($scope.player,setPlayers);
+      }
+      $scope.delete = function(player){
+        PlayerFactory.delete(player,setPlayers);
+      }
+    }]);
+    myApp.controller('TeamsController', ['$scope','TeamFactory', function ($scope, TeamFactory) {
+      function setTeams(data){
+          $scope.teams = data;
+          $scope.team = [];
+      }
+
+      $scope.index = function(){
+        TeamFactory.index(setTeams);
+      }
+      $scope.index();
+      $scope.create = function(){
+        TeamFactory.create($scope.team,setTeams);
+      }
+      $scope.delete = function(team){
+        TeamFactory.delete(team,setTeams);
+      }
+    }]);
+    myApp.controller('AssocationsController', ['$scope','PlayerFactory','TeamFactory', function ($scope, PlayerFactory, TeamFactory) {
+      function setPlayers(data){
+          $scope.players = data;
+          $scope.player = [];
+      }
+      function setTeams(data){
+          $scope.teams = data;
+          $scope.team = [];
+      }
+
+      $scope.index = function(){
+        PlayerFactory.index(setPlayers);
+        TeamFactory.index(setTeams);
+      }
+      $scope.index();
+      $scope.assign = function(){
+        PlayerFactory.assign($scope.pt,$scope.tp,setPlayers);
+        $scope.pt = {};
+        $scope.tp = {};
+      }
+      $scope.clear = function(player){
+        PlayerFactory.clear(player,setPlayers);
+      }
+    }]);
+    </script>
+  </head>
+  <body>
+    <div ng-app='myApp'>
+        <a href="#/">Players</a> | <a href="#/teams">Teams</a> | <a href="#/assocations">Assocations</a>
+        <div ng-view="">
+        </div>
+    </div>
+  </body>
+</html>

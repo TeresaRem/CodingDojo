@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<style type="text/css">
+		button{
+			background-color: blue;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+<button>CLICK IT</button>
+<script type="text/javascript">
+	$( document ).ready(function() {
+    console.log( "ready!" );
+
+    $( "button" ).hover(
+  function() {
+    $( this ).css("background-color","green" );
+  }, function() {
+    $( this ).css("background-color","blue" );
+  });
+
+  	$("button").click(function(){
+  		if( $(this).css('background-color') == 'green') {
+  			$( this ).css("background-color","red" );
+  		}else if ( $(this).css('background-color') == 'blue') {
+  			$( this ).css("background-color","red" );
+  		}else{
+  			$( this ).css("background-color","red" );
+  		}
+  	});
+
+});
+
+</script>
+</body>
+</html>
+
+<!-- Assignment: Create an HTML page with a single Blue Button that responds to the following events:
+
+*On Click the button should toggle between blue and red
+
+*On Hover the button should turn green (the button should go back to its original color when you hover out)
+
+ -->

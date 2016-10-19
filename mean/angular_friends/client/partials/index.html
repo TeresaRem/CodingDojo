@@ -1,0 +1,23 @@
+<!-- index.html in partial folder is for this table -->
+Filter by name: <input type="text" ng-model="scraper">
+<hr>
+<table>
+    <thead>
+      <th>Name</th>
+      <th>Show</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="friend in friends | filter:scraper">
+        <!-- can i convert the tr below to ng-bind with two inputs? -->
+        <td>{{friend.first}} {{friend.last}}</td>
+        <td><a href="/#/show/{{friend._id}}">show</a></td>
+        <td><a href="/#/edit/{{friend._id}}">edit</a></td>
+        <!-- on click, run the delete method from the index controller -->
+        <td><a href="" ng-click="delete(friend._id)">delete</a></td>
+      </tr>
+    </tbody>
+</table>
+<hr>
+<a href="/#/new"><button>New Friend</button></a>

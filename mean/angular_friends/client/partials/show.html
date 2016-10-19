@@ -1,0 +1,12 @@
+<!-- loaded by index controller -->
+First Name: <span ng-bind='friend.first'></span><br>
+Last Name: <span ng-bind='friend.last'></span><br>
+Birthday: <span ng-bind="friend.birth | date: 'dd/MM/yyyy'"></span>
+<!-- alternate format (not preferred)
+  First Name: {{friend.first}} <br>
+  Last Name: {{friend.last}} <br>
+  Birth: {{friend.birth | date: 'dd/MM/yyyy'}} -->
+  <hr>
+<a href="/#/edit/{{friend._id}}"><button>Edit</button></a><br><br>
+<a href="#/"><button>Home</button></a>
+

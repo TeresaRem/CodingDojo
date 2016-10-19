@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dojo Message Board!</title>
+  <style type="text/css">
+    form{
+      border: 1px solid black;
+      padding: 5px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+ <% if(typeof(errors) != 'undefined' ) { %>
+     <% for (var x in errors) { %>
+      <h3><%= errors[x].message %></h3>
+     <% } %>
+ <% } %>
+<h1>The Dojo Message Board</h1>
+<hr>
+<form action="/messages" method="post">
+  Name:<input type="text" name="name"><br>
+  Message:<br>
+  <textarea name="message"></textarea><br>
+  <input type="submit" value="Post message">
+</form>
+  	<% console.log(posts) %>
+  	<% for (var post of posts){ %>
+  	  <div id="post">
+  		<h2> Name: <%= post.name %> </h2>
+  		<h2> Message: <%= post.message %> </h2>
+      <% for (var comment of post.comments){ %>
+        <% console.log(comment) %>
+        <div id="comment">
+          <p>Name: <%= comment.name %></p>
+          <p>Message: <%= comment.text %></p>
+        </div>
+      <% } %>
+      <form action="/comments/<%= post._id %>" method="post">
+        Name:<input type="text" name="name"><br>
+        Message:<br>
+        <textarea name="text"></textarea><br>
+        <input type="submit" value="Post comment">
+      </form>
+      </div>
+  	<% } %>
+  </tbody>
+  </table>
+</body>
+</html>

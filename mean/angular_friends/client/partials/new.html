@@ -1,0 +1,9 @@
+<!-- create method in index controller, info stored in $scope.friend -->
+<form ng-submit="create()">
+  <input type="text" ng-model = 'friend.first' placeholder="First Name">
+  <input type="text" ng-model = 'friend.last' placeholder="Last Name">
+  <input type="date" ng-model = 'friend.birth'>
+  <input type="submit" value = 'Add Friend'>
+</form>
+<br>
+<a href="#/"><button>Back</button></a>

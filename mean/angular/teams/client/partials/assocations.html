@@ -1,0 +1,26 @@
+<div ng-controller="AssocationsController"><br>
+<form ng-submit='assign()'>
+	<select ng-model="pt">
+		<option ng-repeat="player in players" ng-value="{{player}}">{{player.name}}</option>
+	</select>
+	<select ng-model="tp">
+		<option ng-repeat="team in teams" ng-value="{{team}}">{{team.name}}</option>
+	</select>
+    <input type="submit" value="Assign Player to Team">
+</form><br>
+<hr>
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Team</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="player in players | orderBy:'name' ">
+				<td>{{player.name}}</td>
+				<td>{{player.team}}</td>
+            	<td><button ng-click='clear(player)'>Clear Assignment</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

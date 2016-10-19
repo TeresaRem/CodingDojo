@@ -1,0 +1,18 @@
+<div ng-controller="view2Controller">
+<br>
+<hr>
+	<table>
+		<thead>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Favorite Language</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in users | orderBy:'first' ">
+				<td>{{user.first}}</td>
+				<td>{{user.last}}</td>
+				<td>{{user.lang}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

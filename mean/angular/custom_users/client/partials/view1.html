@@ -1,0 +1,26 @@
+<!-- remove div if specifying view controller in config -->
+<div ng-controller="view1Controller"><br>
+<form ng-submit='create()'>
+	<input type="text" ng-model='user.first' placeholder="First Name"><br>
+        <input type="text" ng-model='user.last' placeholder="Last Name"><br>
+        <input type="text" ng-model='user.lang' placeholder="Favorite Language"><br>
+        <input type="submit" value="Add User">
+</form><br>
+<hr>
+	<table>
+		<thead>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Favorite Language</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat='user in users'>
+				<td>{{user.first}}</td>
+				<td>{{user.last}}</td>
+				<td>{{user.lang}}</td>
+            	<td><button ng-click='delete(user)'>Delete User</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

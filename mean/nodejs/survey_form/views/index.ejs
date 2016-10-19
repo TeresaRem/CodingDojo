@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css"> 
+		form{border: 1px solid black; padding: 5px; width: 200px;}
+	</style>
+</head>
+<body>
+<form action="/result" method="POST">
+	Your Name: <input type="text" name="name"><br><br>
+	Dojo Location: 
+	<select name="location">
+	  <option value="san jose">san jose</option>
+	  <option value="seattle">seattle</option>
+	</select><br><br>
+	Favorite Language:
+	<select name="language">
+	  <option value="js">js</option>
+	  <option value="python">python</option>
+	  <option value="ruby">ruby</option>
+	</select><br><br>
+	Comment (optional):<br>
+	<textarea name="comment"></textarea><br><br>
+	<input type="submit">
+</form>
+</body>
+</html>

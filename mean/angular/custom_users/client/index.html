@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html> 
+  <head>
+    <title></title>
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+<script>
+    //  inject the ngRoute dependency in the module.
+    var myApp = angular.module('myApp', ['ngRoute']);
+    //  use the config method to set up routing:
+    myApp.config(function ($routeProvider) {
+      $routeProvider
+        .when('/',{
+            templateUrl: 'partials/view1.html',
+            // specify controller in config
+            // controller: 'view1Controller'
+        })
+        .when('/partial2',{
+            templateUrl: 'partials/view2.html'
+        })
+        .otherwise({
+          redirectTo: '/'
+        });
+    });
+
+  myApp.factory('userFactory', ['$http', function($http) {
+    var factory = {};
+    var users = [{first:"Alex",last:"W",lang:"JS"},{first:"Elliot",last:"Y",lang:"Bikes"},{first:"Phil",last:"V",lang:"1337"}];
+    factory.index = function(callback){
+      //callback is the function that is passed to the productIndex by the controller, in this caseP: setProducts.
+      callback(users);
+    }
+    factory.create = function(user, callback){
+        users.push(user);
+        callback(users);
+    }
+    factory.delete = function(user, callback){
+      users.splice(users.indexOf(user),1);
+      callback(users);
+    }
+    return factory;
+  }]);
+
+
+    //  build the controllers
+    myApp.controller('view1Controller', ['$scope','$location','userFactory', function ($scope, $location, userFactory) {
+      function setUsers(data){
+          $scope.users = data;
+          $scope.user = [];
+      }
+
+      // $scope.user = {}
+      // $scope.users = {}
+
+      $scope.index = function(){
+        userFactory.index(setUsers);
+      }
+      $scope.index();
+      $scope.create = function(){
+        // after creating a user, load the partial for user list
+        $location.url('/partial2');
+        userFactory.create($scope.user,setUsers);
+      }
+      $scope.delete = function(user){
+        userFactory.delete(user,setUsers);
+      }
+    }]);
+    myApp.controller('view2Controller', ['$scope','userFactory', function ($scope, userFactory) {
+      function setUsers(data){
+          $scope.users = data;
+          $scope.user = [];
+      }
+
+      // $scope.user = {}
+      // $scope.users = {}
+
+      $scope.index = function(){
+        userFactory.index(setUsers);
+      }
+      $scope.index();   
+    }]);
+    </script>
+  </head>
+  <body>
+    <div ng-app='myApp'>
+        <a href="#/">Customize Users</a> | <a href="#/partial2">User List</a>
+        <div ng-view="">
+        </div>
+    </div>
+  </body>
+</html>

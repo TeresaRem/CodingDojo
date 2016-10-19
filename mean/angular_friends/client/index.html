@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- main index.html loads all assets and angular files -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Awesome Friends</title>
+    <!-- required angular sources -->
+    <script src="angular/angular.js" charset="utf-8"></script>
+    <script src="angular-route/angular-route.js" charset="utf-8"></script>
+    <!-- angular routes -->
+    <script src="assets/app.js" charset="utf-8"></script>
+    <!-- factories -->
+    <script src="assets/factories/friendsFactory.js" charset="utf-8"></script>  
+    <!-- controllers -->
+    <script src="assets/controllers/indexController.js" charset="utf-8"></script>
+    <script src="assets/controllers/newController.js" charset="utf-8"></script>
+</head>
+  <body ng-app='app'>
+  <div ng-view="">
+  </div>
+</body>
+</html>

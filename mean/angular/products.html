@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title></title>
+</head>
+	<script src = 'bower_components/angular/angular.js'>
+	</script>
+	<script>
+	var myAppModule = angular.module('app', []);
+
+	myAppModule.factory('productFactory', function (){
+    var products = [
+        {name: 'Scraper Bike', price: 100},
+        {name: 'V-Neck', price: 50},
+        {name: 'Elliot', price: 1}];
+    var factory = {};
+    // Add a key to the factory object with a value of a function.
+    factory.getProducts = function (callback){
+        // Pass the products to a callback to be used by whoever calls the method
+        callback(products);
+    }
+    factory.addProduct = function (callback){
+    	callback(products)
+    }
+    return factory;
+});
+
+    
+      // the .controller() method adds a controller to the module
+      myAppModule.controller('myController', ['$scope','productFactory', function ($scope, productFactory){
+        $scope.products = [];
+        productFactory.getProducts(function (data){
+        	$scope.products = data;
+        });
+
+        $scope.addProduct = function (){
+        	productFactory.addProduct(function (data){
+        		data.push($scope.newProduct); 
+        	});          
+        	$scope.newProduct = {};
+        }
+        $scope.removeProduct = function (product){
+          $scope.products.splice($scope.products.indexOf(product),1); 
+        }
+  }]);
+	</script>
+<body>
+    <div ng-controller = "myController" id = "myController">
+      Product Name: <input type="text" ng-model = 'newProduct.name'><br>
+      Product Price: <input type="number" ng-model = 'newProduct.price'><br>
+      <input type="submit" value="Add Product" ng-click='addProduct()'><br><br>
+      <table>
+        <thead>
+          <th ng-click="order='name'">Name</th>
+          <th ng-click="order='price'">Price</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in products | orderBy:order ">
+            <td>{{ product.name }}</td>
+            <td>{{ product.price | currency }}</td>
+            <td><button ng-click='removeProduct(product)'>Delete Product</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+</body>
+</html>

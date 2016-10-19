@@ -1,0 +1,23 @@
+<!-- update run from index controller -->
+<form ng-submit="update()">
+  First Name: <input type="text" ng-model = 'friend.first' placeholder="{{friend.first}}"><br><br>
+  Last Name: <input type="text" ng-model = 'friend.last' placeholder="{{friend.last}}"><br><br>
+<!--   Current Birthday: {{friend.birth | date: "dd/MM/y"}} <br><br>
+		correct way: convert birth to date object in controller??
+		<input type="date" input value = 'friend.birth'> ??
+ -->  
+
+ <!-- I get these errors/warnings:
+	1)
+	The specified value "{{friend.birth | date: 'yyyy-MM-dd'}}" does not conform to the required format, "yyyy-MM-dd".
+	indexController.js:9 indexController ran index function
+	2)
+	Error: [ngModel:datefmt] Expected `1900-11-01T07:00:00.000Z` to be a date
+
+ -->
+ <!-- birthday gets set to null half the time? -->
+ Birthday: <input type="date" ng-model = 'friend.birth' value="{{friend.birth | date: 'yyyy-MM-dd'}}"><br><br>
+  <input type="submit" value = 'Update Friend'>
+</form><br>
+<a href="/#/show/{{friend._id}}"><button>Show</button></a><br><br>
+<a href="#/"><button>Home</button></a>

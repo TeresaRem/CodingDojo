@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = 'app'>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src = 'bower_components/angular/angular.js'>
+  </script>
+  <script>
+    var myAppModule = angular.module('app', []);
+      // the .controller() method adds a controller to the module
+      myAppModule.controller('myController', function ($scope){
+        $scope.users = [];
+        $scope.addUser = function (){
+          $scope.users.push($scope.newUser); 
+          $scope.newUser = {};
+        }
+        $scope.removeUser = function (index){
+          $scope.users.splice(index,1); 
+        }
+  });
+  </script>
+</head>
+<body>
+    <div ng-controller = "myController" id = "myController">
+      First Name: <input type="text" ng-model = 'newUser.first'><br>
+      Last Name: <input type="text" ng-model = 'newUser.last'><br>
+      Favorite Language: <input type="text" ng-model = 'newUser.lang'><br>
+      <input type="submit" value="Create User" ng-click='addUser()'><br><br>
+      Search Users: <input type="text" ng-model="filter_users"><br>
+      <table>
+        <thead>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Favorite Language</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users | orderBy:'first' | filter:filter_users">
+            <td>{{ user.first }}</td>
+            <td>{{ user.last }}</td>
+            <td>{{ user.lang }}</td>
+            <!-- use the index from ng-repeat scope to remove it from the user array -->
+            <td><button ng-click='removeUser($index)'>Delete User</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+</body>
+</html>
