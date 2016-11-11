@@ -25,13 +25,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func takePicture(sender: UIButton){
-        if (UIImagePickerController.isSourceTypeAvailable(.Camera)){
-            if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil{
+    @IBAction func takePicture(_ sender: UIButton){
+        if (UIImagePickerController.isSourceTypeAvailable(.camera)){
+            if UIImagePickerController.availableCaptureModes(for: .rear) != nil{
                 imagePicker.allowsEditing = false
-                imagePicker.sourceType = .Camera
-                imagePicker.cameraCaptureMode = .Photo
-                presentViewController(imagePicker, animated: true, completion: {})
+                imagePicker.sourceType = .camera
+                imagePicker.cameraCaptureMode = .photo
+                present(imagePicker, animated: true, completion: {})
             } else{
                 print("no")
             }
@@ -41,26 +41,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("Got an image")
         if let pickedImage:UIImage = (info[UIImagePickerControllerOriginalImage]) as? UIImage{
             let selectorToCall = #selector(ViewController.imageWasSavedSuccessfully(_:didFinishSavingWithError:context:))
             UIImageWriteToSavedPhotosAlbum(pickedImage, self, selectorToCall, nil)
         }
-        imagePicker.dismissViewControllerAnimated(true, completion: {})
+        imagePicker.dismiss(animated: true, completion: {})
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("user cancelled image")
-        dismissViewControllerAnimated(true, completion: {})
+        dismiss(animated: true, completion: {})
     }
     
-    func imageWasSavedSuccessfully(image: UIImage, didFinishSavingWithError error: NSError!, context: UnsafeMutablePointer<()>){
+    func imageWasSavedSuccessfully(_ image: UIImage, didFinishSavingWithError error: NSError!, context: UnsafeMutableRawPointer){
         print("image saved")
         if let theError = error{
             print("error happened for image = \(theError)")
         } else{
-            dispatch_async(dispatch_get_main_queue(),{() -> Void in self.currentImage.image = image})
+            DispatchQueue.main.async(execute: {() -> Void in self.currentImage.image = image})
         }
     }
 
