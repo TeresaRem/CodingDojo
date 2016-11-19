@@ -14,8 +14,8 @@ import CoreData
 
 extension Snippets {
 
-    @NSManaged var dateCreated: NSDate?
-    @NSManaged var dateUpdated: NSDate?
+    @NSManaged var dateCreated: Date?
+    @NSManaged var dateUpdated: Date?
     @NSManaged var snippetText: String?
     @NSManaged var snippetTitle: String?
 

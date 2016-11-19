@@ -11,43 +11,47 @@ import SocketIO
 
 class ChatViewController: UIViewController,UITextViewDelegate{
     
-    @IBAction func updateButton(sender: UIButton) {
-        self.socket.emit("username", withItems: [self.usernameField.text!.stringByReplacingOccurrencesOfString("\n", withString: "<br>")])
+    @IBAction func updateButton(_ sender: UIButton) {
+        self.socket.emit("username", withItems: [self.usernameField.text!.replacingOccurrences(of: "\n", with: "<br>")])
         self.usernameField.text = ""
+    }
+    @IBAction func pasteButton(_ sender: UIButton) {
+        if let pastingText = pasteBoard.string{
+            sendField.text = sendField.text + pastingText + "\n"
+
+        }
     }
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var chatView: UITextView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var sendField: UITextView!
-    @IBAction func pasteButtonPressed(sender: UIBarButtonItem) {
-        sendField.text = pasteBoard.string
-    }
     
-    let socket = SocketIOClient(socketURL: NSURL(string: "http://192.168.1.150:8080")!, config: [.Log(true), .ForcePolling(true)])
+    let socket = SocketIOClient(socketURL: URL(string: "http://192.168.1.150:8080")!, config: [.log(true), .forcePolling(true)])
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendField.autocorrectionType = .No
-        sendField.autocapitalizationType = .None
+        KOKeyboardRow.apply(to: sendField)
+        sendField.autocorrectionType = .no
+        sendField.autocapitalizationType = .none
         sendField.becomeFirstResponder()
         sendField.delegate = self
         addHandlers()
         self.socket.connect()
         self.chatView.layoutManager.allowsNonContiguousLayout = false
-        chatView.editable = false
+        chatView.isEditable = false
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         let bottom = chatView.contentSize.height
         
         chatView.setContentOffset(CGPoint(x: 0, y: bottom), animated: true) // Scrolls to end
         
     }
     
-    @IBAction func sendButton(sender: UIButton) {
-        self.socket.emit("chat message", withItems: [self.sendField.text!.stringByReplacingOccurrencesOfString("\n", withString: "<br>")])
+    @IBAction func sendButton(_ sender: UIButton) {
+        self.socket.emit("chat message", withItems: [self.sendField.text!.replacingOccurrences(of: "\n", with: "<br>").replacingOccurrences(of: "\t", with: "  ")])
         self.sendField.text = ""
     }
     
@@ -58,8 +62,8 @@ class ChatViewController: UIViewController,UITextViewDelegate{
         
         self.socket.on("chat message") {[weak self] data, ack in
             if let value = data.first as? String {
-                let replaced = (value as NSString).stringByReplacingOccurrencesOfString("<br>", withString: "\n")
-                self?.chatView.text?.appendContentsOf(replaced + "\n")
+                let replaced = (value as NSString).replacingOccurrences(of: "<br>", with: "\n")
+                self?.chatView.text?.append(replaced + "\n\n")
                 let stringLength:Int = self!.chatView.text.characters.count
                 self!.chatView.scrollRangeToVisible(NSMakeRange(stringLength-1, 0))
             }
@@ -67,8 +71,8 @@ class ChatViewController: UIViewController,UITextViewDelegate{
         
         self.socket.on("total users") {[weak self] data, ack in
             if let value = data.first as? String {
-                let replaced = (value as NSString).stringByReplacingOccurrencesOfString("<br>", withString: "\n")
-                self?.chatView.text?.appendContentsOf(replaced + "\n")
+                let replaced = (value as NSString).replacingOccurrences(of: "<br>", with: "\n")
+                self?.chatView.text?.append(replaced + "\n\n")
                 let stringLength:Int = self!.chatView.text.characters.count
                 self!.chatView.scrollRangeToVisible(NSMakeRange(stringLength-1, 0))
             }

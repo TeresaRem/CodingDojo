@@ -9,22 +9,22 @@
 import UIKit
 import CoreData
 //Global Variables
-let pasteBoard = UIPasteboard.generalPasteboard()
+let pasteBoard = UIPasteboard.general
 class SnippetListTableViewController: UITableViewController, EditSnippetDelegate, CancelButtonDelegate {
     //
     //OUTLETS
-    @IBAction func newSnippetButtonPressed(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("editSnippetSegue", sender: sender)
+    @IBAction func newSnippetButtonPressed(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "editSnippetSegue", sender: sender)
     }
     //OUTLETS
     //
     //
     //VARIABLES
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
     var snippetsArray = [Snippets]()
     var filteredSnippetsArray = [Snippets]()
     let searchController = UISearchController(searchResultsController: nil)
-    let dateFormatter = NSDateFormatter()
+    let dateFormatter = DateFormatter()
     //VARIABLES
     //
     //
@@ -40,7 +40,7 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
         fetchAllSnippets()
         tableView.reloadData()
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         fetchAllSnippets()
         tableView.reloadData()
     }
@@ -52,34 +52,34 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
     //
     //
     //TABLE VIEW FUNCTIONS
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text != "" {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
             return filteredSnippetsArray.count
         }
         return snippetsArray.count
     }
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("prototypecell") as! SnippetTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "prototypecell") as! SnippetTableViewCell
         let snippetToUse: Snippets
-        if searchController.active && searchController.searchBar.text != "" {
-            snippetToUse = filteredSnippetsArray[indexPath.row]
+        if searchController.isActive && searchController.searchBar.text != "" {
+            snippetToUse = filteredSnippetsArray[(indexPath as NSIndexPath).row]
         } else {
-            snippetToUse = snippetsArray[indexPath.row]
+            snippetToUse = snippetsArray[(indexPath as NSIndexPath).row]
         }
-        cell.snippetTextLabel.text = snippetsArray[indexPath.row].snippetTitle
-        cell.snippetForCell = snippetsArray[indexPath.row]
-        cell.snippetDateLabel.text = dateFormatter.stringFromDate(cell.snippetForCell!.dateCreated!)
+        cell.snippetTextLabel.text = snippetsArray[(indexPath as NSIndexPath).row].snippetTitle
+        cell.snippetForCell = snippetsArray[(indexPath as NSIndexPath).row]
+        cell.snippetDateLabel.text = dateFormatter.string(from: cell.snippetForCell!.dateCreated! as Date)
         return cell
     }
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let celltapped = tableView.cellForRowAtIndexPath(indexPath) as! SnippetTableViewCell
-        managedObjectContext.deleteObject(celltapped.snippetForCell!)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let celltapped = tableView.cellForRow(at: indexPath) as! SnippetTableViewCell
+        managedObjectContext.delete(celltapped.snippetForCell!)
         saveNotes()
         fetchAllSnippets()
         tableView.reloadData()
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier("editSnippetSegue", sender: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "editSnippetSegue", sender: indexPath)
     }
     //TABLE VIEW FUNCTIONS
     //
@@ -90,7 +90,7 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
         let snippetsRequest = NSFetchRequest(entityName: "Snippets")
         do {
             // get the results by executing the fetch request we made earlier
-            let results = try managedObjectContext.executeFetchRequest(snippetsRequest)
+            let results = try managedObjectContext.fetch(snippetsRequest)
             snippetsArray = results as! [Snippets]
             snippetsArray = sortTableByRecentlyEdited(snippetsArray)
         } catch {
@@ -112,7 +112,7 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
     //
     //
     //DATE TIME FUNCTIONS
-    func sortTableByRecentlyEdited(snippets:[Snippets]) -> [Snippets]{
+    func sortTableByRecentlyEdited(_ snippets:[Snippets]) -> [Snippets]{
         var count = snippets.count-1
         var newSnippetsArray = snippets
         while(count>0){
@@ -121,7 +121,7 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
                 print(newSnippetsArray[i].dateUpdated)
                 print("array at \(i+1):")
                 print(newSnippetsArray[i+1].dateUpdated)
-                if newSnippetsArray[i].dateUpdated!.compare(newSnippetsArray[i+1].dateUpdated!) == NSComparisonResult.OrderedAscending{
+                if newSnippetsArray[i].dateUpdated!.compare(newSnippetsArray[i+1].dateUpdated! as Date) == ComparisonResult.orderedAscending{
                     let temp = newSnippetsArray[i]
                     newSnippetsArray[i] = newSnippetsArray[i+1]
                     newSnippetsArray[i+1] = temp
@@ -136,14 +136,14 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
     //
     //
     //SEGUE FUNCTIONS
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editSnippetSegue" {
-            let navigationController = segue.destinationViewController as! UINavigationController
+            let navigationController = segue.destination as! UINavigationController
             let destinationController = navigationController.topViewController as! EditSnippetViewController
             destinationController.editSnippetDelegate = self
             destinationController.cancelButtonDelegate = self
             if sender is NSIndexPath {
-                let celltapped = tableView.cellForRowAtIndexPath(sender as! NSIndexPath) as! SnippetTableViewCell
+                let celltapped = tableView.cellForRow(at: sender as! IndexPath) as! SnippetTableViewCell
                 destinationController.recievedSnippetTextToEdit = celltapped.snippetForCell?.snippetText
                 destinationController.snippetToEdit = celltapped.snippetForCell
                 destinationController.recievedSnippetTitleToEdit = celltapped.snippetForCell?.snippetTitle
@@ -157,35 +157,35 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
     //
     //
     //DELEGATE FUNCTIONS
-    func editSnippetDelegate(newSnippetText:String, newSnippetTitle:String){
-        let newSnippet = NSEntityDescription.insertNewObjectForEntityForName("Snippets", inManagedObjectContext: managedObjectContext) as! Snippets
+    func editSnippetDelegate(_ newSnippetText:String, newSnippetTitle:String){
+        let newSnippet = NSEntityDescription.insertNewObject(forEntityName: "Snippets", into: managedObjectContext) as! Snippets
         print("An Object was Added to Core Data")
         newSnippet.snippetText = newSnippetText
         newSnippet.snippetTitle = newSnippetTitle
-        newSnippet.dateCreated = NSDate()
-        newSnippet.dateUpdated = NSDate()
+        newSnippet.dateCreated = Date()
+        newSnippet.dateUpdated = Date()
         saveNotes()
         fetchAllSnippets()
         tableView.reloadData()
     }
-    func editSnippetDelegate(editedSnippetText:String, editedSnippetTitle:String, snippetToEdit:Snippets){
+    func editSnippetDelegate(_ editedSnippetText:String, editedSnippetTitle:String, snippetToEdit:Snippets){
         snippetToEdit.snippetText = editedSnippetText
         snippetToEdit.snippetTitle = editedSnippetTitle
-        snippetToEdit.dateUpdated = NSDate()
+        snippetToEdit.dateUpdated = Date()
         saveNotes()
         fetchAllSnippets()
         tableView.reloadData()
     }
-    func cancelButtonPressedFrom(sender: UIViewController){
-        dismissViewControllerAnimated(true, completion: nil)
+    func cancelButtonPressedFrom(_ sender: UIViewController){
+        dismiss(animated: true, completion: nil)
     }
     //DELEGATE FUNCTIONS
     //
     //
     //SEARCH BAR FUNCTIONS
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredSnippetsArray = snippetsArray.filter { snippet in
-            return snippet.snippetTitle!.lowercaseString.containsString(searchText.lowercaseString)
+            return snippet.snippetTitle!.lowercased().contains(searchText.lowercased())
         }
         
         tableView.reloadData()
@@ -194,7 +194,7 @@ class SnippetListTableViewController: UITableViewController, EditSnippetDelegate
     //
 }
 extension SnippetListTableViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }

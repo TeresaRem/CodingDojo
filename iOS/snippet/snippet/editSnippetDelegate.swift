@@ -9,6 +9,6 @@
 import UIKit
 
 protocol EditSnippetDelegate:class{
-    func editSnippetDelegate(newSnippetText:String, newSnippetTitle:String)
-    func editSnippetDelegate(editedSnippetText:String, editedSnippetTitle:String, snippetToEdit: Snippets)
+    func editSnippetDelegate(_ newSnippetText:String, newSnippetTitle:String)
+    func editSnippetDelegate(_ editedSnippetText:String, editedSnippetTitle:String, snippetToEdit: Snippets)
 }
