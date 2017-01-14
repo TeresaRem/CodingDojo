@@ -1,0 +1,44 @@
+Django notes
+
+VIDEOS SPEED
+In your javascript console inspect element:
+document.getElementsByTagName('video')[0].playbackRate = 1.5
+If there are multiple videos, they are indexed by order, so to accelerate the second one to 3x speed:
+document.getElementsByTagName('video')[1].playbackRate = 3
+
+MVC ~ MTV
+view is controller
+templates is view
+
+view - templates folder
+controller - views.py, urls.py (aka routes.py)
+model - models.py
+
+// create venv
+virtualenv venv
+source venv/bin/activate
+pip install django
+
+// create directory
+django-admin startproject main
+cd main
+
+// unapplied migrations
+python manage.py migrate
+
+// start server
+python manage.py runserver
+
+// create first_app
+mkdir apps
+cd apps
+touch __init__.py
+python ../manage.py startapp first_app
+
+// update INSTALLED_APPS to include apps.first_app
+
+// update main/urls.py  
+url(r'^admin/', admin.site.urls),
+// update TO
+url(r'^', include('apps.first_app.urls'))
+
