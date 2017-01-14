@@ -1,0 +1,15 @@
+django start
+
+1. create django project (django-admin startproject main)
+2. cd main
+3. python manage.py runserver
+4. mkdir apps
+5. cd apps
+6. touch __init__.py (aka dunder file)
+7. python ../manage.py startapp APPNAME
+8. update INSTALLED_APPS to include apps.APPNAME
+9. update main/urls.py to import include
+9a. add url(r'^', include('apps.APPNAME.urls'))
+10. create urls.py inside apps/APPNAME (route file)
+11. update views.py with view methods
+12. create view directories and html files in apps/APPNAME/templates/APPNAME/

@@ -42,3 +42,22 @@ url(r'^admin/', admin.site.urls),
 // update TO
 url(r'^', include('apps.first_app.urls'))
 
+// update first_app/urls.py
+url(r'^$', views.index) 
+url(r'^users$', views.show)
+
+// update views.py (it's the controller)
+def index(request):
+  print("*"*10)
+  return render(request, "first_app/index.html")
+
+// create index.html in new directory for templates
+// it’s best practice to put a directory with your app’s name inside your templates directory
+
+apps/first_app/templates/first_app/index.html
+
+// model performs db logic
+// templates rendered from templates folder
+// view receives http request from routes.py and acts as controller
+
+
