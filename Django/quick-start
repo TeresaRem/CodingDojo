@@ -13,3 +13,6 @@ django start
 10. create urls.py inside apps/APPNAME (route file)
 11. update views.py with view methods
 12. create view directories and html files in apps/APPNAME/templates/APPNAME/
+13. add {% load staticfiles %} to html
+14. create static folder in apps/APPNAME/ for css, img, js
+15. use href="{% static 'APPNAME/static/css/main.css' %}
