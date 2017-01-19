@@ -16,3 +16,24 @@ django start
 13. add {% load staticfiles %} to html
 14. create static folder in apps/APPNAME/ for css, img, js
 15. use href="{% static 'APPNAME/static/css/main.css' %}
+16. python manage.py makemigrations (used for database setup)
+17. python manage.py migrate
+
+form data
+1. create form action and method in html
+2. create route in urls.py url(r'^new_user$', views.create)
+3. create method in views.py (def create(request))
+4. add {% csrf_token %} to form
+5. query dictionary
+
+session
+1. request.session['name'] = request.POST['first_name']
+2. django doesn't use jinja. CANNOT use square brackets, must use dot notation (request.session.name)
+3. first name and ID stored in session
+4. use with flash
+5. del request.session['key'] (delete): use with try/except
+6. 'key' in request.session: boolean of key existence in session
+7. session in django is saved even if we leave the browser
+
+
+

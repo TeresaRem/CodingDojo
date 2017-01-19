@@ -23,8 +23,8 @@ pip install django
 django-admin startproject main
 cd main
 
-// unapplied migrations
-python manage.py migrate
+// unapplied migrations (used for database)
+python manage.py migrate 
 
 // start server
 python manage.py runserver

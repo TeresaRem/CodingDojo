@@ -5,9 +5,12 @@ from django.conf.urls import url
 from . import views 
 
 urlpatterns = [
+
+  # COMMA after each URL METHOD
+
   # url method uses RegEx to match route, then runs method
   url(r'^$', views.index),
-  # need comma after each url method 
   # eventually use named routes name='index'
-  url(r'^users$', views.show)
+  url(r'^users$', views.show),
+  url(r'^new_user$', views.create)
 ]

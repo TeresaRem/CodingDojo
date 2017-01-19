@@ -4,6 +4,13 @@
 	<title>First Django Template</title>
 </head>
 <body>
+
 	<h1>First Django Template</h1>
+	<h2>{{request.session.name}}</h2>
+	<form action="/new_user" method="POST">
+		{% csrf_token %}
+		<input type="text" name="first_name">
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>
