@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survey Form</title>
+</head>
+<body>
+	<div style="border: 1px solid black;padding: 5px;">
+		<h1>Submitted Information</h1>
+		<p>Name: {{request.session.name}}</p>
+		<p>Dojo Location: {{request.session.location}}</p>
+		<p>Favorite Language: {{request.session.language}}</p>
+		<p>Comment: {{request.session.comment}}</p>
+	</div>
+</body>
+</html>
