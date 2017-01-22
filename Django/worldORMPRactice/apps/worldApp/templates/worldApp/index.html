@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {# {% for city in cities  %} #}
+    {#   {{city.name}} #}
+    {# {% endfor %} #}
+    {# {%  for language in languages %} #}
+    {#   {{ language.country.name }} #}
+    {# {% endfor %} #}
+    {% for country in countries %}
+      {{country.id}} {{country.count}}<br>
+    {% endfor %}
+  </body>
+</html>

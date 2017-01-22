@@ -1,0 +1,74 @@
+Django with DB
+
+document.getElementsByTagName('video')[0].playbackRate = 1.5
+
+controllers (thin) make calls to models
+models (thick) return data 
+models are classes (models.py file)
+views.py: `from .models import People`
+object relational mapper (ORM)
+
+WHENEVER YOU CHANGE YOUR MODELS
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+THIS IS THE SAME AS forward engineering an ERD into SQL and running the SQL code in MySQL
+
+Column Types
+CharField
+Any text that can be small to large that a user may enter
+DateField
+Used for dates. Can have optional parameters such as auto_now_add=True which adds the current date when object is created
+TextField
+long text?
+DateTimeField
+Same concept as DateField, but has added optional parameters
+e.g. first_name = models.CharField(max_length=30)
+Django automatically creates ID column
+
+many_to_one:
+user_id = models.ForeignKey(User)
+
+e.g.
+# Inside models.py
+from __future__ import unicode_literals
+from django.db import models
+# Create your models here.
+class User(models.Model):
+    first_name = models.CharField(max_length=45)
+    last_name = models.CharField(max_length=45)
+    password = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+class Post(models.Model):
+    title = models.CharField(max_length=45)
+    message = models.TextField(max_length=1000)
+    # Notice the association made with ForeignKey for a one-to-many relationship
+    user_id = models.ForeignKey(User)
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+queries are faster than ORMs
+
+# create
+  User.objects.create(first_name="mike",last_name="mike",password="1234asdf")
+# query
+  users = User.objects.raw("SELECT * from my_app_name_user")
+#  Django builds our database’s tables according to a particular format ( app_name + _ + lowercase_model_name)
+# check table name
+User._meta.db_table
+
+# get all comments associated with blog
+{% for comment in blog.comment_set.all() %}
+  <p>{{comment.comment}}</p>
+{% endfor %}
+
+
+python manage.py runserver
+
+.raw() is same as * in SQL
+
+in model: related_name lets you do joins
+
+

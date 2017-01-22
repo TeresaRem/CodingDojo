@@ -1,0 +1,39 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Friendships</title>
+    </head>
+    <body>
+      <h1> I've got some friends? </h1>
+      {# {% for user in users  %} #}
+      {# <p> #}
+      {# 	id: {{user.id}} <br> #}
+      {# 	friend_id: {{user.friend_id}} <br> #}
+      {#   {{user.first_name}} {{user.last_name}} #}
+      {# </p> #}
+      {# {% endfor %} #}
+
+      {% for friendship in friendships %}
+      	{{friendship.user.id}} {{friendship.user.first_name}} {{friendship.user.last_name}} is friends with {{friendship.friend.id}} {{friendship.friend.first_name}} {{friendship.friend.last_name}}!<br>
+      {% endfor %}
+      <br><br>
+      {% for user in users %}
+      	{{user.first_name}} {{user.last_name}}
+      {% endfor %}
+
+      <!-- from the platform for #7: -->
+	{% for user in users  %}
+		<p>
+		{{user.first_name}} {{user.last_name}}
+			{% for friendship in user.usersfriend.all  %}
+				{% if  friendship.friend.id == 2 %}
+					<b>{{friendship.friend.first_name}}</b>
+				{% endif %}
+			{% endfor %}
+		</p>
+	{% endfor %}
+
+
+    </body>
+  </html>
