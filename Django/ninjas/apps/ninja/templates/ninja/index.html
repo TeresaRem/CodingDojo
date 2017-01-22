@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TMNT</title>
+	{% load staticfiles %}
+</head>
+<body>
+{% if img_url == 'ninja/all.gif' %}
+<img src="{% static 'ninja/all.gif' %}">
+{% endif %}
+{% if img_url == 'ninja/orange.jpg' %}
+<img src="{% static 'ninja/orange.jpg' %}">
+{% endif %}
+{% if img_url == 'ninja/red.jpg' %}
+<img src="{% static 'ninja/red.jpg' %}">
+{% endif %}
+{% if img_url == 'ninja/blue.jpg' %}
+<img src="{% static 'ninja/blue.jpg' %}">
+{% endif %}
+{% if img_url == 'ninja/purple.jpg' %}
+<img src="{% static 'ninja/purple.jpg' %}">
+{% endif %}
+{% if img_url == 'ninja/april.gif' %}
+<img src="{% static 'ninja/april.gif' %}">
+{% endif %}
+</body>
+</html>
+
+{# <img src="{% static 'img_url' %}"> #}

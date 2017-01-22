@@ -60,4 +60,31 @@ apps/first_app/templates/first_app/index.html
 // templates rendered from templates folder
 // view receives http request from routes.py and acts as controller
 
+// url parameters
+localhost:8000/users/123
+person by id number
+?P creates keyword argument
+r'^users/(?P<id>\d+)$' means catch all numbers (\d+) after users/
+    url(r'^users/(?P<id>\d+)$', views.show)
+def show(request, id):
+  context = {
+    "id" : id
+  }
+  return render(request, "second_app/show.html", context)
+
+
+// context dictionary
+don't use session, use contextual variables
+build in views.py
+pass in return render
+
+// static files
+static folder same level as templates
+add APPNAME folder inside static
+add CSS, IMG, JS
+in HTML
+{% load staticfiles %}
+<script src="{% static 'second_app/js/main.js' %}"></script>
+- call static load staticfiles
+- for src, use quotes, use {%%}, call static 'APPNAME/path/file.js' in quotes (check for double quotes)
 

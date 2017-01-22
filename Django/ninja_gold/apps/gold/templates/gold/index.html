@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Gold</title>
+</head>
+<body>
+<h1>Your Gold: {{request.session.gold}}</h1><br><br>
+<div style="border:1px solid black; padding:10px;display:inline-block;">
+<h3>Farm</h3>
+<p>(earns 10-20 gold)</p>
+<form action="/process_money" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="building" value="farm">
+	<input type="submit" value="Find Gold!">
+</form>
+</div>
+<div style="border:1px solid black; padding:10px;display:inline-block;">
+<h3>Cave</h3>
+<p>(earns 5-10 gold)</p>
+<form action="/process_money" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="building" value="cave">
+	<input type="submit" value="Find Gold!">
+</form>
+</div>
+<div style="border:1px solid black; padding:10px;display:inline-block;">
+<h3>House</h3>
+<p>(earns 2-5 gold)</p>
+<form action="/process_money" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="building" value="house">
+	<input type="submit" value="Find Gold!">
+</form>
+</div>
+<div style="border:1px solid black; padding:10px;display:inline-block;">
+<h3>Casino</h3>
+<p>(earns/takes 0-50 gold)</p>
+<form action="/process_money" method="post">
+	{% csrf_token %}
+	<input type="hidden" name="building" value="casino">
+	<input type="submit" value="Find Gold!">
+</form>
+</div>
+<br><br>
+<h2>Activities:</h2>
+
+{% for message in request.session.message %}
+	<p>{{message}}</p>  
+{% endfor %}
+
+<!-- <textarea cols="100" rows="10"></textarea> -->
+</body>
+</html>
