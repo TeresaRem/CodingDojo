@@ -71,4 +71,13 @@ python manage.py runserver
 
 in model: related_name lets you do joins
 
-
+in models.py:
+class UserManager(models.Manager):
+  def login():
+    pass
+  def register(self, **kwargs):
+    # parse thru kwargs keyword args
+    pass
+in views.py:
+import HttpResponse
+return HttpResponse(text)

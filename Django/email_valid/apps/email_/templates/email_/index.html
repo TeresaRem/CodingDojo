@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Email Validation</title>
+</head>
+<body>
+{% if request.session.message %}
+<p style="color: white;background-color: red">{{request.session.message}}</p>
+{% endif %}
+<form action="/process" method="post">
+	{% csrf_token %}
+	Email Address: <input type="text" name="email"><br><br>
+	<input type="submit" value="Submit">
+</form>
+</body>
+</html>
