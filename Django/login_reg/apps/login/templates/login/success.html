@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Successful!</title>
+</head>
+<body>
+<h2>Success! Welcome, {{name}}!</h2>
+<h3>Successfully registered or logged in!</h3>
+<form action="/logout" method="post">
+	{% csrf_token %}
+	<input type="submit" value="Log out">
+</form>
+</body>
+</html>
