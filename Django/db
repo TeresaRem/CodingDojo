@@ -81,3 +81,13 @@ class UserManager(models.Manager):
 in views.py:
 import HttpResponse
 return HttpResponse(text)
+
+
+
+Lower_case class name followed by _set = access to the set of objects of the related key.
+
+User.objects.message_set.all()
+retrieve all of the messages associated with that particular user object.
+
+
+
