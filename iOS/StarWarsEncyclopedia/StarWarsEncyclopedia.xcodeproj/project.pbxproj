@@ -424,6 +424,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Team-Jamaica.StarWarsEncyclopedia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -435,6 +436,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Team-Jamaica.StarWarsEncyclopedia";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -503,6 +505,7 @@
 				9440F6751D904E0C00E2CE98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9440F6761D904E0C00E2CE98 /* Build configuration list for PBXNativeTarget "StarWarsEncyclopediaTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +514,7 @@
 				9440F6781D904E0C00E2CE98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9440F6791D904E0C00E2CE98 /* Build configuration list for PBXNativeTarget "StarWarsEncyclopediaUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +523,7 @@
 				9440F67B1D904E0C00E2CE98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
